@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import 'mocha';
-import {None, Some} from '../src/option/option';
+import {None, Some} from '../src/option';
 import {
   allPairs,
   append,

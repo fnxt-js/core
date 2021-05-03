@@ -36,3 +36,7 @@ lerna-debug.log*
 
 coverage
 .nyc_output
+/array
+/pipe
+/result
+/option

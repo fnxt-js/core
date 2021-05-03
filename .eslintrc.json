@@ -15,5 +15,10 @@
     "semi": ["error", "always"],
     "quotes": ["error", "single"]
   },
-  "ignorePatterns": ["dist/*"]
+  "ignorePatterns": ["dist/*"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "jasmine": true
+  }
 }

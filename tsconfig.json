@@ -3,17 +3,16 @@
     "module": "commonjs",
     "target": "es2020",
     "lib": [
-      "es6",
-      "ES2015",
-      "es2015",
-      "es2016"
+      "esnext",
+      "dom"
     ],
     "sourceMap": true,
     "outDir": "dist",
     "sourceRoot": "src",
     "noFallthroughCasesInSwitch": true,
     "declaration": true,
-    "declarationDir": "./dist"
+    "declarationDir": "./dist",
+    "baseUrl": "."
   },
   "include": ["src/**/*"],
   "exclude": [
