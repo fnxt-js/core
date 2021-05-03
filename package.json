@@ -1,6 +1,6 @@
 {
   "name": "@fnxt/core",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "func fun",
   "files": [
     "dist/**",
@@ -18,8 +18,7 @@
   },
   "author": "mb",
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/chai": "^4.2.14",
     "@types/mocha": "^8.0.4",
