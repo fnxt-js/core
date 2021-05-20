@@ -20,5 +20,10 @@
     "test",
     "dist",
     "src/internal"
-  ]
+  ],
+  "paths": {
+    "@fnxt/core": [
+      "./src/index"
+    ]
+  }
 }
