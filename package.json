@@ -5,7 +5,6 @@
   "type": "commonjs",
   "files": [
     "dist/**",
-    "src",
     "package.json",
     "tsconfig.json"
   ],
