@@ -10,4 +10,4 @@ export type Reduction<E> = (e: E, f: E) => E;
 export type Folder<E, F> = (f: F, e: E) => F;
 
 
-export type Tuple<E, F> = [e: E, f: F];
+export type Tuple<E, F> = [E, F];
