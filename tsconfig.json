@@ -1,29 +1,30 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es2020",
+    "incremental": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "moduleResolution": "node",
+    "stripInternal": true,
+    "noEmit": true,
     "lib": [
       "esnext",
       "dom"
     ],
-    "sourceMap": true,
-    "outDir": "dist",
-    "sourceRoot": "src",
-    "noFallthroughCasesInSwitch": true,
-    "declaration": true,
-    "declarationDir": "./dist",
-    "baseUrl": "."
+    "target": "esnext",
+    "baseUrl": ".",
+    "paths": {
+      "fnxt": ["./src/index"],
+      "fnxt/option": ["./src/option/index"],
+      "fnxt/pipe": ["./src/pipe/index"],
+      "fnxt/array": ["./src/array/index"],
+      "fnxt/result": ["./src/result/index"],
+      "fnxt/fnxt-types": ["./src/fnxt-types/index"]
+    }
   },
-  "include": ["src/**/*"],
-  "exclude": [
-    "node_modules",
-    "test",
-    "dist",
-    "src/internal"
-  ],
-  "paths": {
-    "@fnxt/core": [
-      "./src/index"
-    ]
+  "bazelOptions": {
+    "suppressTsconfigOverrideWarnings": true
   }
 }

@@ -1,4 +1,4 @@
-import {UnaryFunction} from '../types/types';
+import {UnaryFunction} from '../fnxt-types';
 
 type Fn<E, R> = UnaryFunction<E, R>;
 

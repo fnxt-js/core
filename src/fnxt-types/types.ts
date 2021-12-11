@@ -9,5 +9,7 @@ export type Comparer<E> = (e: E, f: E) => number;
 export type Reduction<E> = (e: E, f: E) => E;
 export type Folder<E, F> = (f: F, e: E) => F;
 
+export interface Dictionary<E> { [name: string]: E }
+
 
 export type Tuple<E, F> = [E, F];

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import 'mocha';
-import {pipe} from '../src/pipe/pipe';
+import {pipe} from 'fnxt/pipe';
 
 describe('pipe', () => {
   it('should pipe', ()=> {
@@ -15,5 +15,5 @@ describe('pipe', () => {
     const fn = pipe();
     expect(fn(42)).to.eql(42);
   });
-  
+
 });

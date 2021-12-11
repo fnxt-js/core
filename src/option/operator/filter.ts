@@ -1,5 +1,5 @@
-import {Predicate} from '../../types/types';
 import {None, Option, OptionType} from '../option';
+import {Predicate} from '../../fnxt-types';
 
 export const filter = <T>(predicate: Predicate<T>) => (
     o: Option<T>

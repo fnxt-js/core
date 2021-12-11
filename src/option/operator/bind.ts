@@ -1,4 +1,4 @@
-import {UnaryFunction} from '../../types/types';
+import {UnaryFunction} from '../../fnxt-types';
 import {Option, OptionType} from '../option';
 
 export const bind = <T, R>(fn: UnaryFunction<T, Option<R>>) => (
