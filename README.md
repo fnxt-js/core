@@ -4,13 +4,14 @@ fnxt library for JavaScript and TypeScript
 
 ## Installation
 ```shell
-npm install @fnxt/core
+npm i fnxt
 ```
 
 ## Contains
 - `Pipe`
 - `Option`
 - `Result`
+- `Array`
 
 
 ## Usage

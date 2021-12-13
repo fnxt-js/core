@@ -580,6 +580,14 @@ describe('operator', () => {
             expect(fn([1])).to.eql([1]);
             expect(fn([])).to.eql([]);
         });
+        it('should takeWhile string', () => {
+            const array: string[] = ['1', '2a', '3aa', '4aaa', '1'];
+            const fn = takeWhile<string>(x => x.length < 3);
+            expect(fn(array)).to.eql(['1', '2a']);
+            expect(fn(['3aa', '4aaa'])).to.eql([]);
+            expect(fn(['1'])).to.eql(['1']);
+            expect(fn([])).to.eql([]);
+        });
     });
     describe('take', () => {
         it('should take', () => {
