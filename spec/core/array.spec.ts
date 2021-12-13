@@ -62,7 +62,8 @@ import {
     tryLast,
     where,
     windowed,
-    zip
+    zip,
+    takeWhileInclusive,
 } from 'fnxt/array';
 import {None, Some} from 'fnxt/option';
 
@@ -585,6 +586,14 @@ describe('operator', () => {
             const fn = takeWhile<string>(x => x.length < 3);
             expect(fn(array)).to.eql(['1', '2a']);
             expect(fn(['3aa', '4aaa'])).to.eql([]);
+            expect(fn(['1'])).to.eql(['1']);
+            expect(fn([])).to.eql([]);
+        });
+        it('should takeWhileInclusive string', () => {
+            const array: string[] = ['1', '2a', '3aa', '4aaa', '1'];
+            const fn = takeWhileInclusive<string>(x => x.length < 3);
+            expect(fn(array)).to.eql(['1', '2a', '3aa']);
+            expect(fn(['3aa', '4aaa'])).to.eql(['3aa']);
             expect(fn(['1'])).to.eql(['1']);
             expect(fn([])).to.eql([]);
         });

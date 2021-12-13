@@ -37,6 +37,7 @@ export * from './take';
 export * from './truncate';
 export * from './skipWhile';
 export * from './takeWhile';
+export * from './takeWhileInclusive';
 
 export * from './where';
 export * from './exists';
