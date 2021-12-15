@@ -836,6 +836,10 @@ describe('operator', () => {
             const fn = replicate(3);
             expect(fn([1, 2])).to.eql([[1, 2], [1, 2], [1, 2]]);
         });
+        it('should replicate val', () => {
+            const fn = replicate(3);
+            expect(fn('a')).to.eql(['a','a','a']);
+        });
         it('should replicate empty', () => {
             const fn = replicate(3);
             expect(fn([])).to.eql([[], [], [],]);
