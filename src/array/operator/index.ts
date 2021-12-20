@@ -24,6 +24,7 @@ export * from './chunkBySize';
 export * from './groupBy';
 export * from './windowed';
 export * from './allPairs';
+export * from './allCombinations';
 export * from './zip';
 export * from './pairwise';
 

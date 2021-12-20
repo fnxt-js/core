@@ -3,6 +3,7 @@
 import {expect} from 'chai';
 import 'mocha';
 import {
+    allCombinations,
     allPairs,
     append,
     average,
@@ -55,6 +56,7 @@ import {
     tail,
     take,
     takeWhile,
+    takeWhileInclusive,
     transpose,
     truncate,
     tryFind,
@@ -63,11 +65,10 @@ import {
     where,
     windowed,
     zip,
-    takeWhileInclusive,
 } from 'fnxt/array';
 import {None, Some} from 'fnxt/option';
 
-describe('operator', () => {
+export default describe('operator', () => {
     describe('map', () => {
         it('should map', () => {
             const array: number[] = [1, 2, 3, 4];
@@ -838,7 +839,7 @@ describe('operator', () => {
         });
         it('should replicate val', () => {
             const fn = replicate(3);
-            expect(fn('a')).to.eql(['a','a','a']);
+            expect(fn('a')).to.eql(['a', 'a', 'a']);
         });
         it('should replicate empty', () => {
             const fn = replicate(3);
@@ -851,6 +852,18 @@ describe('operator', () => {
             const fn = rev;
             expect(fn(array)).to.eql([2, 1]);
             expect(array).to.eql([1, 2]);
+        });
+
+    });
+
+    describe('allCombinations', () => {
+        it('should allCombinations', () => {
+
+            const fn = allCombinations;
+            expect(fn([1, 2], ['a', 'b'], [4, 5])).to.eql([
+                [1, 'a', 4], [1, 'a', 5], [1, 'b', 4], [1, 'b', 5],
+                [2, 'a', 4], [2, 'a', 5], [2, 'b', 4], [2, 'b', 5],
+            ]);
         });
 
     });

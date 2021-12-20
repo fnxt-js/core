@@ -3,7 +3,7 @@ import 'mocha';
 import {bind, count, defaultValue, defaultWith, filter, flatten, map, None, OptionType, Some} from 'fnxt/option';
 import {pipe} from 'fnxt/pipe';
 
-describe('option', () => {
+export default describe('option', () => {
     describe('constrution', () => {
         it('should build None', () => {
             expect(None).to.eql(None);
