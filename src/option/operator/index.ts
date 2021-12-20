@@ -5,3 +5,4 @@ export * from './defaultWith';
 export * from './filter';
 export * from './flatten';
 export * from './map';
+export * from './exists';

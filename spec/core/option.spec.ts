@@ -1,6 +1,18 @@
 import {expect} from 'chai';
 import 'mocha';
-import {bind, count, defaultValue, defaultWith, filter, flatten, map, None, OptionType, Some} from 'fnxt/option';
+import {
+    bind,
+    count,
+    defaultValue,
+    defaultWith,
+    exists,
+    filter,
+    flatten,
+    map,
+    None,
+    OptionType,
+    Some
+} from 'fnxt/option';
 import {pipe} from 'fnxt/pipe';
 
 export default describe('option', () => {
@@ -82,6 +94,17 @@ export default describe('option', () => {
             expect(fn(some42)).to.eql(None);
             expect(fn(some41)).to.eql(some41);
             expect(fn(none)).to.eql(None);
+        });
+
+        it('should exists', () => {
+            const some42 = Some(42);
+            const some41 = Some(41);
+            const none = None;
+            const fn = exists((e: number) => e < 42);
+
+            expect(fn(some42)).to.eql(false);
+            expect(fn(some41)).to.eql(true);
+            expect(fn(none)).to.eql(false);
         });
 
         it('should count', () => {
