@@ -1,5 +1,5 @@
-import {None, Option, OptionType} from '../option';
-import {Predicate} from '../../fnxt-types';
+import {Option, OptionType} from '../option';
+import {Predicate} from 'fnxt/fnxt-types';
 
 export const exists = <T>(predicate: Predicate<T>) => (
     o: Option<T>
