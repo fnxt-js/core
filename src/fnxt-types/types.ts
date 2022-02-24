@@ -18,3 +18,6 @@ export interface Dictionary<E> {
 
 
 export type Tuple<E, F> = [E, F];
+
+export type Gen<E> = Generator<E, void, unknown>;
+export type Seq<E> = { [Symbol.iterator](): Gen<E> } | Iterable<E>

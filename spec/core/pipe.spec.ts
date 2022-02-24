@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import 'mocha';
 import {pipe} from 'fnxt/pipe';
 
-export default describe('pipe', () => {
+describe('pipe', () => {
   it('should pipe', ()=> {
     const fn = pipe(
       (x:number) => x+1,

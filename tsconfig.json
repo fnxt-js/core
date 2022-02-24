@@ -20,6 +20,7 @@
       "fnxt/option": ["./src/option/index"],
       "fnxt/pipe": ["./src/pipe/index"],
       "fnxt/array": ["./src/array/index"],
+      "fnxt/seq": ["./src/seq/index"],
       "fnxt/result": ["./src/result/index"],
       "fnxt/fnxt-types": ["./src/fnxt-types/index"]
     }

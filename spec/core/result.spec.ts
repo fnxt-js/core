@@ -2,7 +2,7 @@ import {expect} from 'chai';
 import 'mocha';
 import {bind, bindAsync, Failure, fold, map, mapAsync, mapFailure, ResultType, Success} from 'fnxt/result';
 
-export default describe('Result', () => {
+describe('Result', () => {
   describe('Success', () => {
     it('should build Success', () => {
       const result = Success(42);

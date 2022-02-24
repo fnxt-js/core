@@ -15,7 +15,7 @@ import {
 } from 'fnxt/option';
 import {pipe} from 'fnxt/pipe';
 
-export default describe('option', () => {
+describe('option', () => {
     describe('constrution', () => {
         it('should build None', () => {
             expect(None).to.eql(None);
