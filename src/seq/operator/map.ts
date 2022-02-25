@@ -1,9 +1,9 @@
 import {Seq, UnaryFunction} from 'fnxt/fnxt-types';
-import {genToSeq} from '../build';
+import {generator} from '../build';
 
 export const map = <E, F>(mapping: UnaryFunction<E, F>) =>
   (seq: Seq<E>): Seq<F> =>
-    genToSeq(function* () {
+    generator(function* () {
       for (const e of seq) yield mapping(e);
     });
 

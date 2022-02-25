@@ -1,8 +1,5 @@
-import {genToSeq} from '../build';
-import {Seq} from 'fnxt/fnxt-types';
+import {generator} from '../build';
 
-export const empty = <E>():Seq<E> => {
-  return genToSeq(function* () {
-    // empty
-  });
-};
+export const empty = generator(function* () {
+  // empty
+});
