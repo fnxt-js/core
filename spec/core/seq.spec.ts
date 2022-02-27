@@ -35,6 +35,42 @@ describe('sequence', () => {
 
     });
 
+    describe('some', () => {
+      it('should some', async () => {
+        const seq1 = [3, 4, 1, 2, 5, 6];
+        expect(SEQ.some<number>(x => x > 0)(seq1)).to.eql(true);
+        expect(SEQ.some<number>(x => x > 1)(seq1)).to.eql(true);
+        expect(SEQ.some<number>(x => x > 6)(seq1)).to.eql(false);
+        expect(SEQ.some<number>(x => x > 6)([])).to.eql(false);
+      });
+
+    });
+
+    describe('every', () => {
+      it('should every', async () => {
+        const seq1 = [3, 4, 1, 2, 5, 6];
+        expect(SEQ.every<number>(x => x > 0)(seq1)).to.eql(true);
+        expect(SEQ.every<number>(x => x > 1)(seq1)).to.eql(false);
+        expect(SEQ.every<number>(x => x > 6)(seq1)).to.eql(false);
+        expect(SEQ.every<number>(x => x > 6)([])).to.eql(true);
+      });
+    });
+    describe('collect', async () => {
+      it('should collect iterable', async () => {
+        const gen = SEQ.range(1, 4);
+        const mapping = (x: number) => SEQ.range(x, x + 2);
+        const op = SEQ.collect(mapping);
+        runTwice(() => expect([...op(gen)]).to.eql([1, 2, 2, 3, 3, 4]));
+      });
+
+      it('should collect iterable', async () => {
+        const gen = SEQ.range(1, 4);
+        const mapping = (x: number) => [x, x + 1];
+        const op = SEQ.collect(mapping);
+        runTwice(() => expect([...op(gen)]).to.eql([1, 2, 2, 3, 3, 4]));
+      });
+
+    });
     describe('chooser', () => {
 
       it('should choose', () => {
@@ -44,27 +80,93 @@ describe('sequence', () => {
       });
 
     });
+    describe('toArray', () => {
+
+      it('should convert toArray', () => {
+        const seq = SEQ.range(0, 4, 1);
+        const toArray = SEQ.toArray;
+        runTwice(() => expect(toArray(seq)).to.eql([0, 1, 2, 3]));
+      });
+
+    });
 
     describe('filter', () => {
 
       it('should filter', () => {
         const seq = SEQ.range(1, 5, 1);
-        const even = SEQ.filter((x: number) => x % 2 === 0);
-        runTwice(() => expect([...even(seq)]).to.eql([2, 4]));
+        const isEven = SEQ.filter((x: number) => x % 2 === 0);
+        runTwice(() => expect([...isEven(seq)]).to.eql([2, 4]));
       });
 
       it('should filter', () => {
         const seq = SEQ.range(1, 5, 2);
-        const even = SEQ.filter((x: number) => x % 2 === 0);
-        runTwice(() => expect([...even(seq)]).to.eql([]));
+        const isEven = SEQ.filter((x: number) => x % 2 === 0);
+        runTwice(() => expect([...isEven(seq)]).to.eql([]));
       });
 
       it('should filter empty', () => {
         const seq: Seq<number> = SEQ.empty;
-        const even = SEQ.filter((x: number) => x % 2 === 0);
-        runTwice(() => expect([...even(seq)]).to.eql([]));
+        const isEven = SEQ.filter((x: number) => x % 2 === 0);
+        runTwice(() => expect([...isEven(seq)]).to.eql([]));
       });
 
+    });
+
+    describe('isEmpty', () => {
+
+      it('should be empty', async () => {
+        const seq: Seq<number> = SEQ.empty;
+        const isEmpty = SEQ.isEmpty;
+        runTwice(() => expect(isEmpty(seq)).to.eql(true));
+      });
+      it('should be empty', async () => {
+        const seq: Seq<number> = [];
+        const isEmpty = SEQ.isEmpty;
+        runTwice(() => expect(isEmpty(seq)).to.eql(true));
+      });
+
+      it('should not be empty', async () => {
+        const seq: Seq<number> = SEQ.range(0, 1, 1);
+        const isEmpty = SEQ.isEmpty;
+        runTwice(() => expect(isEmpty(seq)).to.eql(false));
+      });
+      it('should not be empty', async () => {
+        const seq: Seq<number> = [0];
+        const isEmpty = SEQ.isEmpty;
+        runTwice(() => expect(isEmpty(seq)).to.eql(false));
+      });
+
+    });
+
+    describe('last', () => {
+
+      it('should get length', async () => {
+        const gen = SEQ.range(1, 4);
+        const length = SEQ.length;
+        runTwice(() => expect(length(gen)).to.eql(3));
+      });
+
+      it('should zero length', async () => {
+        const gen = SEQ.empty;
+        const length = SEQ.length;
+        runTwice(() => expect(length(gen)).to.eql(0));
+      });
+
+    });
+
+    describe('last', () => {
+
+      it('should last', async () => {
+        const gen = SEQ.range(1, 4);
+        const last = SEQ.last;
+        runTwice(() => expect(last(gen)).to.eql(3));
+      });
+
+      it('should last', async () => {
+        const gen = SEQ.empty;
+        const last = SEQ.last;
+        runTwice(() => expect(() => last(gen)).to.throw);
+      });
     });
 
     describe('reduce', () => {
@@ -74,15 +176,18 @@ describe('sequence', () => {
         const op = SEQ.reduce((x: number, y: number) => x + y);
         runTwice(() => expect(op(gen)).to.eql(6));
       });
+
       it('should reduce empty seq', async () => {
         const gen = SEQ.empty;
         const op = SEQ.reduce((x: number, y: number) => x + y);
         runTwice(() => expect(() => op(gen)).to.throw());
       });
+
       it('should reduce empty array', async () => {
         const op = SEQ.reduce((x: number, y: number) => x + y);
         runTwice(() => expect(() => op([])).to.throw());
       });
+
       it('should reduce array', async () => {
         const op = SEQ.reduce((x: number, y: number) => x + y);
         runTwice(() => expect(op([1, 2])).to.eql(3));
