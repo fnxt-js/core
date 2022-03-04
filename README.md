@@ -7,7 +7,7 @@ fnxt library for JavaScript and TypeScript
 npm i fnxt
 ```
 
-##Array
+## Array
 
 ### ARRAY.filter
 Filter values of an array with a predicate and returns a new array.
@@ -43,7 +43,7 @@ const plusOne = ARRAY.map((x: number) => x + 1);
 plusOne(seq) // -> [2, 3, 4]
 ```
 
-##Sequence Operator
+## Sequence Operator
 ### SEQ.choose
 Applies a function to each element in a sequence and then returns a sequence of values v where 
 the applied function returned Some(v). Returns an empty sequence when the input sequence is empty 

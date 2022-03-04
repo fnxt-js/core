@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const h2 = (name) => `##${name}`;
+const h2 = (name) => `## ${name}`;
 
 const aliasRoot = {
     'array': 'Array',
