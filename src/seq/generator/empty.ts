@@ -1,5 +1,5 @@
-import {generator} from '../build';
+import {toSequence} from '../build';
 
-export const empty = generator(function* () {
+export const empty = toSequence(function* () {
   // empty
 });

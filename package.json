@@ -35,6 +35,7 @@
     "lint_spec": "tslint -c spec/tslint.json -p spec/tsconfig.json \"spec/**/*.ts\"",
     "lint_src": "tslint -c tslint.json -p src/tsconfig.base.json \"src/**/*.ts\"",
     "lint": "npm-run-all --parallel lint_*",
+    "build:readme": "node tools/build-doc.js",
     "build:package": "npm-run-all build:clean compile && node ./tools/generate-alias.js",
     "test:circular": "dependency-cruiser --validate .dependency-cruiser.json -x \"^node_modules\" dist/esm5",
     "prepublishOnly": "npm run build:package && npm run lint && npm run test && npm run test:circular",

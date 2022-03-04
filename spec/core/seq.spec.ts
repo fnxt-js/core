@@ -16,9 +16,9 @@ const runTwice = <E>(e: Thunk<E>) => {
   e();
   e();
 };
+
 describe('sequence', () => {
   describe('generator', () => {
-
     describe('map', () => {
 
       it('should map', () => {
@@ -38,10 +38,10 @@ describe('sequence', () => {
     describe('some', () => {
       it('should some', async () => {
         const seq1 = [3, 4, 1, 2, 5, 6];
-        expect(SEQ.some<number>(x => x > 0)(seq1)).to.eql(true);
-        expect(SEQ.some<number>(x => x > 1)(seq1)).to.eql(true);
-        expect(SEQ.some<number>(x => x > 6)(seq1)).to.eql(false);
-        expect(SEQ.some<number>(x => x > 6)([])).to.eql(false);
+        runTwice(() => expect(SEQ.some<number>(x => x > 0)(seq1)).to.eql(true));
+        runTwice(() => expect(SEQ.some<number>(x => x > 1)(seq1)).to.eql(true));
+        runTwice(() => expect(SEQ.some<number>(x => x > 6)(seq1)).to.eql(false));
+        runTwice(() => expect(SEQ.some<number>(x => x > 6)([])).to.eql(false));
       });
 
     });
@@ -49,10 +49,10 @@ describe('sequence', () => {
     describe('every', () => {
       it('should every', async () => {
         const seq1 = [3, 4, 1, 2, 5, 6];
-        expect(SEQ.every<number>(x => x > 0)(seq1)).to.eql(true);
-        expect(SEQ.every<number>(x => x > 1)(seq1)).to.eql(false);
-        expect(SEQ.every<number>(x => x > 6)(seq1)).to.eql(false);
-        expect(SEQ.every<number>(x => x > 6)([])).to.eql(true);
+        runTwice(() => expect(SEQ.every<number>(x => x > 0)(seq1)).to.eql(true));
+        runTwice(() => expect(SEQ.every<number>(x => x > 1)(seq1)).to.eql(false));
+        runTwice(() => expect(SEQ.every<number>(x => x > 6)(seq1)).to.eql(false));
+        runTwice(() => expect(SEQ.every<number>(x => x > 6)([])).to.eql(true));
       });
     });
     describe('collect', async () => {
@@ -64,7 +64,7 @@ describe('sequence', () => {
       });
 
       it('should collect iterable', async () => {
-        const gen = SEQ.range(1, 4);
+        const gen = SEQ.of(1, 2, 3,);
         const mapping = (x: number) => [x, x + 1];
         const op = SEQ.collect(mapping);
         runTwice(() => expect([...op(gen)]).to.eql([1, 2, 2, 3, 3, 4]));
@@ -74,8 +74,12 @@ describe('sequence', () => {
     describe('chooser', () => {
 
       it('should choose', () => {
-        const seq = SEQ.range(0, 5, 1);
-        const chooser = SEQ.choose((x: number) => x % 2 === 0 ? Opt.Some(x * 2) : Opt.None);
+        const seq = SEQ.of(0, 1, 2, 3, 4);
+        const chooser = SEQ.choose(
+          (x: number) => x % 2 === 0
+            ? Opt.Some(x * 2)
+            : Opt.None
+        );
         runTwice(() => expect([...chooser(seq)]).to.eql([0, 4, 8]));
       });
 
@@ -274,6 +278,55 @@ describe('sequence', () => {
       });
 
     });
+
+    describe('chunk like', async () => {
+      it('should chunkBySize empty', async () => {
+
+        const seq = SEQ.range(0, 0);
+        const chunkBySize = SEQ.chunkBySize(3);
+        runTwice(() => expect(SEQ.toArray(chunkBySize(seq))).to.eql([]));
+      });
+
+      it('should chunkBySize of by n=-1', async () => {
+
+        const seq = SEQ.range(0, 5);
+        const chunkBySize = SEQ.chunkBySize(-1);
+        runTwice(() => expect(() => SEQ.toArray(chunkBySize(seq))).to.throw());
+      });
+
+      it('should chunkBySize of by n=1.1', async () => {
+
+        const seq = SEQ.range(0, 5);
+        const chunkBySize = SEQ.chunkBySize(1.1);
+        runTwice(() => expect(SEQ.toArray(chunkBySize(seq))).to.eql([[0], [1], [2], [3], [4],]));
+      });
+
+      it('should chunkBySize of by l%n=-1', async () => {
+
+        const seq = SEQ.range(0, 5);
+        const chunkBySize = SEQ.chunkBySize(3);
+        runTwice(() => expect(SEQ.toArray(chunkBySize(seq))).to.eql([[0, 1, 2], [3, 4],]));
+      });
+
+      it('should chunkBySize of by l%n=+1', async () => {
+        const seq = SEQ.of(0, 1, 2, 3, 4, 5, 6);
+        const chunkBySize = SEQ.chunkBySize(3);
+        runTwice(() => expect(SEQ.toArray(chunkBySize(seq))).to.eql([[0, 1, 2], [3, 4, 5], [6],]));
+      });
+
+      it('should chunkBySize of by l%n=0', async () => {
+        const seq = SEQ.range(0, 6);
+        const chunkBySize = SEQ.chunkBySize(3);
+        runTwice(() => expect(SEQ.toArray(chunkBySize(seq))).to.eql([[0, 1, 2], [3, 4, 5],]));
+      });
+
+      it('should chunkBySize one element', async () => {
+        const seq = SEQ.range(0, 1);
+        const chunkBySize = SEQ.chunkBySize(3);
+        runTwice(() => expect(SEQ.toArray(chunkBySize(seq))).to.eql([[0]]));
+      });
+    });
+
     describe('takeWhile', () => {
 
       it('should takeWhile', async () => {

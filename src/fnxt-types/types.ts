@@ -1,5 +1,6 @@
 export type Thunk<R> = () => R;
 export type UnaryFunction<E, R> = (e: E) => R;
+export type Mapping<E, R> = UnaryFunction<E, R>;
 export type BinaryFunction<E, F, R> = (e: E, f: F) => R;
 
 

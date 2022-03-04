@@ -36,6 +36,7 @@ describe('array', () => {
         expect(() => fn(null)).to.throw();
       });
     });
+
     describe('reduceBack', () => {
       it('should reduceBack', () => {
         const array: string[] = ['1', '2', '3', '4'];

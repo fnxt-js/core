@@ -14,3 +14,5 @@ export * from './toArray';
 export * from './isEmpty';
 export * from './last';
 export * from './length';
+export * from './chunkBySize';
+export * from './exists';

@@ -7,7 +7,7 @@ const fs = require('fs-extra');
 const path = require('path');
 
 const aliasRoot = [
-  'array', 'fnxt-types', 'option', 'pipe', 'result'
+  'array', 'fnxt-types', 'option', 'pipe', 'result', 'seq'
 ]
 
 aliasRoot.map((alias) => path.resolve(__dirname, `../${alias}`)).forEach((alias) => {
