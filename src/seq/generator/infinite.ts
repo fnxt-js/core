@@ -2,13 +2,13 @@ import {Gen, Seq} from 'fnxt/fnxt-types';
 import {toSequence} from '../build';
 
 
-function* gen_infinite(start: number, increment: number): Gen<number> {
+function* gen_infinite(start: number, step: number): Gen<number> {
     while (true) {
         yield start;
-        start += increment;
+        start += step;
     }
 }
 
-export const infinite = (start: number, increment: number): Seq<number> =>
-    toSequence(() => gen_infinite(start, increment));
+export const infinite = (start: number, step: number): Seq<number> =>
+    toSequence(() => gen_infinite(start, step));
 

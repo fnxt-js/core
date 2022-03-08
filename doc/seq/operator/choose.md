@@ -18,6 +18,5 @@ const chooser = SEQ.choose(
     ? Opt.Some(x * 2)
     : Opt.None
 );
-
 chooser(seq) // -> {0, 4, 8}
 ```

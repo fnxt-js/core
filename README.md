@@ -152,3 +152,61 @@ const plusOne = SEQ.map((x: number) => x + 1);
 plusOne(seq) // -> {2, 3, 4}
 ```
 
+## Sequence Generator
+### SEQ.empty
+An empty sequence.
+
+#### Type
+```ts
+type chooseT = Seq<never>
+```
+
+#### Example
+```ts
+import * as SEQ from 'fnxt/seq';
+
+const seq = SEQ.empty;
+
+chooser(seq) // -> {}
+```
+
+### SEQ.of
+A sequence of given Values.
+
+#### Type
+```ts
+type of = <E>(...values:e[])=>Seq<E>
+```
+
+#### Example
+```ts
+import * as SEQ from 'fnxt/seq';
+
+const seq = SEQ.of(1,2,3);
+
+chooser(seq) // -> {1,2,3}
+```
+
+### SEQ.range
+A sequence in a range.
+
+#### Type
+```ts
+type range = (from:number,to:number,step:number=1)=>Seq<number>
+```
+
+#### Example
+```ts
+import * as SEQ from 'fnxt/seq';
+
+const seq = SEQ.range(1,6,2);
+
+chooser(seq) // -> {1,3,5}
+```
+```ts
+import * as SEQ from 'fnxt/seq';
+
+const seq = SEQ.range(1,4);
+
+chooser(seq) // -> {1,2,3}
+```
