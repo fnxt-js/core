@@ -3,8 +3,8 @@
 Filter values of an array with a predicate and returns a new array.
 
 #### Type
-```
-map: (E => boolean) => Array<E> => Array<E>
+```ts
+type map= <E>(fn:((e:E) => boolean)) => (a:Array<E>) => Array<E>
 ```
 
 #### Example

@@ -2,8 +2,8 @@
 Filter values of a sequence with a predicate and returns a new sequence.
 
 #### Type
-```
-filter: (E => boolean) => Seq<E> => Seq<E>
+```ts
+filter: <E>(fn:((e:E) => boolean)) => (s:Seq<E>) => Seq<E>
 ```
 
 #### Example

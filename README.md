@@ -13,8 +13,8 @@ npm i fnxt
 Filter values of an array with a predicate and returns a new array.
 
 #### Type
-```
-map: (E => boolean) => Array<E> => Array<E>
+```ts
+type map= <E>(fn:((e:E) => boolean)) => (a:Array<E>) => Array<E>
 ```
 
 #### Example
@@ -22,7 +22,7 @@ map: (E => boolean) => Array<E> => Array<E>
 import * as ARRAY from 'fnxt/array';
 const array = ARRAY.of(0, 1, 2);
 const isEven = ARRAY.filter((x: number) => x % 2 == 0);
-[...isEven(array)] // -> {1, 2}
+isEven(array) // -> [0, 2]
 ```
 
 
@@ -30,8 +30,8 @@ const isEven = ARRAY.filter((x: number) => x % 2 == 0);
 Maps each value of an array to another value and returns a new array.
 
 #### Type
-```
-map: (E => R) => Array<E> => Array<R>
+```ts
+type map = <E,F>(e: UnaryFunction<E, F>) =>  (a:Array<E>) => Array<R>
 ```
 
 #### Example
@@ -64,7 +64,6 @@ const chooser = SEQ.choose(
     ? Opt.Some(x * 2)
     : Opt.None
 );
-
 chooser(seq) // -> {0, 4, 8}
 ```
 
@@ -89,8 +88,8 @@ chunkBySize(seq)// -> {[0, 1, 2], [3, 4, 5], [6],]}
 Applies the given function to each element of the sequence and concatenates all the results.
 
 #### Type
-```
-collect = <E, F>(mapping: (e: E) => Iterable<F>) => (seq: Seq<E>): Seq<F>
+```ts
+type collect = <E, F>(mapping: (e: E) => Iterable<F>) => (seq: Seq<E>)=> Seq<F>
 ```
 
 #### Example
@@ -108,8 +107,8 @@ and no further elements are tested.
 Otherwise, true is returned.
 
 #### Type
-```
-filter: (E => boolean) => Seq<E> => boolean
+```ts
+type filter= <E>(fn:((e:E) => boolean)) => (s:Seq<E>) => boolean
 ```
 
 #### Example
@@ -124,8 +123,8 @@ every(seq) // -> false
 Filter values of a sequence with a predicate and returns a new sequence.
 
 #### Type
-```
-filter: (E => boolean) => Seq<E> => Seq<E>
+```ts
+filter: <E>(fn:((e:E) => boolean)) => (s:Seq<E>) => Seq<E>
 ```
 
 #### Example
@@ -133,15 +132,81 @@ filter: (E => boolean) => Seq<E> => Seq<E>
 import * as SEQ from 'fnxt/seq';
 const seq = SEQ.of(0, 1, 2);
 const isEven = SEQ.filter((x: number) => x % 2 == 0);
-isEven(seq) // -> {1, 2}
+isEven(seq) // -> {0, 2}
+```
+
+### SEQ.head
+Returns the first value of a sequence.
+Throws an Error if the sequence is empty.
+#### Type
+```ts
+head: <E>(s:Seq<E>) => E
+```
+
+#### Example
+```ts
+import * as SEQ from 'fnxt/seq';
+const seq = SEQ.of(2, 3, 4);
+const head = SEQ.head;
+head(seq) // -> 2
+```
+
+### SEQ.isEmpty
+
+Returns `true` if the sequence is empty, `false` otherwise.
+#### Type
+```ts
+isEmpty: <E>(s:Seq<E>) => boolean
+```
+
+#### Example
+```ts
+import * as SEQ from 'fnxt/seq';
+const seq = SEQ.of(2, 3, 4);
+const isEmpty = SEQ.isEmpty;
+isEmpty(seq) // -> false
+```
+
+### SEQ.last
+Returns the last value of a sequence. Consumes the sequence before returning.
+Throws an Error if the sequence is empty.
+Does not terminate on infinite sequences.
+#### Type
+```ts
+last: <E>(s:Seq<E>) => E
+```
+
+#### Example
+```ts
+import * as SEQ from 'fnxt/seq';
+const seq = SEQ.of(2, 3, 4);
+const last = SEQ.last;
+last(seq) // -> 4
+```
+
+### SEQ.length
+Returns the length of a sequence. Consumes the sequence before returning.
+Returns `0` if the sequence is empty.
+Does not terminate on infinite sequences.
+#### Type
+```ts
+length: <E>(s:Seq<E>) => number
+```
+
+#### Example
+```ts
+import * as SEQ from 'fnxt/seq';
+const seq = SEQ.of(2, 3, 4);
+const length = SEQ.length;
+length(seq) // -> 3
 ```
 
 ### SEQ.map
 Maps each value of a sequence to another value and returns a new sequence.
 
 #### Type
-```
-type mapT = <E,F>(e: UnaryFunction<E, F>) => (seq:Seq<E>) => Seq<F>
+```ts
+type map = <E,F>(e: UnaryFunction<E, F>) => (seq:Seq<E>) => Seq<F>
 ```
 
 #### Example
@@ -151,6 +216,39 @@ const seq = SEQ.of(0, 1, 2);
 const plusOne = SEQ.map((x: number) => x + 1);
 plusOne(seq) // -> {2, 3, 4}
 ```
+
+### SEQ.maxBy
+Maps each value of a sequence to a numeric value and returns the value with the highest value.
+
+#### Type
+```ts
+type maxBy = <E>(e: UnaryFunction<E, number>) => (seq:Seq<E>) => E
+```
+
+#### Example
+```ts
+import * as SEQ from 'fnxt/seq';
+const seq = SEQ.of('aa', 'bbb', 'c', 'dd');
+const maxBy = SEQ.maxBy((x: string) => x.length);
+maxBy(seq) // -> 'bbb'
+```
+
+### SEQ.minBy
+Maps each value of a sequence to a numeric value and returns the value with the highest value.
+
+#### Type
+```ts
+type minBy = <E>(e: UnaryFunction<E, number>) => (seq:Seq<E>) => E
+```
+
+#### Example
+```ts
+import * as SEQ from 'fnxt/seq';
+const seq = SEQ.of('aa', 'bbb', 'c', 'dd');
+const minBy = SEQ.minBy((x: string) => x.length);
+minBy(seq) // -> 'c'
+```
+ 
 
 ## Sequence Generator
 ### SEQ.empty
@@ -166,9 +264,26 @@ type chooseT = Seq<never>
 import * as SEQ from 'fnxt/seq';
 
 const seq = SEQ.empty;
-
 chooser(seq) // -> {}
 ```
+
+### SEQ.range
+A infinite sequence. Does not stop to give values unless used with truncating functions.
+See: `head`,`take`,`takeWhile`
+
+#### Type
+```ts
+type infinite = (start:number,step:number=1)=>Seq<number>
+```
+
+#### Example
+```ts
+import * as SEQ from 'fnxt/seq';
+
+const seq = SEQ.infinite(1,2);
+chooser(seq) // -> {1,3,5,...}
+```
+
 
 ### SEQ.of
 A sequence of given Values.
@@ -183,7 +298,6 @@ type of = <E>(...values:e[])=>Seq<E>
 import * as SEQ from 'fnxt/seq';
 
 const seq = SEQ.of(1,2,3);
-
 chooser(seq) // -> {1,2,3}
 ```
 
@@ -200,13 +314,11 @@ type range = (from:number,to:number,step:number=1)=>Seq<number>
 import * as SEQ from 'fnxt/seq';
 
 const seq = SEQ.range(1,6,2);
-
 chooser(seq) // -> {1,3,5}
 ```
 ```ts
 import * as SEQ from 'fnxt/seq';
 
 const seq = SEQ.range(1,4);
-
 chooser(seq) // -> {1,2,3}
 ```

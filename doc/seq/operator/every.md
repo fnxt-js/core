@@ -5,8 +5,8 @@ and no further elements are tested.
 Otherwise, true is returned.
 
 #### Type
-```
-filter: (E => boolean) => Seq<E> => boolean
+```ts
+type filter= <E>(fn:((e:E) => boolean)) => (s:Seq<E>) => boolean
 ```
 
 #### Example

@@ -3,8 +3,8 @@
 Maps each value of an array to another value and returns a new array.
 
 #### Type
-```
-map: (E => R) => Array<E> => Array<R>
+```ts
+type map = <E,F>(e: UnaryFunction<E, F>) =>  (a:Array<E>) => Array<R>
 ```
 
 #### Example

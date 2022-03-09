@@ -2,8 +2,8 @@
 Applies the given function to each element of the sequence and concatenates all the results.
 
 #### Type
-```
-collect = <E, F>(mapping: (e: E) => Iterable<F>) => (seq: Seq<E>): Seq<F>
+```ts
+type collect = <E, F>(mapping: (e: E) => Iterable<F>) => (seq: Seq<E>)=> Seq<F>
 ```
 
 #### Example
