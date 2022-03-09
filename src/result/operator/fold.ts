@@ -1,12 +1,12 @@
 import {Failure, Result, ResultType, Success} from '../result';
-import {Folder} from '../../fnxt-types';
+import {Folder} from 'fnxt/fnxt-types';
 
 
-export const fold = <S1,F1,S2,F2>(
+export const fold = <S1, F1, S2, F2>(
   successFolder: Folder<S1, S2>, initSuccess: S2,
   failureFolder: Folder<F1, F2>, initFailure: F2,
 ) =>
- (results: Result<S1,F1>[]): Result<S2,F2> => {
+  (results: Result<S1, F1>[]): Result<S2, F2> => {
     const successes: S1[] = [];
     const failures: F1[] = [];
     for (const result of results) {

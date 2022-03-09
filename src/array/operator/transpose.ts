@@ -1,5 +1,5 @@
 export const transpose = <T>(array: T[][]): T[][] => {
-  const newArray:T[][] = [];
+  const newArray: T[][] = [];
   const length = array[0].length;
   if (!length) {
     throw new Error();

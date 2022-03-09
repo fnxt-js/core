@@ -13,11 +13,11 @@ export function allCombinations<A, B, C, D, E, F, G, H>(a: A[], b: B[], c: C[], 
 
 export function allCombinations(...arrays: unknown[][]): unknown[][] {
 
-    const fn = ([head, ...tail]: unknown[][]): unknown[][] =>
-        tail.length
-            ? pipe(fn, allPairs(head), map(([h, t]) => [h, ...t]))(tail)
-            : head.map(e => [e]);
-    return fn(arrays);
+  const fn = ([head, ...tail]: unknown[][]): unknown[][] =>
+    tail.length
+      ? pipe(fn, allPairs(head), map(([h, t]) => [h, ...t]))(tail)
+      : head.map(e => [e]);
+  return fn(arrays);
 
 }
 

@@ -7,5 +7,7 @@
     "downlevelIteration": true,
     "outDir": "../dist/esm5"
   },
-  "exclude": ["./internal/umd.ts"]
+  "exclude": [
+    "./internal/umd.ts"
+  ]
 }

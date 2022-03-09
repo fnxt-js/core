@@ -14,5 +14,5 @@ export function pipe<A, B, C, D, E, F, G, H, I>(a: Fn<A, B>, b: Fn<B, C>, c: Fn<
 export function pipe<A, B, C, D, E, F, G, H, I>(a: Fn<A, B>, b: Fn<B, C>, c: Fn<C, D>, d: Fn<D, E>, e: Fn<E, F>, f: Fn<F, G>, g: Fn<G, H>, h: Fn<H, I>,): Fn<A, I>;
 
 export function pipe(...fns: UnaryFunction<unknown, unknown>[]): Fn<unknown, unknown> {
-    return (v) => fns.reduce((val, fn) => fn(val), v);
+  return (v) => fns.reduce((val, fn) => fn(val), v);
 }

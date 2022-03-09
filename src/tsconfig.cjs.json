@@ -6,5 +6,7 @@
     "downlevelIteration": true,
     "outDir": "../dist/cjs"
   },
-  "exclude": ["./internal/umd.ts"]
+  "exclude": [
+    "./internal/umd.ts"
+  ]
 }

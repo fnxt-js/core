@@ -1,9 +1,11 @@
-import {Chooser, OptionType} from '../../option';
+import {Chooser, OptionType} from 'fnxt/option';
 
 
 const reduction = <E, F>(fn: Chooser<E, F>) => (p: F[], e: E): F[] => {
   const v = fn(e);
-  if (v.type === OptionType.Some) { p.push(v.value); }
+  if (v.type === OptionType.Some) {
+    p.push(v.value);
+  }
   return p;
 };
 

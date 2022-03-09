@@ -4,9 +4,15 @@
     "noEmit": false,
     "baseUrl": ".",
     "paths": {
-      "fnxt": ["./"],
-      "fnxt/*": ["./*"]
+      "fnxt": [
+        "./"
+      ],
+      "fnxt/*": [
+        "./*"
+      ]
     }
   },
-  "include": ["./**/*.ts"]
+  "include": [
+    "./**/*.ts"
+  ]
 }

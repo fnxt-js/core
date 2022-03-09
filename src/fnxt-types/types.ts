@@ -4,7 +4,6 @@ export type Mapping<E, R> = UnaryFunction<E, R>;
 export type BinaryFunction<E, F, R> = (e: E, f: F) => R;
 
 
-
 export type NumberProjection<E> = UnaryFunction<E, number>;
 export type KeyProjection<E> = UnaryFunction<E, string> | NumberProjection<E>;
 export type Predicate<E> = (e: E) => boolean;
@@ -14,7 +13,7 @@ export type Folder<E, F> = BinaryFunction<F, E, F>;
 export type Mutation<E> = UnaryFunction<E, E>;
 
 export interface Dictionary<E> {
-    [name: string]: E;
+  [name: string]: E;
 }
 
 

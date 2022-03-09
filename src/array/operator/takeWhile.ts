@@ -1,14 +1,14 @@
 import {Predicate} from 'fnxt/fnxt-types';
 
 export const takeWhile = <T>(predicate: Predicate<T>) => (array: T[]): T[] => {
-    const result = [];
-    for (const element of array) {
-        if (!predicate(element)) {
-            break;
-        }
-        result.push(element);
+  const result = [];
+  for (const element of array) {
+    if (!predicate(element)) {
+      break;
     }
-    return result;
+    result.push(element);
+  }
+  return result;
 };
 
 
