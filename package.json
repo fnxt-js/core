@@ -38,7 +38,7 @@
     "build:readme": "node tools/build-doc.js",
     "build:package": "npm-run-all build:clean compile && node ./tools/generate-alias.js",
     "test:circular": "dependency-cruiser --validate .dependency-cruiser.json -x \"^node_modules\" dist/esm5",
-    "prepublishOnly": "npm run build:package && npm run lint && npm run test && npm run test:circular",
+    "prepublishOnly": "npm run build:package && npm run lint && npm run test && npm run test:circular && npm run build:readme",
     "prebuild": "rimraf dist",
     "test": "npm run compile && mocha \"dist/spec/**/*.spec.js\"",
     "build": "npm run compile",
