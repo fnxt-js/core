@@ -1,8 +1,6 @@
-import {Seq} from 'fnxt/fnxt-types';
+import {Reduction, Seq} from 'fnxt/fnxt-types';
 
-export type Reducer<P, C> = (p: P, c: C) => P
-
-export const reduce = <E>(fn: Reducer<E, E>) =>
+export const reduce = <E>(fn: Reduction<E>) =>
   (seq: Seq<E>): E => {
     const iter = seq[Symbol.iterator]();
     let n = iter.next();
@@ -18,3 +16,5 @@ export const reduce = <E>(fn: Reducer<E, E>) =>
     return state;
 
   };
+
+

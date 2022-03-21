@@ -1,8 +1,8 @@
-### SEQ.every
+### SEQ.some
 The `predicate` is applied to the elements of the input sequence. 
-If any application returns `false` then the overall result is `false` 
+If any application returns `true` then the overall result is `true` 
 and no further elements are tested. 
-Otherwise, `true` is returned.
+Otherwise, `false` is returned.
 
 #### Type
 ```ts
@@ -13,6 +13,6 @@ type filter= <E>(predicate:((e:E) => boolean)) => (s:Seq<E>) => boolean
 ```ts
 import * as SEQ from 'fnxt/seq';
 const seq = SEQ.of(0, 1, 2);
-const every = SEQ.every((x: number) => x % 2 == 0);
-every(seq) // -> false
+const some = SEQ.some((x: number) => x % 2 == 0);
+some(seq) // -> false
 ```
