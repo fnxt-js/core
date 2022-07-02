@@ -6,6 +6,21 @@ import * as ARRAY from 'fnxt/array';
 import {None, Some} from 'fnxt/option';
 
 describe('array', () => {
+  describe('generator', () => {
+
+    it('should zero length', async () => {
+      const array = ARRAY.empty;
+      const length = ARRAY.length;
+      expect(length(array)).to.eql(0);
+    });
+
+    it('should length', async () => {
+      const array = ARRAY.of(1,2,3);
+      const length = ARRAY.length;
+      expect(length(array)).to.eql(3);
+    });
+
+  });
   describe('operator', () => {
     describe('map', () => {
       it('should map', () => {

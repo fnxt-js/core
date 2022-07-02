@@ -11,7 +11,7 @@ type map = <E,F>(e: UnaryFunction<E, F>) =>  (a:Array<E>) => Array<R>
 ```ts
 import * as ARRAY from 'fnxt/array';
 
-const seq = [0, 1, 2];
+const array = [0, 1, 2];
 const plusOne = ARRAY.map((x: number) => x + 1);
-plusOne(seq) // -> [2, 3, 4]
+plusOne(array) // -> [2, 3, 4]
 ```

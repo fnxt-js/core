@@ -7,7 +7,7 @@ const readContents = (dir) => fs.readdirSync(dir)
     .map(file => readFileSync(dir, file));
 
 const aliasRoot = {
-    'array': 'Array',
+    'array/operator': 'Array Operator',
     'seq/operator': 'Sequence Operator',
     'seq/generator': 'Sequence Generator',
 };

@@ -7,7 +7,99 @@ fnxt library for JavaScript and TypeScript
 npm i fnxt
 ```
 
-## Array
+## Array Operator
+### ARRAY.choose
+Applies a function to each element in an array and then returns an array of values v where 
+the applied function returned Some(v). Returns an empty array when the input array is empty 
+or when the applied chooser function returns None for all elements.
+
+#### Type
+```ts
+type chooseT = <E,F>(e: Chooser<E, F>) => (array:Array<E>) => Array<F>
+```
+
+#### Example
+```ts
+import * as ARRAY from 'fnxt/array';
+
+const array = ARRAY.of(0, 1, 2, 3, 4);
+const chooser = ARRAY.choose(
+  (x: number) => x % 2 === 0
+    ? Opt.Some(x * 2)
+    : Opt.None
+);
+chooser(array) // -> [0, 4, 8]
+```
+
+### ARRAY.chunkBySize
+Divides the input array into chunks of size at most chunkSize.
+
+#### Type
+```ts
+type chunkBySize = <E>(count: number) => (array1: Array<E>) => Array<E[]>
+```
+
+#### Example
+```ts
+import * as ARRAY from 'fnxt/array';
+
+const array = ARRAY.of(0, 1, 2, 3, 4, 5, 6);
+const chunkBySize = ARRAY.chunkBySize(3);
+chunkBySize(array)// -> [[0, 1, 2], [3, 4, 5], [6],]]
+```
+
+### ARRAY.collect
+Applies the given function to each element of the array and concatenates all the results.
+
+#### Type
+```ts
+type collect = <E, F>(mapping: (e: E) => Iterable<F>) => (array: Array<E>)=> Array<F>
+```
+
+#### Example
+```ts
+const gen = ARRAY.of(1, 2, 3,);
+const mapping = (x: number) => [x, x + 1];
+const collect = ARRAY.collect(mapping);
+collect(gen)  // -> [1, 2, 2, 3, 3, 4];
+```
+
+### ARRAY.concat
+Takes two arrays and concatenates them.
+
+#### Type
+```ts
+type concat = <E>(array1: Array<E>) => (array2: Array<E>) => Array<E>
+```
+
+#### Example
+```ts
+import * as ARRAY from 'fnxt/array';
+
+const array1 = ARRAY.range(0, 4, 1);
+const array2 = ARRAY.range(10, 14, 1);
+ARRAY.concat(array1)(array2) // -> [0, 1, 2, 3, 10, 11, 12, 13];
+```
+
+### ARRAY.every
+The `predicate` is applied to the elements of the input array. 
+If any application returns `false` then the overall result is `false` 
+and no further elements are tested. 
+Otherwise, `true` is returned.
+
+#### Type
+```ts
+type filter= <E>(predicate:((e:E) => boolean)) => (s:Array<E>) => boolean
+```
+
+#### Example
+```ts
+import * as ARRAY from 'fnxt/array';
+const array = ARRAY.of(0, 1, 2);
+const every = ARRAY.every((x: number) => x % 2 == 0);
+every(array) // -> false
+```
+
 
 ### ARRAY.filter
 Filter values of an array with a predicate and returns a new array.
@@ -25,6 +117,72 @@ const isEven = ARRAY.filter((x: number) => x % 2 == 0);
 isEven(array) // -> [0, 2]
 ```
 
+### ARRAY.head
+Returns the first value of an array.
+Throws an Error if the array is empty.
+#### Type
+```ts
+head: <E>(s:Array<E>) => E
+```
+
+#### Example
+```ts
+import * as ARRAY from 'fnxt/array';
+const array = ARRAY.of(2, 3, 4);
+const head = ARRAY.head;
+head(array) // -> 2
+```
+
+### ARRAY.isEmpty
+
+Returns `true` if the array is empty, `false` otherwise.
+#### Type
+```ts
+isEmpty: <E>(s:Array<E>) => boolean
+```
+
+#### Example
+```ts
+import * as ARRAY from 'fnxt/array';
+const array = ARRAY.of(2, 3, 4);
+const isEmpty = ARRAY.isEmpty;
+isEmpty(array) // -> false
+```
+
+### ARRAY.last
+Returns the last value of an array. Consumes the array before returning.
+Throws an Error if the array is empty.
+Does not terminate on infinite arrays.
+#### Type
+```ts
+last: <E>(s:Array<E>) => E
+```
+
+#### Example
+```ts
+import * as ARRAY from 'fnxt/array';
+const array = ARRAY.of(2, 3, 4);
+const last = ARRAY.last;
+last(array) // -> 4
+```
+
+### ARRAY.length
+Returns the length of an array. Consumes the array before returning.
+Returns `0` if the array is empty.
+Does not terminate on infinite arrays.
+#### Type
+```ts
+length: <E>(s:Array<E>) => number
+```
+
+#### Example
+```ts
+import * as ARRAY from 'fnxt/array';
+const array = ARRAY.of(2, 3, 4);
+const length = ARRAY.length;
+length(array) // -> 3
+```
+
 
 ### ARRAY.map
 Maps each value of an array to another value and returns a new array.
@@ -38,9 +196,99 @@ type map = <E,F>(e: UnaryFunction<E, F>) =>  (a:Array<E>) => Array<R>
 ```ts
 import * as ARRAY from 'fnxt/array';
 
-const seq = [0, 1, 2];
+const array = [0, 1, 2];
 const plusOne = ARRAY.map((x: number) => x + 1);
-plusOne(seq) // -> [2, 3, 4]
+plusOne(array) // -> [2, 3, 4]
+```
+
+### ARRAY.maxBy
+Maps each value of an array to a numeric value and returns the value with the highest value.
+
+#### Type
+```ts
+type maxBy = <E>(e: UnaryFunction<E, number>) => (array:Array<E>) => E
+```
+
+#### Example
+```ts
+import * as ARRAY from 'fnxt/array';
+const array = ARRAY.of('aa', 'bbb', 'c', 'dd');
+const maxBy = ARRAY.maxBy((x: string) => x.length);
+maxBy(array) // -> 'bbb'
+```
+
+### ARRAY.minBy
+Maps each value of an array to a numeric value and returns the value with the highest value.
+
+#### Type
+```ts
+type minBy = <E>(e: UnaryFunction<E, number>) => (array:Array<E>) => E
+```
+
+#### Example
+```ts
+import * as ARRAY from 'fnxt/array';
+const array = ARRAY.of('aa', 'bbb', 'c', 'dd');
+const minBy = ARRAY.minBy((x: string) => x.length);
+minBy(array) // -> 'c'
+```
+ 
+
+### ARRAY.reduce
+Reduces the array to a single value. `reducer` is used to fold the values. 
+Consumes the whole array before returning a value.
+
+Throws an `Error` if list is empty.
+
+
+#### Type
+```ts
+type reduceT = <E>(reducer: (e: E, f: E) => E) => (array: Array<E>)=> E
+```
+
+#### Example
+```ts
+import * as ARRAY from 'fnxt/array';
+const array = ARRAY.of(1, 2, 3, 4);
+const reduce = ARRAY.reduce((a:number, b:number) => a+b);
+reduce(array) // -> 10
+```
+ 
+
+### ARRAY.some
+The `predicate` is applied to the elements of the input array. 
+If any application returns `true` then the overall result is `true` 
+and no further elements are tested. 
+Otherwise, `false` is returned.
+
+#### Type
+```ts
+type filter= <E>(predicate:((e:E) => boolean)) => (s:Array<E>) => boolean
+```
+
+#### Example
+```ts
+import * as ARRAY from 'fnxt/array';
+const array = ARRAY.of(0, 1, 2);
+const some = ARRAY.some((x: number) => x % 2 == 0);
+some(array) // -> false
+```
+
+### ARRAY.takeWhile
+Returns an array that contains all elements of the original array 
+while the given `predicate` returns `true`, 
+and then returns no further elements.
+#### Type
+```ts
+type takeWhile = <E>(predicate: Predicate<E>) => (array: Array<E>) => Array<E>
+```
+
+#### Example
+```ts
+import * as ARRAY from 'fnxt/array';
+
+const array = ARRAY.range(0, 10, 1);
+ARRAY.takeWhile(lessThan(5))(array) // -> [0, 1, 2, 3, 4];
 ```
 
 ## Sequence Operator
@@ -100,15 +348,32 @@ const collect = SEQ.collect(mapping);
 collect(gen)  // -> {1, 2, 2, 3, 3, 4};
 ```
 
-### SEQ.every
-The predicate is applied to the elements of the input sequence. 
-If any application returns false then the overall result is false 
-and no further elements are tested. 
-Otherwise, true is returned.
+### SEQ.concat
+Takes two sequences and concatenates them.
 
 #### Type
 ```ts
-type filter= <E>(fn:((e:E) => boolean)) => (s:Seq<E>) => boolean
+type concat = <E>(seq1: Seq<E>) => (seq2: Seq<E>) => Seq<E>
+```
+
+#### Example
+```ts
+import * as SEQ from 'fnxt/seq';
+
+const seq1 = SEQ.range(0, 4, 1);
+const seq2 = SEQ.range(10, 14, 1);
+SEQ.concat(seq1)(seq2) // -> {0, 1, 2, 3, 10, 11, 12, 13};
+```
+
+### SEQ.every
+The `predicate` is applied to the elements of the input sequence. 
+If any application returns `false` then the overall result is `false` 
+and no further elements are tested. 
+Otherwise, `true` is returned.
+
+#### Type
+```ts
+type filter= <E>(predicate:((e:E) => boolean)) => (s:Seq<E>) => boolean
 ```
 
 #### Example
@@ -249,6 +514,63 @@ const minBy = SEQ.minBy((x: string) => x.length);
 minBy(seq) // -> 'c'
 ```
  
+
+### SEQ.reduce
+Reduces the sequence to a single value. `reducer` is used to fold the values. 
+Consumes the whole sequence before returning a value.
+
+Throws an `Error` if list is empty.
+
+
+#### Type
+```ts
+type reduceT = <E>(reducer: (e: E, f: E) => E) => (seq: Seq<E>)=> E
+```
+
+#### Example
+```ts
+import * as SEQ from 'fnxt/seq';
+const seq = SEQ.of(1, 2, 3, 4);
+const reduce = SEQ.reduce((a:number, b:number) => a+b);
+reduce(seq) // -> 10
+```
+ 
+
+### SEQ.some
+The `predicate` is applied to the elements of the input sequence. 
+If any application returns `true` then the overall result is `true` 
+and no further elements are tested. 
+Otherwise, `false` is returned.
+
+#### Type
+```ts
+type filter= <E>(predicate:((e:E) => boolean)) => (s:Seq<E>) => boolean
+```
+
+#### Example
+```ts
+import * as SEQ from 'fnxt/seq';
+const seq = SEQ.of(0, 1, 2);
+const some = SEQ.some((x: number) => x % 2 == 0);
+some(seq) // -> false
+```
+
+### SEQ.takeWhile
+Returns a sequence that contains all elements of the original sequence 
+while the given `predicate` returns `true`, 
+and then returns no further elements.
+#### Type
+```ts
+type takeWhile = <E>(predicate: Predicate<E>) => (seq: Seq<E>) => Seq<E>
+```
+
+#### Example
+```ts
+import * as SEQ from 'fnxt/seq';
+
+const seq = SEQ.range(0, 10, 1);
+SEQ.takeWhile(lessThan(5))(seq) // -> {0, 1, 2, 3, 4};
+```
 
 ## Sequence Generator
 ### SEQ.empty
