@@ -4,7 +4,7 @@ Throws an Error if the array is empty.
 Does not terminate on infinite arrays.
 #### Type
 ```ts
-last: <E>(s:Array<E>) => E
+type last = <E>(s:Array<E>) => E
 ```
 
 #### Example

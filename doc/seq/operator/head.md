@@ -3,7 +3,7 @@ Returns the first value of a sequence.
 Throws an Error if the sequence is empty.
 #### Type
 ```ts
-head: <E>(s:Seq<E>) => E
+type head = <E>(s:Seq<E>) => E
 ```
 
 #### Example

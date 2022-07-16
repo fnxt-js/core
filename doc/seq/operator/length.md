@@ -4,7 +4,7 @@ Returns `0` if the sequence is empty.
 Does not terminate on infinite sequences.
 #### Type
 ```ts
-length: <E>(s:Seq<E>) => number
+type length = <E>(s:Seq<E>) => number
 ```
 
 #### Example

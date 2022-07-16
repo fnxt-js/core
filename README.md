@@ -15,7 +15,7 @@ or when the applied chooser function returns None for all elements.
 
 #### Type
 ```ts
-type chooseT = <E,F>(e: Chooser<E, F>) => (array:Array<E>) => Array<F>
+type choose = <E,F>(e: Chooser<E, F>) => (array:Array<E>) => Array<F>
 ```
 
 #### Example
@@ -89,7 +89,7 @@ Otherwise, `true` is returned.
 
 #### Type
 ```ts
-type filter= <E>(predicate:((e:E) => boolean)) => (s:Array<E>) => boolean
+type every= <E>(predicate:((e:E) => boolean)) => (s:Array<E>) => boolean
 ```
 
 #### Example
@@ -106,7 +106,7 @@ Filter values of an array with a predicate and returns a new array.
 
 #### Type
 ```ts
-type map= <E>(fn:((e:E) => boolean)) => (a:Array<E>) => Array<E>
+type filter= <E>(fn:((e:E) => boolean)) => (a:Array<E>) => Array<E>
 ```
 
 #### Example
@@ -117,12 +117,29 @@ const isEven = ARRAY.filter((x: number) => x % 2 == 0);
 isEven(array) // -> [0, 2]
 ```
 
+
+### ARRAY.find
+Finds the first values of an array that satisfies the `predicate`. Returns `undefind` if no element is found. 
+
+#### Type
+```ts
+type find= <E>(predicate:((e:E) => boolean)) => (a:Array<E>) => E | undefind
+```
+
+#### Example
+```ts
+import * as ARRAY from 'fnxt/array';
+const array = ARRAY.of(0, 1, 2);
+const findEven = ARRAY.find((x: number) => x % 2 == 0);
+findEven(array) // -> 0
+```
+
 ### ARRAY.head
 Returns the first value of an array.
 Throws an Error if the array is empty.
 #### Type
 ```ts
-head: <E>(s:Array<E>) => E
+type head = <E>(s:Array<E>) => E
 ```
 
 #### Example
@@ -155,7 +172,7 @@ Throws an Error if the array is empty.
 Does not terminate on infinite arrays.
 #### Type
 ```ts
-last: <E>(s:Array<E>) => E
+type last = <E>(s:Array<E>) => E
 ```
 
 #### Example
@@ -172,7 +189,7 @@ Returns `0` if the array is empty.
 Does not terminate on infinite arrays.
 #### Type
 ```ts
-length: <E>(s:Array<E>) => number
+type length = <E>(s:Array<E>) => number
 ```
 
 #### Example
@@ -243,7 +260,7 @@ Throws an `Error` if list is empty.
 
 #### Type
 ```ts
-type reduceT = <E>(reducer: (e: E, f: E) => E) => (array: Array<E>)=> E
+type reduce = <E>(reducer: (e: E, f: E) => E) => (array: Array<E>)=> E
 ```
 
 #### Example
@@ -263,7 +280,7 @@ Otherwise, `false` is returned.
 
 #### Type
 ```ts
-type filter= <E>(predicate:((e:E) => boolean)) => (s:Array<E>) => boolean
+type some= <E>(predicate:((e:E) => boolean)) => (s:Array<E>) => boolean
 ```
 
 #### Example
@@ -291,6 +308,23 @@ const array = ARRAY.range(0, 10, 1);
 ARRAY.takeWhile(lessThan(5))(array) // -> [0, 1, 2, 3, 4];
 ```
 
+
+### ARRAY.tryFind
+Finds an `Option` of the first values of an array that satisfies the `predicate`. Returns `None` if no element is found. 
+
+#### Type
+```ts
+type tryFind= <E>(predicate:((e:E) => boolean)) => (a:Array<E>) => E | undefind
+```
+
+#### Example
+```ts
+import * as ARRAY from 'fnxt/array';
+const array = ARRAY.of(0, 1, 2);
+const findEven = ARRAY.tryFind((x: number) => x % 2 == 0);
+findEven(array) // -> Some(0)
+```
+
 ## Sequence Operator
 ### SEQ.choose
 Applies a function to each element in a sequence and then returns a sequence of values v where 
@@ -299,7 +333,7 @@ or when the applied chooser function returns None for all elements.
 
 #### Type
 ```ts
-type chooseT = <E,F>(e: Chooser<E, F>) => (seq:Seq<E>) => Seq<F>
+type choose = <E,F>(e: Chooser<E, F>) => (seq:Seq<E>) => Seq<F>
 ```
 
 #### Example
@@ -373,7 +407,7 @@ Otherwise, `true` is returned.
 
 #### Type
 ```ts
-type filter= <E>(predicate:((e:E) => boolean)) => (s:Seq<E>) => boolean
+type every = <E>(predicate:((e:E) => boolean)) => (s:Seq<E>) => boolean
 ```
 
 #### Example
@@ -389,7 +423,7 @@ Filter values of a sequence with a predicate and returns a new sequence.
 
 #### Type
 ```ts
-filter: <E>(fn:((e:E) => boolean)) => (s:Seq<E>) => Seq<E>
+type filter = <E>(fn:((e:E) => boolean)) => (s:Seq<E>) => Seq<E>
 ```
 
 #### Example
@@ -405,7 +439,7 @@ Returns the first value of a sequence.
 Throws an Error if the sequence is empty.
 #### Type
 ```ts
-head: <E>(s:Seq<E>) => E
+type head = <E>(s:Seq<E>) => E
 ```
 
 #### Example
@@ -421,7 +455,7 @@ head(seq) // -> 2
 Returns `true` if the sequence is empty, `false` otherwise.
 #### Type
 ```ts
-isEmpty: <E>(s:Seq<E>) => boolean
+type isEmpty = <E>(s:Seq<E>) => boolean
 ```
 
 #### Example
@@ -438,7 +472,7 @@ Throws an Error if the sequence is empty.
 Does not terminate on infinite sequences.
 #### Type
 ```ts
-last: <E>(s:Seq<E>) => E
+type last = <E>(s:Seq<E>) => E
 ```
 
 #### Example
@@ -455,7 +489,7 @@ Returns `0` if the sequence is empty.
 Does not terminate on infinite sequences.
 #### Type
 ```ts
-length: <E>(s:Seq<E>) => number
+type length = <E>(s:Seq<E>) => number
 ```
 
 #### Example
@@ -524,7 +558,7 @@ Throws an `Error` if list is empty.
 
 #### Type
 ```ts
-type reduceT = <E>(reducer: (e: E, f: E) => E) => (seq: Seq<E>)=> E
+type reduce = <E>(reducer: (e: E, f: E) => E) => (seq: Seq<E>)=> E
 ```
 
 #### Example
@@ -544,7 +578,7 @@ Otherwise, `false` is returned.
 
 #### Type
 ```ts
-type filter= <E>(predicate:((e:E) => boolean)) => (s:Seq<E>) => boolean
+type some = <E>(predicate:((e:E) => boolean)) => (s:Seq<E>) => boolean
 ```
 
 #### Example

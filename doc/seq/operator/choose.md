@@ -5,7 +5,7 @@ or when the applied chooser function returns None for all elements.
 
 #### Type
 ```ts
-type chooseT = <E,F>(e: Chooser<E, F>) => (seq:Seq<E>) => Seq<F>
+type choose = <E,F>(e: Chooser<E, F>) => (seq:Seq<E>) => Seq<F>
 ```
 
 #### Example

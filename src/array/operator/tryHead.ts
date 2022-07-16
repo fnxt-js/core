@@ -1,4 +1,4 @@
-import {None, Option, Some} from '../../option';
+import {None, Option, Some} from 'fnxt/option';
 import {head} from './head';
 
 

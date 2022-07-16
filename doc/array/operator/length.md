@@ -4,7 +4,7 @@ Returns `0` if the array is empty.
 Does not terminate on infinite arrays.
 #### Type
 ```ts
-length: <E>(s:Array<E>) => number
+type length = <E>(s:Array<E>) => number
 ```
 
 #### Example

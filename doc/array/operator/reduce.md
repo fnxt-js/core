@@ -7,7 +7,7 @@ Throws an `Error` if list is empty.
 
 #### Type
 ```ts
-type reduceT = <E>(reducer: (e: E, f: E) => E) => (array: Array<E>)=> E
+type reduce = <E>(reducer: (e: E, f: E) => E) => (array: Array<E>)=> E
 ```
 
 #### Example

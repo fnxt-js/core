@@ -3,7 +3,7 @@ Filter values of a sequence with a predicate and returns a new sequence.
 
 #### Type
 ```ts
-filter: <E>(fn:((e:E) => boolean)) => (s:Seq<E>) => Seq<E>
+type filter = <E>(fn:((e:E) => boolean)) => (s:Seq<E>) => Seq<E>
 ```
 
 #### Example

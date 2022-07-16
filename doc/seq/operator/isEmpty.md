@@ -3,7 +3,7 @@
 Returns `true` if the sequence is empty, `false` otherwise.
 #### Type
 ```ts
-isEmpty: <E>(s:Seq<E>) => boolean
+type isEmpty = <E>(s:Seq<E>) => boolean
 ```
 
 #### Example

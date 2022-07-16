@@ -4,7 +4,7 @@ Throws an Error if the sequence is empty.
 Does not terminate on infinite sequences.
 #### Type
 ```ts
-last: <E>(s:Seq<E>) => E
+type last = <E>(s:Seq<E>) => E
 ```
 
 #### Example

@@ -1,5 +1,5 @@
 import {Predicate} from 'fnxt/fnxt-types';
-import {None, Option, Some} from '../../option';
+import {None, Option, Some} from 'fnxt/option';
 
 
 export const tryFind = <T>(fn: Predicate<T>) => (array: T[]): Option<T> => {

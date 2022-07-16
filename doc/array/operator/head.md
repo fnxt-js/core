@@ -3,7 +3,7 @@ Returns the first value of an array.
 Throws an Error if the array is empty.
 #### Type
 ```ts
-head: <E>(s:Array<E>) => E
+type head = <E>(s:Array<E>) => E
 ```
 
 #### Example

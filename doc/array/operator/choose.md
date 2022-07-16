@@ -5,7 +5,7 @@ or when the applied chooser function returns None for all elements.
 
 #### Type
 ```ts
-type chooseT = <E,F>(e: Chooser<E, F>) => (array:Array<E>) => Array<F>
+type choose = <E,F>(e: Chooser<E, F>) => (array:Array<E>) => Array<F>
 ```
 
 #### Example

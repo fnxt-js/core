@@ -6,7 +6,7 @@ Otherwise, `false` is returned.
 
 #### Type
 ```ts
-type filter= <E>(predicate:((e:E) => boolean)) => (s:Seq<E>) => boolean
+type some = <E>(predicate:((e:E) => boolean)) => (s:Seq<E>) => boolean
 ```
 
 #### Example

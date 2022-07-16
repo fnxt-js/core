@@ -6,7 +6,7 @@ Otherwise, `true` is returned.
 
 #### Type
 ```ts
-type filter= <E>(predicate:((e:E) => boolean)) => (s:Array<E>) => boolean
+type every= <E>(predicate:((e:E) => boolean)) => (s:Array<E>) => boolean
 ```
 
 #### Example

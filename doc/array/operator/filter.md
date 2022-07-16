@@ -4,7 +4,7 @@ Filter values of an array with a predicate and returns a new array.
 
 #### Type
 ```ts
-type map= <E>(fn:((e:E) => boolean)) => (a:Array<E>) => Array<E>
+type filter= <E>(fn:((e:E) => boolean)) => (a:Array<E>) => Array<E>
 ```
 
 #### Example
