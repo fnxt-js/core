@@ -15,7 +15,7 @@ describe('array', () => {
     });
 
     it('should length', async () => {
-      const array = ARRAY.of(1,2,3);
+      const array = ARRAY.of(1, 2, 3);
       const length = ARRAY.length;
       expect(length(array)).to.eql(3);
     });
@@ -406,10 +406,24 @@ describe('array', () => {
     });
     describe('sortBy', () => {
       it('should sortBy', () => {
-        const array = ['hello', 'foo', 'world'];
+        const array = ['hello', 'foo', 'hello world', 'world'];
         const fn = ARRAY.sortBy<string>(e => e.length);
-        expect(fn(array)).to.eql(['foo', 'hello', 'world']);
-        expect(array).to.eql(['hello', 'foo', 'world']);
+        console.log(fn(array));
+        expect(fn(array)).to.eql(['foo', 'hello', 'world', 'hello world']);
+        expect(array).to.eql(['hello', 'foo', 'hello world', 'world']);
+        expect(fn([])).to.eql([]);
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        expect(() => fn(null)).to.throw();
+      });
+    });
+    describe('sortByDescending', () => {
+      it('should sortByDescending', () => {
+        const array = ['hello', 'foo', 'hello world', 'world'];
+        const fn = ARRAY.sortByDescending<string>((e) => e.length);
+        console.log(fn(array));
+        expect(fn(array)).to.eql(['hello world','hello',  'world', 'foo',]);
+        expect(array).to.eql(['hello', 'foo', 'hello world', 'world']);
         expect(fn([])).to.eql([]);
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
@@ -433,6 +447,18 @@ describe('array', () => {
         const array = ['hello', 'foo', 'world'];
         const fn = ARRAY.sort;
         expect(fn(array)).to.eql(['foo', 'hello', 'world']);
+        expect(array).to.eql(['hello', 'foo', 'world']);
+        expect(fn([])).to.eql([]);
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        expect(() => fn(null)).to.throw();
+      });
+    });
+    describe('sortDescending', () => {
+      it('should sortDescending', () => {
+        const array = ['hello', 'foo', 'world'];
+        const fn = ARRAY.sortDescending;
+        expect(fn(array)).to.eql([ 'world','hello', 'foo',]);
         expect(array).to.eql(['hello', 'foo', 'world']);
         expect(fn([])).to.eql([]);
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment

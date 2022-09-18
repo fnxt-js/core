@@ -9,7 +9,7 @@ export * from './map';
 export * from './collect';
 
 export * from './sortInPlace';
-// export * from './sortByDescending';
+export * from './sortByDescending';
 export * from './sortBy';
 export * from './sort';
 export * from './sortDescending';

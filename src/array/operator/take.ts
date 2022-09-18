@@ -1,6 +1,6 @@
 import {truncate} from './truncate';
 
-export const take = <T>(count: number) => (array: T[]): T[] => {
+export const take = (count: number) => <T>(array: T[]): T[] => {
   if (count > array.length) {
     throw new Error();
   }
