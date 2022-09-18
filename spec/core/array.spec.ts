@@ -660,27 +660,27 @@ describe('array', () => {
     describe('chunkBySize', () => {
       it('should chunkBySize 1', () => {
         const array = [1, 2, 3, 4];
-        const fn = ARRAY.chunkBySize<number>(3);
+        const fn = ARRAY.chunkBySize(3);
         expect(fn(array)).to.eql([[1, 2, 3], [4]]);
       });
       it('should chunkBySize 2', () => {
         const array = [1, 2, 3, 4];
-        const fn = ARRAY.chunkBySize<number>(2);
+        const fn = ARRAY.chunkBySize(2);
         expect(fn(array)).to.eql([[1, 2], [3, 4]]);
       });
       it('should chunkBySize 3', () => {
         const array: number[] = [];
-        const fn = ARRAY.chunkBySize<number>(2);
+        const fn = ARRAY.chunkBySize(2);
         expect(fn(array)).to.eql([]);
       });
       it('should chunkBySize 4', () => {
         const array = [1];
-        const fn = ARRAY.chunkBySize<number>(2);
+        const fn = ARRAY.chunkBySize(2);
         expect(fn(array)).to.eql([[1]]);
       });
       it('should not chunkBySize', () => {
 
-        const fn = ARRAY.chunkBySize<number>(2);
+        const fn = ARRAY.chunkBySize(2);
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         expect(() => fn(null)).to.throw();

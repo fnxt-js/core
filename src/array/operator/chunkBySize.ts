@@ -1,4 +1,4 @@
-export const chunkBySize = <T>(chunkSize: number) => (array: T[]): T[][] => {
+export const chunkBySize = (chunkSize: number) =>  <T>(array: T[]): T[][] => {
   const result = [];
   let chunk = [];
   let count = 0;
