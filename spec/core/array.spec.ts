@@ -527,6 +527,7 @@ describe('array', () => {
         const array = [1, 2, 3, 4];
         const fn = ARRAY.skip(2);
         expect(fn(array)).to.eql([3, 4]);
+        expect(array).to.eql([1, 2, 3, 4]);
         expect(fn([1])).to.eql([]);
         expect(fn([])).to.eql([]);
       });
