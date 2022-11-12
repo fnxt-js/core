@@ -565,9 +565,10 @@ describe('array', () => {
         expect(fn([])).to.eql([]);
       });
       it('should takeWhile string', () => {
-        const array: string[] = ['1', '2a', '3aa', '4aaa', '1'];
+
         const fn = ARRAY.takeWhile<string>(x => x.length < 3);
-        expect(fn(array)).to.eql(['1', '2a']);
+        expect(fn(['1', '2a', '3aa', '4aaa', '1'])).to.eql(['1', '2a']);
+        expect(fn(['aa', 'bb', 'cc'])).to.eql(['aa', 'bb', 'cc']);
         expect(fn(['3aa', '4aaa'])).to.eql([]);
         expect(fn(['1'])).to.eql(['1']);
         expect(fn([])).to.eql([]);
