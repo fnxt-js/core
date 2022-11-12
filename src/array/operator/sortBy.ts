@@ -1,5 +1,9 @@
 import {KeyProjection} from 'fnxt/fnxt-types';
 
+/**
+ * @deprecated use sortWith
+ * @param fn
+ */
 export const sortBy = <T>(fn: KeyProjection<T>) => (array: T[]): T[] => {
   const tuples = array.map(e => [fn(e), e]);
   return (tuples
