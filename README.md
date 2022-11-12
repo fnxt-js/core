@@ -291,6 +291,38 @@ const some = ARRAY.some((x: number) => x % 2 == 0);
 some(array) // -> false
 ```
 
+### ARRAY.splitInto
+Splits the input array into at most `count` chunks.
+
+#### Type
+```ts
+type splitInto = <E>(count: number) => (array: Array<E>) => Array<E[]>
+```
+
+#### Example
+```ts
+import * as ARRAY from 'fnxt/array';
+
+const array = ARRAY.of(0, 1, 2, 3, 4, 5, 6);
+const splitInto = ARRAY.splitInto(3);
+splitInto(array)// -> [[0, 1, 2], [3, 4], [5, 6],]]
+```
+
+### ARRAY.take
+Returns the first N elements of the array.
+#### Type
+```ts
+type take = (count: number) => <E>(array: Array<E>) => Array<E>
+```
+
+#### Example
+```ts
+import * as ARRAY from 'fnxt/array';
+
+const array = [0, 1, 2, 3, 4];
+ARRAY.take(2)(array) // -> [0, 1];
+```
+
 ### ARRAY.takeWhile
 Returns an array that contains all elements of the original array 
 while the given `predicate` returns `true`, 
