@@ -383,6 +383,40 @@ describe('array', () => {
         expect(() => fn(null)).to.throw();
       });
     });
+
+    describe('splitInto', () => {
+      it('should splitInto', () => {
+
+        expect(() => ARRAY.splitInto(5)([])).to.throw();
+
+        expect(ARRAY.splitInto(4)([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
+          .to.eql([[1, 2, 3], [4, 5, 6], [7, 8], [9, 10]]);
+        expect(ARRAY.splitInto(5)([1])).to.eql([[1]]);
+        expect(ARRAY.splitInto(5)([1, 2, 3, 4])).to.eql([[1], [2], [3], [4]]);
+        expect(ARRAY.splitInto(3)([1, 2, 3, 4, 5, 6])).to.eql([[1, 2], [3, 4], [5, 6]]);
+        expect(ARRAY.splitInto(3)([1, 2, 3, 4, 5])).to.eql([[1, 2], [3, 4], [5]]);
+        expect(ARRAY.splitInto(3)([1, 2, 3, 4])).to.eql([[1, 2], [3], [4]]);
+
+      });
+      it('should splitInto property test', () => {
+        const chunks = Math.round(Math.random() * 10);
+        const size = Math.round(Math.random() * 100000);
+        const array = ARRAY.range(0, size);
+
+        expect(ARRAY.splitInto(chunks)(array).length).to.eql(chunks);
+
+        expect(ARRAY.splitInto(chunks)(array).map(e => e.length)
+          .every((v) =>
+            v >= Math.floor(size / chunks)
+            && v <= Math.ceil(size / chunks)
+          )
+        ).to.be.true;
+
+        expect(ARRAY.pairwise(ARRAY.splitInto(chunks)(array).map(e => e.length))
+          .every(([a, b]) => a >= b)
+        ).to.be.true;
+      });
+    });
     describe('last', () => {
       it('should last', () => {
         const fn = ARRAY.last;
@@ -409,7 +443,6 @@ describe('array', () => {
       it('should sortBy', () => {
         const array = ['hello', 'foo', 'hello world', 'world'];
         const fn = ARRAY.sortBy<string>(e => e.length);
-        console.log(fn(array));
         expect(fn(array)).to.eql(['foo', 'hello', 'world', 'hello world']);
         expect(array).to.eql(['hello', 'foo', 'hello world', 'world']);
         expect(fn([])).to.eql([]);
@@ -422,7 +455,6 @@ describe('array', () => {
       it('should sortByDescending', () => {
         const array = ['hello', 'foo', 'hello world', 'world'];
         const fn = ARRAY.sortByDescending<string>((e) => e.length);
-        console.log(fn(array));
         expect(fn(array)).to.eql(['hello world', 'hello', 'world', 'foo',]);
         expect(array).to.eql(['hello', 'foo', 'hello world', 'world']);
         expect(fn([])).to.eql([]);

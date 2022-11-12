@@ -19,6 +19,7 @@ export * from './sortInPlaceWith';
 
 export * from './partition';
 export * from './splitAt';
+export * from './splitInto';
 
 export * from './chunkBySize';
 export * from './groupBy';
