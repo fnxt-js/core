@@ -1,12 +1,13 @@
 import {Folder} from 'fnxt/fnxt-types';
+import {buildScanner} from '../internal/scanner';
 
-export const scan = <E, F>(fn: Folder<E, F>) => (initial: F) => (array: E[]): F[] =>
-  array.reduce(
-    (list: F[], current: E) => {
-      list.push(fn(list[list.length - 1], current));
-      return list;
-    },
-    [initial]
-  );
+
+/**
+ * @param fn
+ */
+export const scan = <E, F>(fn: Folder<E, F>) =>
+  (initial: F) =>
+    (array: E[]): F[] =>
+      array.reduce(buildScanner(fn), [initial]);
 
 

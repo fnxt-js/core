@@ -79,4 +79,6 @@ export * from './replicate';
 export * from './fill';
 export * from './copy';
 
+export * from './push';
+
 export * from './transpose';

@@ -397,6 +397,7 @@ describe('array', () => {
       it('should pairwise', () => {
         const fn = ARRAY.pairwise;
         expect(fn([1, 2, 3, 4])).to.eql([[1, 2], [2, 3], [3, 4]]);
+        expect(fn([1, 2, 3, 4])).to.eql(ARRAY.windowed(2)([1, 2, 3, 4]));
         expect(fn([1])).to.eql([]);
         expect(fn([])).to.eql([]);
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -422,7 +423,7 @@ describe('array', () => {
         const array = ['hello', 'foo', 'hello world', 'world'];
         const fn = ARRAY.sortByDescending<string>((e) => e.length);
         console.log(fn(array));
-        expect(fn(array)).to.eql(['hello world','hello',  'world', 'foo',]);
+        expect(fn(array)).to.eql(['hello world', 'hello', 'world', 'foo',]);
         expect(array).to.eql(['hello', 'foo', 'hello world', 'world']);
         expect(fn([])).to.eql([]);
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -458,7 +459,7 @@ describe('array', () => {
       it('should sortDescending', () => {
         const array = ['hello', 'foo', 'world'];
         const fn = ARRAY.sortDescending;
-        expect(fn(array)).to.eql([ 'world','hello', 'foo',]);
+        expect(fn(array)).to.eql(['world', 'hello', 'foo',]);
         expect(array).to.eql(['hello', 'foo', 'world']);
         expect(fn([])).to.eql([]);
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -553,6 +554,17 @@ describe('array', () => {
         expect(fn([3, 4])).to.eql([3, 4]);
         expect(fn([1])).to.eql([]);
         expect(fn([])).to.eql([]);
+      });
+    });
+    describe('push', () => {
+      it('should push', () => {
+        const array = [1, 2, 3, 4];
+        expect(ARRAY.push()([])).to.eql([]);
+        expect(ARRAY.push(5)([])).to.eql([5]);
+        expect(ARRAY.push(5)(array)).to.eql([1, 2, 3, 4, 5]);
+        expect(ARRAY.push(5, 6)(array)).to.eql([1, 2, 3, 4, 5, 6]);
+        expect(ARRAY.push()(array)).to.eql([1, 2, 3, 4]);
+        expect(array).to.eql([1, 2, 3, 4]);
       });
     });
     describe('takeWhile', () => {
