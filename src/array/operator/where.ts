@@ -1,4 +1,3 @@
-import {Predicate} from 'fnxt/fnxt-types';
+import {filter} from './filter';
 
-
-export const where = <T>(fn: Predicate<T>) => (array: T[]): T[] => array.filter(fn);
+export const where = filter;
