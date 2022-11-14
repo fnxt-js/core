@@ -38,7 +38,7 @@ export const COMMUNITY_INVITE_URL = `https://astro.build/chat`;
 
 // See "Algolia" section of the README for more information.
 export const ALGOLIA = {
-  display:false,
+  display: false,
   indexName: 'XXXXXXXXXX',
   appId: 'XXXXXXXXXX',
   apiKey: 'XXXXXXXXXX',
@@ -54,5 +54,6 @@ export const SIDEBAR: Sidebar = {
     ...buildConfig({lang: 'en', dir: 'seq/generator', title: 'Seq Gen'}),
   },
 };
-
-export const BASE = process.env.base
+console.log('SIDEBAR');
+console.log(SIDEBAR);
+export const BASE = process.env.base;

@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import preact from '@astrojs/preact';
 import react from '@astrojs/react';
 
-const base = ''
+const base = '/core'
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
