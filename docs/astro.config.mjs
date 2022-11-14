@@ -10,7 +10,6 @@ export default defineConfig({
 		// Enable React for the Algolia search component.
 		react(),
 	],
-	output: 'static',
 	site: 'https://fnxt-js.github.io',
 	base: '/core',
 });
