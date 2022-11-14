@@ -12,5 +12,5 @@ export default defineConfig({
 	],
 	output: 'static',
 	site: 'https://fnxt-js.github.io',
-	base: '/',
+	base: '/core',
 });
