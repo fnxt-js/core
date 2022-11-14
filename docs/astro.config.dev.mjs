@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import preact from '@astrojs/preact';
 import react from '@astrojs/react';
 
+const base = ''
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
@@ -11,4 +12,6 @@ export default defineConfig({
 		react(),
 	],
 	site: 'https://fnxt-js.github.io',
+	base,
 });
+process.env.base = base

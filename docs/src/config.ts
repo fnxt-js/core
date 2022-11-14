@@ -49,14 +49,10 @@ export type Sidebar = Record<typeof KNOWN_LANGUAGE_CODES[number],
 
 export const SIDEBAR: Sidebar = {
   en: {
-    // 'Array': [
-    // 	{ text: 'Page 2', link: 'en/page-2' },
-    // 	{ text: 'Page 3', link: 'en/page-3' },
-    // ],
     ...buildConfig({lang: 'en', dir: 'array/operator', title: 'Array Ops'}),
     ...buildConfig({lang: 'en', dir: 'seq/operator', title: 'Seq Ops'}),
     ...buildConfig({lang: 'en', dir: 'seq/generator', title: 'Seq Gen'}),
-    'Another Section': [{text: 'Page 4', link: 'en/page-4'}],
   },
 };
-console.log(SIDEBAR);
+
+export const BASE = process.env.base
