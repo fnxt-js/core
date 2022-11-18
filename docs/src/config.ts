@@ -1,4 +1,3 @@
-import {buildConfig} from './build-directory';
 
 export const SITE = {
   title: 'Documentation',
@@ -47,13 +46,5 @@ export const ALGOLIA = {
 export type Sidebar = Record<typeof KNOWN_LANGUAGE_CODES[number],
   Record<string, { text: string; link: string }[]>>;
 
-export const SIDEBAR: Sidebar = {
-  en: {
-    ...buildConfig({lang: 'en', dir: 'array/operator', title: 'Array Ops'}),
-    ...buildConfig({lang: 'en', dir: 'seq/operator', title: 'Seq Ops'}),
-    ...buildConfig({lang: 'en', dir: 'seq/generator', title: 'Seq Gen'}),
-  },
-};
-console.log('SIDEBAR');
-console.log(SIDEBAR);
-export const BASE = process.env.base;
+export const SIDEBAR: Sidebar = {en:{}};
+
