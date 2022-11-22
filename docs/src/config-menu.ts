@@ -3,13 +3,13 @@ This file is auto-generated.
 */
 export default {
   "en": {
-    "Array Ops": [
+    "array operators": [
       {
         "text": "choose",
         "link": "en/array/operator/choose"
       },
       {
-        "text": "chuckBySize",
+        "text": "chunkBySize",
         "link": "en/array/operator/chuckBySize"
       },
       {
@@ -85,13 +85,13 @@ export default {
         "link": "en/array/operator/tryFind"
       }
     ],
-    "Seq Ops": [
+    "sequence operators": [
       {
         "text": "choose",
         "link": "en/seq/operator/choose"
       },
       {
-        "text": "chuckBySize",
+        "text": "chunkBySize",
         "link": "en/seq/operator/chuckBySize"
       },
       {
@@ -151,7 +151,7 @@ export default {
         "link": "en/seq/operator/takeWhile"
       }
     ],
-    "Seq Gen": [
+    "sequence generators": [
       {
         "text": "empty",
         "link": "en/seq/generator/empty"
