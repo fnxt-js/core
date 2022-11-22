@@ -14,6 +14,5 @@ type of = <E>(...values:e[])=>Seq<E>
 ```ts
 import * as SEQ from 'fnxt/seq';
 
-const seq = SEQ.of(1,2,3);
-chooser(seq) // -> {1,2,3}
+const seq = SEQ.of(1,2,3);  // -> {1,2,3}
 ```

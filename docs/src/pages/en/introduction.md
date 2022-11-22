@@ -1,26 +1,31 @@
 ---
-title: Introduction
 description: Docs intro
 layout: ../../layouts/MainLayout.astro
----
+---# FNXT 
 
-**Welcome to Astro!**
+- a library for JavaScript and TypeScript.
+- focuses on a functional JavaScript and TypeScript experience.
+- it does not mutate values
 
-This is the `docs` starter template. It contains all of the features that you need to build a Markdown-powered documentation site, including:
+## Installation
+```shell
+npm i fnxt
+```
 
-- ✅ **Full Markdown support**
-- ✅ **Responsive mobile-friendly design**
-- ✅ **Sidebar navigation**
-- ✅ **Search (powered by Algolia)**
-- ✅ **Multi-language i18n**
-- ✅ **Automatic table of contents**
-- ✅ **Automatic list of contributors**
-- ✅ (and, best of all) **dark mode**
+## Documentation
 
-## Getting Started
+The API Documentation can be found [here](https://github.com/fnxt-js/core).
 
-To get started with this theme, check out the `README.md` in your new project directory. It provides documentation on how to use and customize this template for your own project. Keep the README around so that you can always refer back to it as you build.
 
-Found a missing feature that you can't live without? Please suggest it on Discord [(#ideas-and-suggestions channel)](https://astro.build/chat) and even consider adding it yourself on GitHub! Astro is an open source project and contributions from developers like you are how we grow!
+## Example
 
-Good luck out there, Astronaut. 🧑‍🚀
+```ts
+import {filter, map} from 'fnxt/array';
+import {pipe} from 'fnxt/pipe';
+
+const composed = pipe(
+  filter((x:number) => x % 2 !== 0),
+  map((x:number) => x*2),
+)
+composed([1,2,3,4,5]) //-> [2,6,10]
+```

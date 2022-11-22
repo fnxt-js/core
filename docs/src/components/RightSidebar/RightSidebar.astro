@@ -1,6 +1,6 @@
 ---
 import TableOfContents from './TableOfContents';
-import ThemeToggleButton from './ThemeToggleButton';
+
 import MoreMenu from './MoreMenu.astro';
 import type { MarkdownHeading } from 'astro';
 
@@ -18,7 +18,7 @@ const { headings, githubEditUrl } = Astro.props as Props;
 		{false&&<MoreMenu editHref={githubEditUrl} />}
 
         <div style="margin: 2rem 0; text-align: center;">
-            <ThemeToggleButton client:visible />
+
         </div>
 	</div>
 </nav>

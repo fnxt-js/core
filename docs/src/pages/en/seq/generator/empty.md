@@ -15,6 +15,5 @@ type chooseT = Seq<never>
 ```ts
 import * as SEQ from 'fnxt/seq';
 
-const seq = SEQ.empty;
-chooser(seq) // -> {}
+const seq = SEQ.empty;  // -> {}
 ```

@@ -14,12 +14,6 @@ type range = (from:number,to:number,step:number=1)=>Seq<number>
 ```ts
 import * as SEQ from 'fnxt/seq';
 
-const seq = SEQ.range(1,6,2);
-chooser(seq) // -> {1,3,5}
-```
-```ts
-import * as SEQ from 'fnxt/seq';
-
-const seq = SEQ.range(1,4);
-chooser(seq) // -> {1,2,3}
+const seq1 = SEQ.range(1,6,2); // -> {1,3,5}
+const seq2 = SEQ.range(1,4);  // -> {1,2,3}
 ```

@@ -15,7 +15,7 @@ type infinite = (start:number,step:number=1)=>Seq<number>
 ```ts
 import * as SEQ from 'fnxt/seq';
 
-const seq = SEQ.infinite(1,2);
-chooser(seq) // -> {1,3,5,...}
+const seq1 = SEQ.infinite(1,1);  // -> {1,2,3,...}
+const seq2 = SEQ.infinite(1,2);  // -> {1,3,5,...}
 ```
 
