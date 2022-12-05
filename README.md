@@ -11,7 +11,7 @@ npm i fnxt
 
 ## Documentation
 
-The API Documentation can be found [here](https://github.com/fnxt-js/core).
+The API Documentation can be found [here](https://fnxt-js.github.io/coree).
 
 
 ## Example
