@@ -38,18 +38,18 @@ export default ${JSON.stringify({
 }
 
 async function buildMenu() {
-    const src = '../docs/src/';
+    const src = './docs/src/';
     await writeConfig(src,'en');
 }
 
 async function buildIntroduction() {
 
-    const content = await fs.promises.readFile('../README.md') + '';
+    const content = await fs.promises.readFile('./README.md') + '';
     const header = `---
 description: Docs intro
 layout: ../../layouts/MainLayout.astro
 ---`;
-    await fs.promises.writeFile('../docs/src/pages/en/introduction.md', header + content);
+    await fs.promises.writeFile('./docs/src/pages/en/introduction.md', header + content);
 }
 
 
