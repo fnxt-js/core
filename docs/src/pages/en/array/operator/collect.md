@@ -13,7 +13,7 @@ type collect = <E, F>(mapping: (e: E) => Iterable<F>) => (array: Array<E>)=> Arr
 
 ## Example
 ```ts
-const gen = ARRAY.of(1, 2, 3,);
+const gen = [1, 2, 3,];
 const mapping = (x: number) => [x, x + 1];
 const collect = ARRAY.collect(mapping);
 collect(gen)  // -> [1, 2, 2, 3, 3, 4];

@@ -10,7 +10,7 @@ export default {
       },
       {
         "text": "chunkBySize",
-        "link": "en/array/operator/chuckBySize"
+        "link": "en/array/operator/chunkBySize"
       },
       {
         "text": "collect",
@@ -59,6 +59,10 @@ export default {
       {
         "text": "minBy",
         "link": "en/array/operator/minBy"
+      },
+      {
+        "text": "partition",
+        "link": "en/array/operator/partition"
       },
       {
         "text": "reduce",

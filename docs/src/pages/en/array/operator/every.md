@@ -17,7 +17,7 @@ type every= <E>(predicate:((e:E) => boolean)) => (s:Array<E>) => boolean
 ## Example
 ```ts
 import * as ARRAY from 'fnxt/array';
-const array = ARRAY.of(0, 1, 2);
+const array = [0, 1, 2];
 const every = ARRAY.every((x: number) => x % 2 == 0);
 every(array) // -> false
 ```

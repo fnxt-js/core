@@ -17,7 +17,7 @@ type choose = <E,F>(e: Chooser<E, F>) => (array:Array<E>) => Array<F>
 ```ts
 import * as ARRAY from 'fnxt/array';
 
-const array = ARRAY.of(0, 1, 2, 3, 4);
+const array = [0, 1, 2, 3, 4];
 const chooser = ARRAY.choose(
   (x: number) => x % 2 === 0
     ? Opt.Some(x * 2)

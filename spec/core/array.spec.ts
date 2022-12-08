@@ -162,12 +162,17 @@ describe('array', () => {
         const fn = ARRAY.partition((x: number) => x % 2 != 0);
         expect(fn(array)).to.eql([[1, 3], [2, 4]]);
         expect(fn([])).to.eql([[], []]);
+        expect(array).to.eql([1, 2, 3, 4]);
       });
 
-      it('should partition 3', () => {
+      it('should partition 2', () => {
         const fn = ARRAY.partition((x: number) => x % 2 != 0);
         expect(fn([1, 3])).to.eql([[1, 3], []]);
         expect(fn([2, 4])).to.eql([[], [2, 4]]);
+      });
+      it('should partition 3', () => {
+        const fn = ARRAY.partition((x: number) => x < 4);
+        expect(fn([1, 2, 3, 4, 5, 6, 7])).to.eql([[1, 2, 3], [4, 5, 6, 7]]);
       });
       it('should not partition', () => {
         const fn = ARRAY.partition((x: number) => x % 2 != 0);

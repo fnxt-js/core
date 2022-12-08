@@ -14,7 +14,7 @@ type length = <E>(s:Array<E>) => number
 ## Example
 ```ts
 import * as ARRAY from 'fnxt/array';
-const array = ARRAY.of(2, 3, 4);
+const array = [2, 3, 4];
 const length = ARRAY.length;
 length(array) // -> 3
 ```

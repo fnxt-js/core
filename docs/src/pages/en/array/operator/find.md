@@ -13,7 +13,7 @@ type find= <E>(predicate:((e:E) => boolean)) => (a:Array<E>) => E | undefind
 ## Example
 ```ts
 import * as ARRAY from 'fnxt/array';
-const array = ARRAY.of(0, 1, 2);
+const array =[0, 1, 2];
 const findEven = ARRAY.find((x: number) => x % 2 == 0);
 findEven(array) // -> 0
 ```
