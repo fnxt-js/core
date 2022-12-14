@@ -20,5 +20,5 @@ const chunkBySize = ARRAY.chunkBySize(3);
 chunkBySize(array)// -> [[0, 1, 2], [3, 4, 5], [6],]]
 ```
 ## See Also
-- [partition](partition)
-- [splitInto](splitInto)
+- [partition](../partition)
+- [splitInto](../splitInto)
