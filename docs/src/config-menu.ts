@@ -5,6 +5,10 @@ export default {
   "en": {
     "array operators": [
       {
+        "text": "allCombinations",
+        "link": "en/array/operator/allCombinations"
+      },
+      {
         "text": "choose",
         "link": "en/array/operator/choose"
       },
