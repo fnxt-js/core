@@ -25,6 +25,10 @@ export default {
         "link": "en/array/operator/collect"
       },
       {
+        "text": "compareWith",
+        "link": "en/array/operator/compareWith"
+      },
+      {
         "text": "concat",
         "link": "en/array/operator/concat"
       },

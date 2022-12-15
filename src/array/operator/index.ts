@@ -8,6 +8,8 @@ export * from './flatten';
 export * from './map';
 export * from './collect';
 
+export * from './compareWith';
+
 export * from './sortInPlace';
 export * from './sortByDescending';
 export * from './sortBy';
