@@ -24,5 +24,5 @@ splitInto(array)// -> [[1, 2, 3], [4, 5], [6, 7]]
 ```
 
 ## See Also
-- [chunkBySize](../chunkBySize)
-- [partition](../partition)
+- [chunkBySize](/core/en/array/operator/chunkBySize)
+- [partition](/core/en/array/operator/partition)

@@ -28,3 +28,6 @@ allCombinations([1, 2], ['a', 'b', 'c'], [4, 5]); // ->
 //   [2, 'c', 4], [2, 'c', 5]
 // ]
 ```
+
+## See Also
+- [allPairs](/core/en/array/operator/allPairs)

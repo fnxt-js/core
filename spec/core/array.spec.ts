@@ -121,6 +121,20 @@ describe('array', () => {
           [3, 6],
         ]);
       });
+
+      it('should allPairs different types', () => {
+        const array1 = [1, 2, 3];
+        const array2 = ['a', 'b', 'c'];
+        const fn = ARRAY.allPairs(array1);
+
+        const f: [number, string][] = fn(array2);
+
+        expect(f).to.eql([
+          [1, 'a'], [1, 'b'], [1, 'c'],
+          [2, 'a'], [2, 'b'], [2, 'c'],
+          [3, 'a'], [3, 'c'], [3, 'b'],
+        ]);
+      });
     });
 
     describe('flatten', () => {
@@ -901,41 +915,41 @@ describe('array', () => {
       it('should allCombinations', () => {
 
         const fn = ARRAY.allCombinations;
-        const expansion = fn(['ace', 'king', 'queen', 'jack'], ['hearts', 'spades', 'diamonds', 'clubs'], ['blue cover', 'red cover'])
+        const expansion = fn(['ace', 'king', 'queen', 'jack'], ['hearts', 'spades', 'diamonds', 'clubs'], ['blue cover', 'red cover']);
         console.log();
         expect(expansion).to.eql([
-          [ 'ace', 'hearts', 'blue cover' ],
-          [ 'ace', 'hearts', 'red cover' ],
-          [ 'ace', 'spades', 'blue cover' ],
-          [ 'ace', 'spades', 'red cover' ],
-          [ 'ace', 'diamonds', 'blue cover' ],
-          [ 'ace', 'diamonds', 'red cover' ],
-          [ 'ace', 'clubs', 'blue cover' ],
-          [ 'ace', 'clubs', 'red cover' ],
-          [ 'king', 'hearts', 'blue cover' ],
-          [ 'king', 'hearts', 'red cover' ],
-          [ 'king', 'spades', 'blue cover' ],
-          [ 'king', 'spades', 'red cover' ],
-          [ 'king', 'diamonds', 'blue cover' ],
-          [ 'king', 'diamonds', 'red cover' ],
-          [ 'king', 'clubs', 'blue cover' ],
-          [ 'king', 'clubs', 'red cover' ],
-          [ 'queen', 'hearts', 'blue cover' ],
-          [ 'queen', 'hearts', 'red cover' ],
-          [ 'queen', 'spades', 'blue cover' ],
-          [ 'queen', 'spades', 'red cover' ],
-          [ 'queen', 'diamonds', 'blue cover' ],
-          [ 'queen', 'diamonds', 'red cover' ],
-          [ 'queen', 'clubs', 'blue cover' ],
-          [ 'queen', 'clubs', 'red cover' ],
-          [ 'jack', 'hearts', 'blue cover' ],
-          [ 'jack', 'hearts', 'red cover' ],
-          [ 'jack', 'spades', 'blue cover' ],
-          [ 'jack', 'spades', 'red cover' ],
-          [ 'jack', 'diamonds', 'blue cover' ],
-          [ 'jack', 'diamonds', 'red cover' ],
-          [ 'jack', 'clubs', 'blue cover' ],
-          [ 'jack', 'clubs', 'red cover' ]
+          ['ace', 'hearts', 'blue cover'],
+          ['ace', 'hearts', 'red cover'],
+          ['ace', 'spades', 'blue cover'],
+          ['ace', 'spades', 'red cover'],
+          ['ace', 'diamonds', 'blue cover'],
+          ['ace', 'diamonds', 'red cover'],
+          ['ace', 'clubs', 'blue cover'],
+          ['ace', 'clubs', 'red cover'],
+          ['king', 'hearts', 'blue cover'],
+          ['king', 'hearts', 'red cover'],
+          ['king', 'spades', 'blue cover'],
+          ['king', 'spades', 'red cover'],
+          ['king', 'diamonds', 'blue cover'],
+          ['king', 'diamonds', 'red cover'],
+          ['king', 'clubs', 'blue cover'],
+          ['king', 'clubs', 'red cover'],
+          ['queen', 'hearts', 'blue cover'],
+          ['queen', 'hearts', 'red cover'],
+          ['queen', 'spades', 'blue cover'],
+          ['queen', 'spades', 'red cover'],
+          ['queen', 'diamonds', 'blue cover'],
+          ['queen', 'diamonds', 'red cover'],
+          ['queen', 'clubs', 'blue cover'],
+          ['queen', 'clubs', 'red cover'],
+          ['jack', 'hearts', 'blue cover'],
+          ['jack', 'hearts', 'red cover'],
+          ['jack', 'spades', 'blue cover'],
+          ['jack', 'spades', 'red cover'],
+          ['jack', 'diamonds', 'blue cover'],
+          ['jack', 'diamonds', 'red cover'],
+          ['jack', 'clubs', 'blue cover'],
+          ['jack', 'clubs', 'red cover']
         ]);
       });
 

@@ -9,6 +9,10 @@ export default {
         "link": "en/array/operator/allCombinations"
       },
       {
+        "text": "allPairs",
+        "link": "en/array/operator/allPairs"
+      },
+      {
         "text": "choose",
         "link": "en/array/operator/choose"
       },
