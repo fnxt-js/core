@@ -1,15 +1,15 @@
 // noinspection DuplicatedCode,UnnecessaryLocalVariableJS
 
 import * as chai from 'chai';
-import * as sinon from 'sinon';
-import 'mocha';
 import * as sinonChai from 'sinon-chai';
+const {expect} = chai;
+chai.use(sinonChai);
+import 'mocha';
 
 import * as ARRAY from '../../src/array';
 import {None, Some} from '../../src/option';
+import {consoleWarnSpy} from './console.spy';
 
-const {expect} = chai
-chai.use(sinonChai);
 
 describe('array', () => {
   describe('generator', () => {
@@ -49,21 +49,20 @@ describe('array', () => {
         expect(array).to.eql([]);
       });
       it('should build range 4..0, but warn', async () => {
-        let spy = sinon.spy(console, 'warn');
         const array = ARRAY.range(4, 0, -2);
         expect(array).to.length(2);
         expect(array).to.eql([4, 2]);
-        expect(spy).to.have.been.calledWith(
+        expect(consoleWarnSpy).to.have.been.calledWith(
           'fnxt/array/generator/range with negative steps are deprecated! just use a positive step value'
         );
       });
       it('should not build range step 0', async () => {
-        expect(()=>ARRAY.range(Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), 0))
+        expect(() => ARRAY.range(Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), 0))
           .to.throw();
       });
 
       it('should not build range 0..4 step -1', async () => {
-        expect(()=>ARRAY.range(0, Math.round(Math.random() * 1000), -1))
+        expect(() => ARRAY.range(0, Math.round(Math.random() * 1000), -1))
           .to.throw();
       });
     });
@@ -104,15 +103,34 @@ describe('array', () => {
         expect(ARRAY.length(array)).to.eql(3);
         expect(array).to.eql('fdb'.split(''));
       });
+
+
+      it('should throw when charRange arguments are invalid', async () => {
+        expect(()=>ARRAY.charRange('a', 'z',1)).not.to.throw();
+        expect(()=>ARRAY.charRange('a', 'z',0)).to.throws('step must be greater than 0');
+        expect(()=>ARRAY.charRange('a', 'z',-1)).to.throws('step must be greater than 0');
+        expect(()=>ARRAY.charRange('', 'z',1)).to.throws('from must be a character (length: 1)');
+        expect(()=>ARRAY.charRange('aa', 'z',1)).to.throws('from must be a character (length: 1)');
+        expect(()=>ARRAY.charRange('a', '',1)).to.throws('to must be a character (length: 1)');
+        expect(()=>ARRAY.charRange('a', 'zz',1)).to.throws('to must be a character (length: 1)');
+      });
+
     });
 
   });
 
   describe('operator', () => {
-    it('should length', async () => {
+
+    it('should get length', async () => {
       const array = ARRAY.of(1, 2, 3);
       const length = ARRAY.length;
       expect(length(array)).to.eql(3);
+    });
+
+    it('should fill', async () => {
+      const array = ARRAY.range(0, 3);
+      const fill = ARRAY.fill(42);
+      expect(fill(array)).to.eql([42, 42, 42]);
     });
     describe('map', () => {
       it('should map', () => {
@@ -243,7 +261,11 @@ describe('array', () => {
       it('should not flatten', () => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        expect(() => flatten(null)).to.throw();
+        expect(() => ARRAY.flatten(null)).to.throw();
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        expect(() => ARRAY.flatten(undefined)).to.throw();
       });
     });
     describe('compareWith', () => {
@@ -538,6 +560,19 @@ describe('array', () => {
       });
     });
 
+    describe('forall', () => {
+      it('should forall', () => {
+        expect(ARRAY.forall<number>(e => e >= 0)(ARRAY.range(0, 10))).to.be.true;
+        expect(ARRAY.forall<number>(e => e > 10)(ARRAY.range(0, 10))).to.be.false;
+        expect(ARRAY.forall<number>(e => e >= 0)(ARRAY.range(0, 10))).to.be.true;
+        expect(ARRAY.forall<number>(e => e > 0)(ARRAY.range(0, 10))).to.be.false;
+        expect(ARRAY.forall<number>(e => e < 10)(ARRAY.range(0, 10))).to.be.true;
+        expect(ARRAY.forall<number>(e => e !=7)(ARRAY.range(0, 10))).to.be.false;
+        expect(ARRAY.forall<number>(e => e !=0)(ARRAY.range(0, 10))).to.be.false;
+        expect(ARRAY.forall<number>(e => e !=9)(ARRAY.range(0, 10))).to.be.false;
+      });
+    });
+
     describe('splitInto', () => {
       it('should splitInto', () => {
 
@@ -604,6 +639,16 @@ describe('array', () => {
         // @ts-ignore
         expect(() => fn(null)).to.throw();
       });
+      it('should sortBy first char', () => {
+        const array = ['hello', 'foo', 'world', 'typescript'];
+        const fn = ARRAY.sortBy<string>(e => e[0]);
+        expect(fn(array)).to.eql(['foo', 'hello', 'typescript', 'world']);
+        expect(array).to.eql(['hello', 'foo', 'world', 'typescript']);
+        expect(fn([])).to.eql([]);
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        expect(() => fn(null)).to.throw();
+      });
     });
     describe('sortByDescending', () => {
       it('should sortByDescending', () => {
@@ -611,6 +656,16 @@ describe('array', () => {
         const fn = ARRAY.sortByDescending<string>((e) => e.length);
         expect(fn(array)).to.eql(['hello world', 'hello', 'world', 'foo',]);
         expect(array).to.eql(['hello', 'foo', 'hello world', 'world']);
+        expect(fn([])).to.eql([]);
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        expect(() => fn(null)).to.throw();
+      });
+      it('should sortByDescending', () => {
+        const array = ['hello', 'foo', 'world', 'typescript'];
+        const fn = ARRAY.sortByDescending<string>(e => e[0]);
+        expect(fn(array)).to.eql(['foo', 'hello', 'typescript', 'world'].reverse());
+        expect(array).to.eql(['hello', 'foo', 'world', 'typescript']);
         expect(fn([])).to.eql([]);
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore

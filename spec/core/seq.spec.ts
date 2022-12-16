@@ -1,8 +1,13 @@
-import {expect} from 'chai';
-import 'mocha';
+import * as chai from 'chai';
+import * as sinonChai from 'sinon-chai';
+
+const {expect} = chai;
+chai.use(sinonChai);
+
 import * as SEQ from '../../src/seq';
 import {Seq, Thunk} from '../../src/fnxt-types';
 import * as Opt from '../../src/option';
+import {consoleWarnSpy} from './console.spy';
 
 
 const lessThan = (v: number) => (x: number): boolean => x < v;
@@ -19,6 +24,55 @@ const runTwice = <E>(e: Thunk<E>) => {
 
 describe('sequence', () => {
   describe('generator', () => {
+
+    describe('range', () => {
+      it('should build range 0..4', async () => {
+        const seq = SEQ.range(0, 4);
+        expect(SEQ.toArray(seq)).to.length(4);
+        expect(SEQ.toArray(seq)).to.eql([0, 1, 2, 3]);
+      });
+      it('should build range 4..0', async () => {
+        const seq = SEQ.range(4, 0);
+        expect(SEQ.toArray(seq)).to.length(4);
+        expect(SEQ.toArray(seq)).to.eql([4, 3, 2, 1]);
+      });
+      it('should build range 0..4 step 2', async () => {
+        const seq = SEQ.range(0, 4, 2);
+        expect(SEQ.toArray(seq)).to.length(2);
+        expect(SEQ.toArray(seq)).to.eql([0, 2]);
+      });
+      it('should build range 4..0', async () => {
+        const seq = SEQ.range(4, 0, 2);
+        expect(SEQ.toArray(seq)).to.length(2);
+        expect(SEQ.toArray(seq)).to.eql([4, 2]);
+      });
+      it('should build empty range', async () => {
+        const seq = SEQ.range(4, 4, 1);
+        expect(SEQ.toArray(seq)).to.length(0);
+        expect(SEQ.toArray(seq)).to.eql([]);
+      });
+      it('should build range 4..0, but warn', async () => {
+
+        const seq = SEQ.range(4, 0, -2);
+        expect(SEQ.toArray(seq)).to.length(2);
+        expect(SEQ.toArray(seq)).to.eql([4, 2]);
+        expect(consoleWarnSpy).to.have.been.calledWith(
+          'fnxt/seq/generator/range with negative steps are deprecated! just use a positive step value'
+        );
+      });
+      it('should not build range step 0', async () => {
+        expect(() => SEQ.range(Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), 0))
+          .to.throw();
+      });
+
+      it('should not build range 0..4 step -1', async () => {
+        expect(() => SEQ.range(0, Math.round(Math.random() * 1000), -1))
+          .to.throw();
+      });
+    });
+
+  });
+  describe('operator', () => {
     describe('map', () => {
 
       it('should map', () => {
@@ -170,6 +224,22 @@ describe('sequence', () => {
         const gen = SEQ.empty;
         const last = SEQ.last;
         runTwice(() => expect(() => last(gen)).to.throw);
+      });
+      it('last should throw if empty array', async () => {
+
+        const last = SEQ.last;
+        expect(() => last([])).to.throws('empty sequence has no last element');
+      });
+      it('last should throw if invalid seq', async () => {
+
+        const last = SEQ.last;
+
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        expect(() => last(null)).to.throw;
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        expect(() => last(undefined)).to.throw;
       });
     });
 
