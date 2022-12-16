@@ -2,6 +2,7 @@
 
 import * as chai from 'chai';
 import * as sinonChai from 'sinon-chai';
+
 const {expect} = chai;
 chai.use(sinonChai);
 import 'mocha';
@@ -9,6 +10,7 @@ import 'mocha';
 import * as ARRAY from '../../src/array';
 import {None, Some} from '../../src/option';
 import {consoleWarnSpy} from './console.spy';
+import * as SEQ from '../../src/seq';
 
 
 describe('array', () => {
@@ -106,13 +108,13 @@ describe('array', () => {
 
 
       it('should throw when charRange arguments are invalid', async () => {
-        expect(()=>ARRAY.charRange('a', 'z',1)).not.to.throw();
-        expect(()=>ARRAY.charRange('a', 'z',0)).to.throws('step must be greater than 0');
-        expect(()=>ARRAY.charRange('a', 'z',-1)).to.throws('step must be greater than 0');
-        expect(()=>ARRAY.charRange('', 'z',1)).to.throws('from must be a character (length: 1)');
-        expect(()=>ARRAY.charRange('aa', 'z',1)).to.throws('from must be a character (length: 1)');
-        expect(()=>ARRAY.charRange('a', '',1)).to.throws('to must be a character (length: 1)');
-        expect(()=>ARRAY.charRange('a', 'zz',1)).to.throws('to must be a character (length: 1)');
+        expect(() => ARRAY.charRange('a', 'z', 1)).not.to.throw();
+        expect(() => ARRAY.charRange('a', 'z', 0)).to.throws('step must be greater than 0');
+        expect(() => ARRAY.charRange('a', 'z', -1)).to.throws('step must be greater than 0');
+        expect(() => ARRAY.charRange('', 'z', 1)).to.throws('from must be a character (length: 1)');
+        expect(() => ARRAY.charRange('aa', 'z', 1)).to.throws('from must be a character (length: 1)');
+        expect(() => ARRAY.charRange('a', '', 1)).to.throws('to must be a character (length: 1)');
+        expect(() => ARRAY.charRange('a', 'zz', 1)).to.throws('to must be a character (length: 1)');
       });
 
     });
@@ -187,6 +189,15 @@ describe('array', () => {
           'h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd',
         ]);
       });
+
+      it('should collect iterable', async () => {
+        const arr = [1, 2, 3];
+        const mapping = (x: number) => SEQ.of(x, x + 1);
+        const op = ARRAY.collect(mapping);
+        expect(SEQ.toArray(op(arr))).to.eql([1, 2, 2, 3, 3, 4]);
+        expect(arr).to.eql([1, 2, 3]);
+      });
+
     });
 
     describe('append', () => {
@@ -567,9 +578,9 @@ describe('array', () => {
         expect(ARRAY.forall<number>(e => e >= 0)(ARRAY.range(0, 10))).to.be.true;
         expect(ARRAY.forall<number>(e => e > 0)(ARRAY.range(0, 10))).to.be.false;
         expect(ARRAY.forall<number>(e => e < 10)(ARRAY.range(0, 10))).to.be.true;
-        expect(ARRAY.forall<number>(e => e !=7)(ARRAY.range(0, 10))).to.be.false;
-        expect(ARRAY.forall<number>(e => e !=0)(ARRAY.range(0, 10))).to.be.false;
-        expect(ARRAY.forall<number>(e => e !=9)(ARRAY.range(0, 10))).to.be.false;
+        expect(ARRAY.forall<number>(e => e != 7)(ARRAY.range(0, 10))).to.be.false;
+        expect(ARRAY.forall<number>(e => e != 0)(ARRAY.range(0, 10))).to.be.false;
+        expect(ARRAY.forall<number>(e => e != 9)(ARRAY.range(0, 10))).to.be.false;
       });
     });
 

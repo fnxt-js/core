@@ -117,11 +117,18 @@ describe('sequence', () => {
         runTwice(() => expect([...op(gen)]).to.eql([1, 2, 2, 3, 3, 4]));
       });
 
-      it('should collect iterable', async () => {
+      it('should collect array', async () => {
         const gen = SEQ.of(1, 2, 3,);
         const mapping = (x: number) => [x, x + 1];
         const op = SEQ.collect(mapping);
         runTwice(() => expect([...op(gen)]).to.eql([1, 2, 2, 3, 3, 4]));
+      });
+
+      it('should collect iterable', async () => {
+        const arr = [1, 2, 3];
+        const mapping = (x: number) => SEQ.of(x, x + 1);
+        const op = SEQ.collect(mapping);
+        runTwice(() => expect([...op(arr)]).to.eql([1, 2, 2, 3, 3, 4]));
       });
 
     });
