@@ -1,8 +1,8 @@
 import {expect} from 'chai';
 import 'mocha';
-import * as SEQ from 'fnxt/seq';
-import {Seq, Thunk} from 'fnxt/fnxt-types';
-import * as Opt from 'fnxt/option';
+import * as SEQ from '../../src/seq';
+import {Seq, Thunk} from '../../src/fnxt-types';
+import * as Opt from '../../src/option';
 
 
 const lessThan = (v: number) => (x: number): boolean => x < v;

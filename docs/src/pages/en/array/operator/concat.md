@@ -7,11 +7,13 @@ layout: ../../../../layouts/MainLayout.astro
 Takes two arrays and concatenates them.
 
 ## Type
+
 ```ts
 type concat = <E>(array1: Array<E>) => (array2: Array<E>) => Array<E>
 ```
 
 ## Example
+
 ```ts
 import * as ARRAY from 'fnxt/array';
 

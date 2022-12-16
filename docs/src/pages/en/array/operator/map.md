@@ -6,11 +6,13 @@ layout: ../../../../layouts/MainLayout.astro
 Maps each value of an array to another value and returns a new array.
 
 ## Type
+
 ```ts
-type map = <E,F>(e: UnaryFunction<E, F>) =>  (a:Array<E>) => Array<R>
+type map = <E, F>(e: UnaryFunction<E, F>) => (a: Array<E>) => Array<R>
 ```
 
 ## Example
+
 ```ts
 import * as ARRAY from 'fnxt/array';
 

@@ -1,27 +1,119 @@
 // noinspection DuplicatedCode,UnnecessaryLocalVariableJS
 
-import {expect} from 'chai';
+import * as chai from 'chai';
+import * as sinon from 'sinon';
 import 'mocha';
-import * as ARRAY from 'fnxt/array';
-import {None, Some} from 'fnxt/option';
+import * as sinonChai from 'sinon-chai';
+
+import * as ARRAY from '../../src/array';
+import {None, Some} from '../../src/option';
+
+const {expect} = chai
+chai.use(sinonChai);
 
 describe('array', () => {
   describe('generator', () => {
+    describe('empty', () => {
 
-    it('should zero length', async () => {
-      const array = ARRAY.empty;
-      const length = ARRAY.length;
-      expect(length(array)).to.eql(0);
+      it('should build empty', async () => {
+        const array = ARRAY.empty;
+        const length = ARRAY.length;
+        expect(length(array)).to.eql(0);
+      });
     });
 
+    describe('range', () => {
+      it('should build range 0..4', async () => {
+        const array = ARRAY.range(0, 4);
+        expect(array).to.length(4);
+        expect(array).to.eql([0, 1, 2, 3]);
+      });
+      it('should build range 4..0', async () => {
+        const array = ARRAY.range(4, 0);
+        expect(array).to.length(4);
+        expect(array).to.eql([4, 3, 2, 1]);
+      });
+      it('should build range 0..4 step 2', async () => {
+        const array = ARRAY.range(0, 4, 2);
+        expect(array).to.length(2);
+        expect(array).to.eql([0, 2]);
+      });
+      it('should build range 4..0', async () => {
+        const array = ARRAY.range(4, 0, 2);
+        expect(array).to.length(2);
+        expect(array).to.eql([4, 2]);
+      });
+      it('should build empty range', async () => {
+        const array = ARRAY.range(4, 4, 1);
+        expect(array).to.length(0);
+        expect(array).to.eql([]);
+      });
+      it('should build range 4..0, but warn', async () => {
+        let spy = sinon.spy(console, 'warn');
+        const array = ARRAY.range(4, 0, -2);
+        expect(array).to.length(2);
+        expect(array).to.eql([4, 2]);
+        expect(spy).to.have.been.calledWith(
+          'fnxt/array/generator/range with negative steps are deprecated! just use a positive step value'
+        );
+      });
+      it('should not build range step 0', async () => {
+        expect(()=>ARRAY.range(Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), 0))
+          .to.throw();
+      });
+
+      it('should not build range 0..4 step -1', async () => {
+        expect(()=>ARRAY.range(0, Math.round(Math.random() * 1000), -1))
+          .to.throw();
+      });
+    });
+
+    describe('charRange', () => {
+      it('should build charRange a-z', async () => {
+        const array = ARRAY.charRange('a', 'z');
+        expect(ARRAY.length(array)).to.eql(26);
+        expect(array).to.eql('abcdefghijklmnopqrstuvwxyz'.split(''));
+      });
+      it('should build charRange A-Z', async () => {
+        const array = ARRAY.charRange('A', 'Z');
+        expect(ARRAY.length(array)).to.eql(26);
+        expect(array).to.eql('abcdefghijklmnopqrstuvwxyz'.toLocaleUpperCase().split(''));
+      });
+      it('should build charRange a-f', async () => {
+        const array = ARRAY.charRange('a', 'f');
+        const length = ARRAY.length;
+        expect(length(array)).to.eql(6);
+        expect(array).to.eql('abcdef'.split(''));
+
+      });
+
+      it('should build charRange z-a', async () => {
+        const array = ARRAY.charRange('z', 'a');
+        expect(ARRAY.length(array)).to.eql(26);
+        expect(array).to.eql('abcdefghijklmnopqrstuvwxyz'.split('').reverse());
+      });
+
+      it('should build charRange a-f step 2', async () => {
+        const array = ARRAY.charRange('a', 'f', 2);
+        expect(ARRAY.length(array)).to.eql(3);
+        expect(array).to.eql('ace'.split(''));
+      });
+
+      it('should build charRange f-a step 2', async () => {
+        const array = ARRAY.charRange('f', 'a', 2);
+        expect(ARRAY.length(array)).to.eql(3);
+        expect(array).to.eql('fdb'.split(''));
+      });
+    });
+
+  });
+
+  describe('operator', () => {
     it('should length', async () => {
       const array = ARRAY.of(1, 2, 3);
       const length = ARRAY.length;
       expect(length(array)).to.eql(3);
     });
-
-  });
-  describe('operator', () => {
     describe('map', () => {
       it('should map', () => {
         const array: number[] = [1, 2, 3, 4];
@@ -67,6 +159,7 @@ describe('array', () => {
         expect(() => fn(null)).to.throw();
       });
     });
+
     describe('collect', () => {
       it('should collect', () => {
         const array = ['hello', 'world'];
@@ -89,6 +182,7 @@ describe('array', () => {
         expect(array2).to.eql([4, 5, 6]);
       });
     });
+
     describe('concat', () => {
       it('should concat', () => {
         const array1 = [1, 2, 3];
@@ -155,7 +249,7 @@ describe('array', () => {
     describe('compareWith', () => {
       it('should compareWith minimal', () => {
         const fn = ARRAY.compareWith<number>((a, b) => a - b);
-        console.log(fn([1])([1, 2]), 1, '1');
+
         expect(fn([1])([1, 2])).to.lt(0);
         expect(fn([1, 2])([1])).to.gt(0);
         expect(fn([])([1])).to.lt(0);
@@ -186,8 +280,8 @@ describe('array', () => {
 
       it('should compareWith example', () => {
         const fn = ARRAY.compareWith<number>((a, b) => a - b);
-        expect(fn([1,2,3])([1,2,4])).to.lt(0);
-        expect(fn([1,2,3])([1,2,3])).to.eq(0);
+        expect(fn([1, 2, 3])([1, 2, 4])).to.lt(0);
+        expect(fn([1, 2, 3])([1, 2, 3])).to.eq(0);
 
       });
 
@@ -957,7 +1051,7 @@ describe('array', () => {
 
         const fn = ARRAY.allCombinations;
         const expansion = fn(['ace', 'king', 'queen', 'jack'], ['hearts', 'spades', 'diamonds', 'clubs'], ['blue cover', 'red cover']);
-        console.log();
+
         expect(expansion).to.eql([
           ['ace', 'hearts', 'blue cover'],
           ['ace', 'hearts', 'red cover'],

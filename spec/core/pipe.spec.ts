@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import 'mocha';
-import {pipe} from 'fnxt/pipe';
+import {pipe} from '../../src/pipe';
 
 describe('pipe', () => {
   it('should pipe', ()=> {

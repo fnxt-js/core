@@ -12,8 +12,8 @@ import {
     None,
     OptionType,
     Some
-} from 'fnxt/option';
-import {pipe} from 'fnxt/pipe';
+} from '../../src/option';
+import {pipe} from '../../src/pipe';
 
 describe('option', () => {
     describe('constrution', () => {

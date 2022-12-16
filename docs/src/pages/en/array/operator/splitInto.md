@@ -10,11 +10,13 @@ layout: ../../../../layouts/MainLayout.astro
 Splits the input array into at most `count` chunks.
 
 ## Type
+
 ```ts
 type splitInto = <E>(count: number) => (array: E[]) => E[][]
 ```
 
 ## Example
+
 ```ts
 import * as ARRAY from 'fnxt/array';
 
@@ -24,5 +26,6 @@ splitInto(array)// -> [[1, 2, 3], [4, 5], [6, 7]]
 ```
 
 ## See Also
+
 - [chunkBySize](/core/en/array/operator/chunkBySize)
 - [partition](/core/en/array/operator/partition)

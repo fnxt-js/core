@@ -6,7 +6,7 @@
     "comment-format": [false],
     "no-angle-bracket-type-assertion": [false],
     "no-console": [false],
-    "no-implicit-dependencies": [true, "dev", ["fnxt", "chai"]],
+    "no-implicit-dependencies": [true, "dev", [ "chai"]],
     "no-object-literal-type-assertion": [false],
     "no-shadowed-variable": [false],
     "no-string-literal": [false],
@@ -20,6 +20,7 @@
     "prefer-const": [false],
     "prefer-for-of": [false],
     "radix": [false],
-    "triple-equals": [false]
+    "triple-equals": [false],
+    "import-blacklist": [true, "fnxt"]
   }
 }

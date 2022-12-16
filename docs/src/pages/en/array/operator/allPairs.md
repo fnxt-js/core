@@ -5,11 +5,15 @@ layout: ../../../../layouts/MainLayout.astro
 ---
 
 Returns a new array that contains all pairings of elements from two array.
+
 ## Type
+
 ```ts
 type allPairs = <A>(a: A[]) => <B>(b: B[]) => [A, B][]
 ```
+
 ## Example
+
 ```ts
 import {allPairs} from 'fnxt/array';
 
@@ -22,4 +26,5 @@ allPairs([1, 2, 3])(['a', 'b', 'c']); // ->
 ```
 
 ## See Also
+
 - [allCombinations](/core/en/array/operator/allCombinations)

@@ -4,16 +4,18 @@ description: choose
 layout: ../../../../layouts/MainLayout.astro
 ---
 
-Applies a function to each element in an array and then returns an array of values v where 
-the applied function returned Some(v). Returns an empty array when the input array is empty 
+Applies a function to each element in an array and then returns an array of values v where
+the applied function returned Some(v). Returns an empty array when the input array is empty
 or when the applied chooser function returns None for all elements.
 
 ## Type
+
 ```ts
-type choose = <E,F>(e: Chooser<E, F>) => (array:Array<E>) => Array<F>
+type choose = <E, F>(e: Chooser<E, F>) => (array: Array<E>) => Array<F>
 ```
 
 ## Example
+
 ```ts
 import * as ARRAY from 'fnxt/array';
 
