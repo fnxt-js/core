@@ -1,8 +1,8 @@
 # FNXT 
 
-- a library for JavaScript and TypeScript.
-- focuses on a functional JavaScript and TypeScript experience.
-- it does not mutate values
+- 🚀 a functional JavaScript and TypeScript experience.
+- 🤗 does not mutate values
+- 🍎 a small footprint through tree shaking
 
 ## Installation
 ```shell
@@ -27,3 +27,9 @@ const composed = pipe(
 
 composed([1,2,3,4,5]); //-> [2,6,10]
 ```
+
+## Tested
+
+Thoroughly tested and reliable.
+The code coverage can be found [here](https://fnxt-js.github.io/core/coverage.html).
+
