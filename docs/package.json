@@ -7,7 +7,9 @@
     "dev": "astro dev",
     "start": "astro dev",
     "check": "astro check && tsc",
-    "build": "astro build",
+    "build:asro": "astro build",
+    "copy:cov": "node include-cov.js",
+    "build": "npm run build:asro && npm run copy:cov",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -30,6 +32,7 @@
     "tailwindcss": "^3.2.4"
   },
   "devDependencies": {
+    "fs-extra": "^11.1.0",
     "sass": "^1.56.1"
   }
 }
