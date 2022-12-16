@@ -65,6 +65,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
+      - run: npm run build:doc
       - run: npm run test:coverage:dev
       - run: mv coverage/index.html coverage/coverage.html
       - run: cp coverage/ dist/ -r
