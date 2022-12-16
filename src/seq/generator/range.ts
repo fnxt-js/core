@@ -1,5 +1,4 @@
 import {Gen, Seq, Thunk} from 'fnxt/fnxt-types';
-import {empty} from './empty';
 import {toSequence} from '../build';
 
 
@@ -31,12 +30,11 @@ export const range = (from: number, to: number, step = 1): Seq<number> => {
   if (step === 0) {
     throw Error('step must not be 0');
   }
-  if (from < to) {
-    return toSequence(rangeUp(from, to, step));
-  }
-  if (from > to) {
-    return toSequence(rangeDown(from, to, step));
-  }
-  return empty;
+  return toSequence(from <= to
+    ? rangeUp(from, to, step)
+    : rangeDown(from, to, step)
+  );
+
+
 };
 
