@@ -66,7 +66,7 @@ jobs:
       - run: npm ci
       - run: npm run test:coverage:dev
       - run: mv coverage/index.html coverage/coverage.html
-      - run: cp coverage/ ./ -r
+      - run: cp coverage/ dist/ -r
 
       - name: Checkout your repository using git
         uses: actions/checkout@v2
