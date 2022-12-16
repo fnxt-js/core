@@ -34,26 +34,25 @@ jobs:
       - run: npm run test
 
 
-  coverage:
-
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [ 18.x ]
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm run test:coverage:dev
+#  coverage:
+#
+#    runs-on: ubuntu-latest
+#
+#    strategy:
+#      matrix:
+#        node-version: [ 18.x ]
+#
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Use Node.js ${{ matrix.node-version }}
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: ${{ matrix.node-version }}
+#      - run: npm ci
+#      - run: npm run test:coverage:dev
 
 
   astro-build:
-    needs: [coverage]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
@@ -64,6 +63,15 @@ jobs:
           path: docs # The root location of your Astro project inside the repository. (optional)
           node-version: 16 # The specific version of Node that should be used to build your site. Defaults to 16. (optional)
           package-manager: npm # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
+
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run test:coverage:dev
+      - run: mv coverage/index.html coverage/coverage.html
       - run: cp coverage/ docs/dist/ -r
 
   astro-deploy:
