@@ -101,6 +101,16 @@ export default {
         "link": "en/array/operator/tryFind"
       }
     ],
+    "array generators": [
+      {
+        "text": "charRange",
+        "link": "en/array/generator/charRange"
+      },
+      {
+        "text": "range",
+        "link": "en/array/generator/range"
+      }
+    ],
     "sequence operators": [
       {
         "text": "choose",

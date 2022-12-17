@@ -31,6 +31,7 @@ export default ${JSON.stringify({
         en:
             {
                 'array operators': await buildConfig(src,lang, 'array/operator'),
+                'array generators': await buildConfig(src,lang, 'array/generator'),
                 'sequence operators': await buildConfig(src,lang, 'seq/operator'),
                 'sequence generators': await buildConfig(src,lang, 'seq/generator'),
             }
