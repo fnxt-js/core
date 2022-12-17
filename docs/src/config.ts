@@ -1,6 +1,6 @@
 
 export const SITE = {
-  title: 'Documentation',
+  title: 'FNXT documentation',
   description: 'Your website description.',
   defaultLanguage: 'en_US',
 };
