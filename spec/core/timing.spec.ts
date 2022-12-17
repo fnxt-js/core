@@ -1,10 +1,11 @@
 import {Mutation, Predicate, Tuple} from '../../src/fnxt-types';
-
+const {performance} = require('perf_hooks');
 import * as chai from 'chai';
 import * as sinonChai from 'sinon-chai';
 import 'mocha';
 
 import * as ARRAY from '../../src/array';
+
 import wilcoxon = require('@stdlib/stats-wilcoxon');
 import {Chooser, None, OptionType, Some} from '../../src/option';
 
