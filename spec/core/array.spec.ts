@@ -1246,11 +1246,9 @@ describe('array', () => {
 
       it('should range small step', () => {
 
-
         const l = ARRAY.zip<number>(ARRAY.range(0, 1, .2))<number>([0, .2, .4, .6, .8]);
         expect(l.length).to.eql(5);
         l.forEach(([a, b]) => expect(a).to.approximately(b, 1e-8));
-
 
       });
     });

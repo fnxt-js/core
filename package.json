@@ -58,6 +58,7 @@
   },
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
+    "@stdlib/stats-wilcoxon": "^0.0.7",
     "@types/chai": "^4.2.14",
     "@types/mocha": "^10.0.1",
     "@types/node": "^14.14.12",

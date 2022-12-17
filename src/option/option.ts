@@ -1,6 +1,6 @@
 export enum OptionType {
-  Some = 'Some',
-  None = 'None',
+  Some,
+  None,
 }
 
 interface SomeType<E> {
