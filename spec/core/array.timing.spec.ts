@@ -1,5 +1,5 @@
 import {Mutation, Predicate, Tuple} from '../../src/fnxt-types';
-const {performance} = require('perf_hooks');
+
 import * as chai from 'chai';
 import * as sinonChai from 'sinon-chai';
 import 'mocha';
@@ -10,10 +10,12 @@ import wilcoxon = require('@stdlib/stats-wilcoxon');
 import {Chooser, None, OptionType, Some} from '../../src/option';
 
 
+import {performance} from 'perf_hooks';
+
 const {expect} = chai;
 chai.use(sinonChai);
 
-/*############################################################################################################*/
+/*********************************************************************/
 
 function shuffle<E>(arr: E[]) {
   const a = arr.slice();
@@ -69,7 +71,7 @@ function run<T, R>(fnxt: (array: T[]) => R, alt: (array: T[]) => R, data: T[]) {
   expect(result.pValue).to.lessThan(alpha);
 }
 
-/*############################################################################################################*/
+/*********************************************************************/
 
 describe('performance test', function () {
 
