@@ -11,6 +11,7 @@ import {Chooser, None, OptionType, Some} from '../../src/option';
 
 
 import {performance} from 'perf_hooks';
+import * as process from 'process';
 
 const {expect} = chai;
 chai.use(sinonChai);
@@ -47,13 +48,18 @@ function experiment<A, B>(reps: number, partition: (array: A[]) => B, data: A[])
 const oneSecond = 1000;
 const oneMinute = 60 * oneSecond;
 
+const print = (!process.env.PRINT_DEBUG)
+  ? () => null
+  : (data: any) => console.log(data);
+
+
 function printTimings(a: number[], b: number[]) {
-  console.log('x=' + JSON.stringify(a));
-  console.log('y=' + JSON.stringify(b));
+  print('x=' + JSON.stringify(a));
+  print('y=' + JSON.stringify(b));
 }
 
-function run<T, R>(fnxt: (array: T[]) => R, alt: (array: T[]) => R, data: T[]) {
-  const replications = 1000;
+function run<T, R>(fnxt: (array: T[]) => R, alt: (array: T[]) => R, data: T[], replications = 1000) {
+
   const alpha = .05;
   expect(fnxt(data)).to.eql(alt(data));
 
@@ -63,11 +69,10 @@ function run<T, R>(fnxt: (array: T[]) => R, alt: (array: T[]) => R, data: T[]) {
   const y = experiment(100, alt, data); //warmup
   const b = experiment(replications, alt, data);
 
-  // printTimings(a, b);
+  printTimings(a, b);
 
   expect(x.length).to.eql(y.length);
   const result = wilcoxon(a, b, {alternative: 'less'});
-
   expect(result.pValue).to.lessThan(alpha);
 }
 
@@ -75,7 +80,7 @@ function run<T, R>(fnxt: (array: T[]) => R, alt: (array: T[]) => R, data: T[]) {
 
 describe('performance test', function () {
 
-  const length = 10000;
+  const length = 100000;
 
   it('partition', () => {
     const partition = <T>(predicate: Predicate<T>) =>
@@ -108,13 +113,12 @@ describe('performance test', function () {
     };
 
 
-    const data = shuffle(ARRAY.range(0, length));
+    const data = ARRAY.range(0, length);
     const index = Math.round(length / 2);
     const fnxt = ARRAY.splitAt(index);
     const alternative = splitAt(index);
     run(fnxt, alternative, data);
   }).timeout(oneMinute);
-
 
   it('skipWhile', () => {
     const skipWhile = <T>(predicate: Predicate<T>) => (array: T[]): T[] => {
@@ -133,28 +137,6 @@ describe('performance test', function () {
     const predicate: Predicate<number> = (e) => length / 2 <= e;
     const fnxt = ARRAY.skipWhile(predicate);
     const alternative = skipWhile(predicate);
-    run(fnxt, alternative, data);
-  }).timeout(oneMinute);
-
-
-  it('takeWhile', () => {
-
-    const takeWhile = <T>(predicate: Predicate<T>) => (array: T[]): T[] => {
-      const result = [];
-      for (const element of array) {
-        if (!predicate(element)) {
-          break;
-        }
-        result.push(element);
-      }
-      return result;
-    };
-
-
-    const data = ARRAY.range(0, length);
-    const predicate: Predicate<number> = (e) => length / 2 <= e;
-    const fnxt = ARRAY.takeWhile(predicate);
-    const alternative = takeWhile(predicate);
     run(fnxt, alternative, data);
   }).timeout(oneMinute);
 

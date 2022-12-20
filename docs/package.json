@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
+    "astro:dev": "astro dev",
     "start": "astro dev",
     "check": "astro check && tsc",
     "build:asro": "astro build",
@@ -24,6 +24,7 @@
     "@types/react": "^17.0.45",
     "@types/react-dom": "^18.0.0",
     "astro": "^1.6.7",
+    "axios": "^1.2.1",
     "fnxt": "^1.6.0",
     "preact": "^10.7.3",
     "react": "^18.1.0",

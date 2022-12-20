@@ -1,0 +1,46 @@
+
+.cov-table {
+
+  .tree-compact {
+    background: hsl(calc(var(--quality) * 1.2), 50%, 85%);
+    border-bottom: 1px solid rgba(114, 114, 114, 0.5);
+    &.empty{
+      background: transparent;
+    }
+
+    td{
+      padding: .25em 2em ;
+    }
+  }
+
+
+  .chart {
+    position: relative;
+    background: hsl(calc(var(--progress) * 1.2), 100%, 30%);
+    line-height: 0;
+
+
+    &.empty{
+      background: transparent;
+
+      .cover-fill {
+        background: transparent;
+      }
+    }
+
+    .cover-fill {
+      background: hsl(calc(var(--progress) * 1.2), 100%, 20%);
+    }
+
+    .cover-empty {
+
+    }
+
+    .cover-fill, .cover-empty {
+      display: inline-block;
+      height: 12px;
+    }
+  }
+
+
+}

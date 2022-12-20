@@ -64,6 +64,7 @@ jobs:
       - run: npm run test:coverage
       - run: mv coverage/index.html coverage/coverage.html
       - run: cp coverage/ dist/ -r
+      - run: node -r ts-node/register tools/build-cov-report.ts
 
 
 
