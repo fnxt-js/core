@@ -1,1 +1,1 @@
-export const copy = <E>(array: E[]): E[] => [...array];
+export const copy = <E>(array: E[]): E[] => Array.from(array);

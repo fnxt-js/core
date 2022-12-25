@@ -42,9 +42,9 @@
     "prepublishOnly": "npm run build:package && npm run lint && npm run test:dev && npm run test && npm run test:circular && npm run build:doc",
     "prebuild": "rimraf dist",
     "test": "npm run compile && mocha \"dist/spec/**/*.spec.js\"",
-    "test:dev": "mocha -r ts-node/register spec/**/*.spec.ts",
-    "test:spec": "mocha -r ts-node/register $(find spec/**/*.spec.ts ! -path '*timing.spec.ts')",
-    "test:coverage": "rimraf coverage && nyc mocha -r ts-node/register $(find spec/**/*.spec.ts ! -path '*timing.spec.ts')",
+    "test:dev": "npm run compile && mocha -r ts-node/register \"spec/**/*.spec.ts\"",
+    "test:spec": "mocha -r ts-node/register \"spec/**/*.spec.ts\"",
+    "test:coverage": "rimraf dist && rimraf coverage && npm run compile && nyc mocha -r ts-node/register \"spec/**/*.spec.ts\"",
     "build": "npm run compile",
     "build:clean": "shx rm -rf ./dist",
     "compile": "tsc -b ./src/tsconfig.cjs.json ./src/tsconfig.cjs.spec.json ./src/tsconfig.esm.json ./src/tsconfig.esm5.json ./src/tsconfig.esm5.rollup.json ./src/tsconfig.types.json ./src/tsconfig.types.spec.json ./spec/tsconfig.json",
@@ -54,6 +54,7 @@
   "author": "mb",
   "license": "MIT",
   "dependencies": {
+    "choma": "^1.2.1",
     "tslib": "^2.3.1"
   },
   "devDependencies": {

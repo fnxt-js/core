@@ -1,3 +1,5 @@
+import {Logger} from '../../internal/logger';
+
 function up(step: number, from: number, to: number) {
   if (step < 0) {
     throw Error('step must be greater than 0');
@@ -12,7 +14,7 @@ function up(step: number, from: number, to: number) {
 function down(step: number, from: number, to: number) {
 
   if (step < 0) {// TODO remove after 2023.q2
-    (console as any).warn('fnxt/array/generator/range with negative steps are deprecated! just use a positive step value');
+    Logger.warn('fnxt/array/generator/range with negative steps are deprecated! just use a positive step value');
     step = Math.abs(step);
   }
 

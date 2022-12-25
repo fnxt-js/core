@@ -1,5 +1,6 @@
 import {Gen, Seq, Thunk} from 'fnxt/fnxt-types';
 import {toSequence} from '../build';
+import {Logger} from '../../internal/logger';
 
 
 const rangeUp = (from: number, to: number, step: number): Thunk<Gen<number>> => {
@@ -16,7 +17,7 @@ const rangeUp = (from: number, to: number, step: number): Thunk<Gen<number>> => 
 const rangeDown = (from: number, to: number, step: number): Thunk<Gen<number>> => {
   if (step < 0) {
     // TODO remove after 2023.q2
-    ;(console as any).warn('fnxt/seq/generator/range with negative steps are deprecated! just use a positive step value');
+    Logger.warn('fnxt/seq/generator/range with negative steps are deprecated! just use a positive step value');
     step = -step;
   }
   return function* () {

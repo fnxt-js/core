@@ -1,17 +1,17 @@
 import {expect} from 'chai';
 import 'mocha';
 import {
-    bind,
-    count,
-    defaultValue,
-    defaultWith,
-    exists,
-    filter,
-    flatten,
-    map,
-    None,
-    OptionType,
-    Some
+  bind,
+  count,
+  defaultValue,
+  defaultWith,
+  exists,
+  filter,
+  flatten,
+  map,
+  None,
+  OptionType,
+  Some
 } from '../../src/option';
 import {pipe} from '../../src/pipe';
 
@@ -21,6 +21,7 @@ describe('option', () => {
             expect(None).to.eql(None);
             expect(None.type).to.eql(OptionType.None);
         });
+
 
         it('should build Some', () => {
             const some = Some(42);

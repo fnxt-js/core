@@ -20,7 +20,6 @@
     "prefer-const": [false],
     "prefer-for-of": [false],
     "radix": [false],
-    "triple-equals": [false],
-    "import-blacklist": [true, "fnxt"]
+    "triple-equals": [false]
   }
 }

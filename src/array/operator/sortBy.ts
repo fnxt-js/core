@@ -1,7 +1,7 @@
 import {KeyProjection} from 'fnxt/fnxt-types';
 
 /**
- * @deprecated use sortWith
+ * @deprecated use fnxt/array/sortWith
  * @param fn
  */
 export const sortBy = <T>(fn: KeyProjection<T>) => (array: T[]): T[] => {

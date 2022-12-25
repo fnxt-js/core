@@ -46,9 +46,11 @@ export * from './takeWhileInclusive';
 export * from './where';
 export * from './exists';
 export * from './forall';
+export * from './every';
 export * from './find';
 export * from './findBack';
 export * from './findIndex';
+export * from './tryFindIndex';
 export * from './contains';
 
 export * from './distinctBy';

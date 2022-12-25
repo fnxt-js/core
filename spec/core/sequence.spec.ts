@@ -1,13 +1,12 @@
 import * as chai from 'chai';
 import * as sinonChai from 'sinon-chai';
-
-const {expect} = chai;
-chai.use(sinonChai);
-
 import * as SEQ from '../../src/seq';
 import {Seq, Thunk} from '../../src/fnxt-types';
 import * as Opt from '../../src/option';
 import {consoleWarnSpy} from './console.spy';
+
+const {expect} = chai;
+chai.use(sinonChai);
 
 
 const lessThan = (v: number) => (x: number): boolean => x < v;
@@ -52,13 +51,18 @@ describe('sequence', () => {
         expect(SEQ.toArray(seq)).to.eql([]);
       });
       it('should build range 4..0, but warn', async () => {
-
+        const stub = consoleWarnSpy()
         const seq = SEQ.range(4, 0, -2);
-        expect(SEQ.toArray(seq)).to.length(2);
-        expect(SEQ.toArray(seq)).to.eql([4, 2]);
-        expect(consoleWarnSpy).to.have.been.calledWith(
+
+        expect(stub).to.have.been.calledWith(
           'fnxt/seq/generator/range with negative steps are deprecated! just use a positive step value'
         );
+        stub.restore()
+        stub.resetHistory()
+
+
+        expect(SEQ.toArray(seq)).to.length(2);
+        expect(SEQ.toArray(seq)).to.eql([4, 2]);
       });
       it('should not build range step 0', async () => {
         expect(() => SEQ.range(Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), 0))
@@ -483,7 +487,15 @@ describe('sequence', () => {
       });
 
       it('should count down', () => {
+
+        const stub = consoleWarnSpy()
         const seq = SEQ.range(4, 1, -1);
+
+        expect(stub).to.have.been.calledWith(
+          'fnxt/seq/generator/range with negative steps are deprecated! just use a positive step value'
+        );
+        stub.restore()
+        stub.resetHistory()
         runTwice(() => expect([...seq]).to.eql([4, 3, 2]));
       });
 

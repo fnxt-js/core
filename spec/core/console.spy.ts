@@ -1,3 +1,5 @@
 import * as sinon from 'sinon';
 
-export const consoleWarnSpy = sinon.spy(console, 'warn');
+import {Logger} from '../../src/internal/logger';
+
+export const consoleWarnSpy = ()=>sinon.stub(Logger, 'warn');

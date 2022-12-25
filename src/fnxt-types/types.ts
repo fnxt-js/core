@@ -5,7 +5,8 @@ export type BinaryFunction<E, F, R> = (e: E, f: F) => R;
 
 
 export type NumberProjection<E> = UnaryFunction<E, number>;
-export type KeyProjection<E> = UnaryFunction<E, string> | NumberProjection<E>;
+export type StringProjection<E> = UnaryFunction<E, string>;
+export type KeyProjection<E> = StringProjection<E> | NumberProjection<E>;
 export type Predicate<E> = (e: E) => boolean;
 export type Comparer<E> = BinaryFunction<E, E, number>;
 export type Reduction<E> = BinaryFunction<E, E, E>;

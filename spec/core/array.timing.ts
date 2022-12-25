@@ -5,13 +5,12 @@ import * as sinonChai from 'sinon-chai';
 import 'mocha';
 
 import * as ARRAY from '../../src/array';
-
-import wilcoxon = require('@stdlib/stats-wilcoxon');
 import {Chooser, None, OptionType, Some} from '../../src/option';
 
 
 import {performance} from 'perf_hooks';
 import * as process from 'process';
+import wilcoxon = require('@stdlib/stats-wilcoxon');
 
 const {expect} = chai;
 chai.use(sinonChai);
