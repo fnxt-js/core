@@ -139,6 +139,20 @@ describe('performance test', function () {
     run(fnxt, alternative, data);
   }).timeout(oneMinute);
 
+  it('findBack vs rev', () => {
+    const findBack = <T>(fn: Predicate<T>) => (array: T[]): T => {
+      return ARRAY.find(fn)(ARRAY.rev(array));
+    };
+
+    const data = ARRAY.range(0, length);
+    const element = Math.round(length / 2)
+
+    const predicate: Predicate<number> = (e) => e === element;
+    const fnxt = ARRAY.findBack(predicate);
+    const alternative = findBack(predicate);
+    run(fnxt, alternative, data);
+  }).timeout(oneMinute);
+
 
   it('tail', () => {
     const tail = <T>(array: T[]): T[] => {
