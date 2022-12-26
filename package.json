@@ -1,6 +1,6 @@
 {
   "name": "fnxt",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "Functional Extensions for modern JavaScript",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm5/index.js",
