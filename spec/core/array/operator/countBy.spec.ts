@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 import {countBy} from '../../../../src/array';
 import {checkThrow} from '../../../support/checkThrow';
-import {UnaryFunction} from '../../../../fnxt-types';
+import {UnaryFunction} from '../../../../src/fnxt-types';
 
 
 describe('countBy', () => {
