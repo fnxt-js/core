@@ -1,4 +1,4 @@
-import {Mutation, Predicate, Tuple} from '../../src/fnxt-types';
+import {KeyProjection, Mutation, Predicate, Tuple} from '../../src/fnxt-types';
 
 import * as chai from 'chai';
 import * as sinonChai from 'sinon-chai';
@@ -145,7 +145,7 @@ describe('performance test', function () {
     };
 
     const data = ARRAY.range(0, length);
-    const element = Math.round(length / 2)
+    const element = Math.round(length / 2);
 
     const predicate: Predicate<number> = (e) => e === element;
     const fnxt = ARRAY.findBack(predicate);
@@ -166,6 +166,26 @@ describe('performance test', function () {
     const data = ARRAY.range(0, length);
 
     run(ARRAY.tail, tail, data);
+  }).timeout(oneMinute);
+
+
+  it('countBy', () => {
+    const p = (x: number) => x % 1000;
+
+    type MapType<E> = Map<number | string, number>
+
+    const countBy = <E>(projection: KeyProjection<E>) => (array: E[]): [string | number, number][] => {
+      const map: MapType<E> = new Map();
+      for (const e of array) {
+        const key = projection(e);
+        map.set(key, 1+ (map.get(key) || 0));
+      }
+      return Array.from(map.entries());
+
+    };
+    const data = ARRAY.range(0, length);
+
+    run(ARRAY.countBy(p),countBy(p),  data);
   }).timeout(oneMinute);
 
 
