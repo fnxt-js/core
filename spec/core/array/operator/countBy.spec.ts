@@ -9,6 +9,7 @@ describe('countBy', () => {
     const fn = countBy((x: string) => x.length);
     expect(fn(['hello', 'world', 'foo'])).to.eql([[3, 1], [5, 2],]);
   });
+
   it('should countBy of empty', () => {
     const fn = countBy((x: string) => x.length);
     expect(fn([])).to.eql([]);
