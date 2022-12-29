@@ -1,17 +1,9 @@
----
-type Props = {
-	size: number;
-};
-const { size } = Astro.props as Props;
----
-<svg viewBox="0 0 396 396" xmlns="http://www.w3.org/2000/svg"
-	width={size}
-	height={size}>
-    <rect fill="white" width="396" height="396"/>
+<svg viewBox="0 0 396 396" xmlns="http://www.w3.org/2000/svg">
+    <rect fill="#31a69c" width="396" height="396"/>
     <defs>
 
         <style>
-            .char { fill: hsla(215, 28%, 17%, 1); }
+            .char { fill: white; }
 
         </style>
     </defs>
@@ -29,4 +21,3 @@ const { size } = Astro.props as Props;
 
     </g>
 </svg>
-

@@ -1,4 +1,6 @@
-# FNXT 
+
+# FNXT: Functional Extensions for JavaScript
+[![npm version](https://badge.fury.io/js/fnxt.svg)](http://badge.fury.io/js/fnxt)
 
 - 🚀 a functional JavaScript and TypeScript experience.
 - 🤗 does not mutate values

@@ -1,11 +1,14 @@
 ---
 description: Docs intro
 layout: ../../layouts/MainLayout.astro
----# FNXT 
+---
+# <img src="/FN.svg" width="86" height="86" alt="FnXt Logo"> FNXT: Functional Extensions for JavaScript
+
 
 - 🚀 a functional JavaScript and TypeScript experience.
 - 🤗 does not mutate values
 - 🍎 a small footprint through tree shaking
+
 
 ## Installation
 ```shell
