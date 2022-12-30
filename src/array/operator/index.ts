@@ -10,6 +10,7 @@ export * from './collect';
 
 export * from './compareWith';
 
+
 export * from './sortInPlace';
 export * from './sortByDescending';
 export * from './sortBy';
@@ -23,8 +24,11 @@ export * from './partition';
 export * from './splitAt';
 export * from './splitInto';
 
-export * from './chunkBySize';
+
 export * from './groupBy';
+export * from './uniqueBy';
+
+export * from './chunkBySize';
 export * from './windowed';
 export * from './allPairs';
 export * from './allCombinations';

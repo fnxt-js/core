@@ -34,13 +34,12 @@ describe('array', () => {
       'tail', 'take', 'takeWhile',
       'takeWhileInclusive', 'transpose', 'truncate',
       'tryFind', 'tryFindIndex', 'tryHead',
-      'tryLast', 'where', 'windowed',
+      'tryLast', 'uniqueBy','where', 'windowed',
       'zip'
     ].sort();
 
     operators.map(name => './array/operator/' + name + '.spec')
       .forEach(require);
-
 
   });
 

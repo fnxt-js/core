@@ -1,4 +1,4 @@
-import {KeyProjection, Mutation, Predicate, Tuple} from '../../src/fnxt-types';
+import {KeyProjection, Mutation, Predicate, PropertyProjection, Tuple} from '../../src/fnxt-types';
 
 import * as chai from 'chai';
 import * as sinonChai from 'sinon-chai';
@@ -178,14 +178,38 @@ describe('performance test', function () {
       const map: MapType<E> = new Map();
       for (const e of array) {
         const key = projection(e);
-        map.set(key, 1+ (map.get(key) || 0));
+        map.set(key, 1 + (map.get(key) || 0));
       }
       return Array.from(map.entries());
 
     };
     const data = ARRAY.range(0, length);
 
-    run(ARRAY.countBy(p),countBy(p),  data);
+    run(ARRAY.countBy(p), countBy(p), data);
+  }).timeout(oneMinute);
+
+  it('uniqueBy', () => {
+    const p = (x: number) => x % 1000;
+
+    const uniqueBy = <T>(projection: PropertyProjection<T>) => (array: T[]): T[] => {
+
+      const set = new Set<string|number>();
+      const result:T[] = [];
+
+      for (const item of array) {
+        const key = projection(item);
+        if (!set.has(key)){
+          set.add(key)
+          result.push(item)
+        }
+      }
+      return result;
+    };
+
+
+    const data = ARRAY.range(0, length);
+
+    run(ARRAY.uniqueBy(p), uniqueBy(p), data);
   }).timeout(oneMinute);
 
 
