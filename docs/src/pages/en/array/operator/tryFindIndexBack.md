@@ -27,6 +27,8 @@ const findEven = tryFindIndexBack(isEven);
 findEven(array) // -> Some(3)
 ```
 
+## See Also
+
 - [find](/core/en/array/operator/find)
 - [findBack](/core/en/array/operator/findBack)
 - [findIndex](/core/en/array/operator/findIndex)
@@ -34,4 +36,3 @@ findEven(array) // -> Some(3)
 - [tryFind](/core/en/array/operator/tryFind)
 - [tryFindBack](/core/en/array/operator/tryFindBack)
 - [tryFindIndex](/core/en/array/operator/tryFindIndex)
-- [tryFindIndexBack](/core/en/array/operator/tryFindIndexBack)

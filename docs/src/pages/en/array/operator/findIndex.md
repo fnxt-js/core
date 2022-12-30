@@ -30,9 +30,10 @@ const findEven = findIndex(isEven);
 findEven(array) // -> 1
 ```
 
+## See Also
+
 - [find](/core/en/array/operator/find)
 - [findBack](/core/en/array/operator/findBack)
-- [findIndex](/core/en/array/operator/findIndex)
 - [findIndexBack](/core/en/array/operator/findIndexBack)
 - [tryFind](/core/en/array/operator/tryFind)
 - [tryFindBack](/core/en/array/operator/tryFindBack)
