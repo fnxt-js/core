@@ -26,7 +26,7 @@ type uniqueBy = <E>(projection: KeyProjection<E>) => (array: E[])=> E[]
 ## Example
 
 ```typescript
-import { uniqueBy } from './uniqueBy';
+import { uniqueBy } from 'fnxt/array';
 
 const array = [
   { id: 1, name: 'Alice' },
