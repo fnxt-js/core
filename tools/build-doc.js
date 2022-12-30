@@ -7,8 +7,7 @@ async function getDir(dir) {
 }
 
 async function readFile(base, dir, file) {
-    const content = await fs.promises.readFile(`${base + dir}/${file}`) + '';
-    const name = content.split('\n')[1].split('.')[1];
+    const name = file.split('.')[0];
     return {name, dir, file};
 }
 

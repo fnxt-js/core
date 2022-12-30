@@ -49,6 +49,14 @@ export default {
         "link": "en/array/operator/findBack"
       },
       {
+        "text": "findIndex",
+        "link": "en/array/operator/findIndex"
+      },
+      {
+        "text": "findIndexBack",
+        "link": "en/array/operator/findIndexBack"
+      },
+      {
         "text": "groupBy",
         "link": "en/array/operator/groupBy"
       },
@@ -109,6 +117,18 @@ export default {
         "link": "en/array/operator/tryFind"
       },
       {
+        "text": "tryFindBack",
+        "link": "en/array/operator/tryFindBack"
+      },
+      {
+        "text": "tryFindIndex",
+        "link": "en/array/operator/tryFindIndex"
+      },
+      {
+        "text": "tryFindIndexBack",
+        "link": "en/array/operator/tryFindIndexBack"
+      },
+      {
         "text": "uniqueBy",
         "link": "en/array/operator/uniqueBy"
       }
@@ -129,7 +149,7 @@ export default {
         "link": "en/seq/operator/choose"
       },
       {
-        "text": "chunkBySize",
+        "text": "chuckBySize",
         "link": "en/seq/operator/chuckBySize"
       },
       {
