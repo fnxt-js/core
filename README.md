@@ -1,10 +1,15 @@
-
 # FNXT: Functional Extensions for JavaScript
-[![npm version](https://badge.fury.io/js/fnxt.svg)](http://badge.fury.io/js/fnxt)
+
+![CI](https://github.com/fnxt-js/core/workflows/CI/badge.svg)
+[![npm version](https://badge.fury.io/js/fnxt.svg)](https://www.npmjs.com/package/fnxt)
+
+<img class="img-inline" src="https://raw.githubusercontent.com/fnxt-js/core/main/docs/public/FN.svg" alt="FNXT Logo" width="86" height="86"> 
+
 
 - 🚀 a functional JavaScript and TypeScript experience.
 - 🤗 does not mutate values
 - 🍎 a small footprint through tree shaking
+
 
 ## Installation
 ```shell

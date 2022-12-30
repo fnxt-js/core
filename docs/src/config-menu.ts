@@ -45,6 +45,14 @@ export default {
         "link": "en/array/operator/find"
       },
       {
+        "text": "findBack",
+        "link": "en/array/operator/findBack"
+      },
+      {
+        "text": "groupBy",
+        "link": "en/array/operator/groupBy"
+      },
+      {
         "text": "head",
         "link": "en/array/operator/head"
       },
@@ -99,6 +107,10 @@ export default {
       {
         "text": "tryFind",
         "link": "en/array/operator/tryFind"
+      },
+      {
+        "text": "uniqueBy",
+        "link": "en/array/operator/uniqueBy"
       }
     ],
     "array generators": [
