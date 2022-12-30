@@ -29,3 +29,12 @@ const array = [1, 2, 3, 4, 5];
 const lastEven = findBack(isEven)(array);
 // lastEven is 4
 ```
+
+- [find](/core/en/array/operator/find)
+- [findBack](/core/en/array/operator/findBack)
+- [findIndex](/core/en/array/operator/findIndex)
+- [findIndexBack](/core/en/array/operator/findIndexBack)
+- [tryFind](/core/en/array/operator/tryFind)
+- [tryFindBack](/core/en/array/operator/tryFindBack)
+- [tryFindIndex](/core/en/array/operator/tryFindIndex)
+- [tryFindIndexBack](/core/en/array/operator/tryFindIndexBack)

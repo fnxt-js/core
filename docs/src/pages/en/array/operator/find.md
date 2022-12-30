@@ -3,7 +3,7 @@ title: ARRAY.find
 description: find
 layout: ../../../../layouts/MainLayout.astro
 ---
-Finds the first values of an array that satisfies the `predicate`.
+Finds the `first` element in an `array` that satisfies a `predicate` function.
 
 ## Throws
 
@@ -19,9 +19,24 @@ type find = <E>(predicate: ((e: E) => boolean)) => (a: Array<E>) => E | undefind
 ## Example
 
 ```ts
-import * as ARRAY from 'fnxt/array';
+import {find} from 'fnxt/array';
+
+function isEven(num: number): boolean {
+  return num % 2 === 0;
+}
 
 const array = [1, 2, 3, 4, 5];
-const findEven = ARRAY.find((x: number) => x % 2 == 0);
+const findEven = find(isEven);
 findEven(array) // -> 2
 ```
+
+## See Also
+
+- [find](/core/en/array/operator/find)
+- [findBack](/core/en/array/operator/findBack)
+- [findIndex](/core/en/array/operator/findIndex)
+- [findIndexBack](/core/en/array/operator/findIndexBack)
+- [tryFind](/core/en/array/operator/tryFind)
+- [tryFindBack](/core/en/array/operator/tryFindBack)
+- [tryFindIndex](/core/en/array/operator/tryFindIndex)
+- [tryFindIndexBack](/core/en/array/operator/tryFindIndexBack)

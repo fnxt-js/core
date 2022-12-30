@@ -1,29 +1,33 @@
 ---
-title: ARRAY.tryFindBack
-description: tryFindBack
+title: ARRAY.findIndex
+description: findIndex
 layout: ../../../../layouts/MainLayout.astro
 ---
+Finds the `index` of `first` element in an `array` that satisfies a `predicate` function.
 
-Finds an `Option` of the last value of an array that satisfies the `predicate`. Returns `None` if no element is found.
+## Throws
+
+- `Error`: If the `array` is `empty`.
+- `Error`: If no element in the `array` satisfies the `predicate` function.
 
 ## Type
 
 ```ts
-type tryFindBack = <E>(predicate: ((e: E) => boolean)) => (a: Array<E>) => Option<E>
+type findIndex = <E>(predicate: ((e: E) => boolean)) => (a: Array<E>) => E | undefind
 ```
 
 ## Example
 
 ```ts
-import {tryFindBack} from 'fnxt/array';
+import {findIndex} from 'fnxt/array';
 
 function isEven(num: number): boolean {
   return num % 2 === 0;
 }
 
 const array = [1, 2, 3, 4, 5];
-const findEven = tryFindBack(isEven);
-findEven(array) // -> Some(4)
+const findEven = findIndex(isEven);
+findEven(array) // -> 1
 ```
 
 - [find](/core/en/array/operator/find)
