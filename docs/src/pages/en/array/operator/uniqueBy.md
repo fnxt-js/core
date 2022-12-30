@@ -8,8 +8,9 @@ Takes an array of elements and a projection function and returns a new array tha
 
 ## Parameters
 
-- `projection` (`Fn<E, number> | Fn<E, string>`): A projection function that takes an element of type `E` and returns a value of either type `number` or `string`. This function is used to determine the uniqueness of the elements.
-- `array` (`E[]`): An array of elements to be transformed.
+- A `projection` function that takes an element of type `E` and returns a value of either type `number` or `string`. 
+This function is used to determine the uniqueness of the elements.
+- An `array` of elements to be transformed.
 
 
 ## Returns
