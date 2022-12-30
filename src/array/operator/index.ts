@@ -51,10 +51,6 @@ export * from './where';
 export * from './exists';
 export * from './forall';
 export * from './every';
-export * from './find';
-export * from './findBack';
-export * from './findIndex';
-export * from './tryFindIndex';
 export * from './contains';
 
 export * from './distinctBy';
@@ -71,7 +67,6 @@ export * from './foldBack';
 export * from './reduce';
 export * from './reduceBack';
 
-export * from './tryFind';
 export * from './tryLast';
 export * from './tryHead';
 
@@ -91,3 +86,12 @@ export * from './copy';
 export * from './push';
 
 export * from './transpose';
+
+export * from './find';
+export * from './findBack';
+export * from './findIndex';
+export * from './findIndexBack';
+export * from './tryFindIndexBack';
+export * from './tryFindIndex';
+export * from './tryFindBack';
+export * from './tryFind';

@@ -11,36 +11,36 @@ describe('array', () => {
 
   describe('operator', () => {
     const operators = [
-      'allCombinations', 'allPairs', 'append',
-      'average', 'averageBy', 'choose',
-      'chunkBySize', 'collect', 'compareWith',
-      'concat', 'contains', 'copy',
-      'countBy', 'distinctBy', 'every',
-      'exists', 'fill', 'filter',
-      'find', 'findBack', 'findIndex',
-      'flatten', 'fold', 'foldBack',
-      'forall', 'groupBy', 'head',
-      'isEmpty', 'iter', 'last',
-      'length', 'map', 'maxBy',
-      'minBy', 'pairwise', 'partition',
-      'push', 'reduce', 'reduceBack',
-      'replicate', 'rev', 'scan',
-      'scanBack', 'skip', 'skipWhile',
-      'sort', 'sortBy', 'sortByDescending',
-      'sortDescending', 'sortInPlace', 'sortInPlace',
-      'sortInPlaceBy', 'sortInPlaceWith', 'sortInPlaceWith',
-      'sortWith', 'sortWith', 'splitAt',
-      'splitInto', 'sum', 'sumBy',
-      'tail', 'take', 'takeWhile',
-      'takeWhileInclusive', 'transpose', 'truncate',
-      'tryFind', 'tryFindIndex', 'tryHead',
-      'tryLast', 'uniqueBy','where', 'windowed',
-      'zip'
-    ].sort();
-
+      'allCombinations',  'allPairs',           'append',
+      'average',          'averageBy',          'choose',
+      'chunkBySize',      'collect',            'compareWith',
+      'concat',           'contains',           'copy',
+      'countBy',          'distinctBy',         'every',
+      'exists',           'fill',               'filter',
+      'find',             'findBack',           'findIndex',
+      'findIndexBack',    'flatten',            'fold',
+      'foldBack',         'forall',             'groupBy',
+      'head',             'isEmpty',            'iter',
+      'last',             'length',             'map',
+      'maxBy',            'minBy',              'pairwise',
+      'partition',        'push',               'reduce',
+      'reduceBack',       'replicate',          'rev',
+      'scan',             'scanBack',           'skip',
+      'skipWhile',        'sort',               'sortBy',
+      'sortByDescending', 'sortDescending',     'sortInPlace',
+      'sortInPlace',      'sortInPlaceBy',      'sortInPlaceWith',
+      'sortInPlaceWith',  'sortWith',           'sortWith',
+      'splitAt',          'splitInto',          'sum',
+      'sumBy',            'tail',               'take',
+      'takeWhile',        'takeWhileInclusive', 'transpose',
+      'truncate',         'tryFind',            'tryFindBack',
+      'tryFindIndex',     'tryFindIndexBack',   'tryHead',
+      'tryLast',          'uniqueBy',           'where',
+      'windowed',         'zip'
+    ]
+      .sort();
     operators.map(name => './array/operator/' + name + '.spec')
       .forEach(require);
-
   });
 
   describe('generator', () => {

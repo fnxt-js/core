@@ -11,10 +11,17 @@ describe('findIndex', () => {
     expect(array).to.eql([1, 2, 3, 4]);
   });
 
+  it('should findBackIndex ambiguous', () => {
+    const array = [1, 2, 3, 4];
+    const fn = findIndex<number>(x => x % 2 == 0);
+    expect(fn(array)).to.eql(1);
+    expect(array).to.eql([1, 2, 3, 4]);
+  });
+
   it('should not findIndex', () => {
     const array = [1, 2, 3, 4];
     const fn = findIndex<number>(x => x === 5);
-    expect(() => fn(array)).to.throw();
+    expect(() => fn(array)).to.throw('Not found');
   });
 
   it('should throw if null or undefined', () => {
