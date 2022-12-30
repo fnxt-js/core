@@ -13,7 +13,7 @@ Finds the `index` of `first` element in an `array` that satisfies a `predicate` 
 ## Type
 
 ```ts
-type findIndex = <E>(predicate: ((e: E) => boolean)) => (a: Array<E>) => E | undefind
+type findIndex = <E>(predicate: ((e: E) => boolean)) => (a: Array<E>) => number
 ```
 
 ## Example

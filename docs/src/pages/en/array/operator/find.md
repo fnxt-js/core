@@ -13,7 +13,7 @@ Finds the `first` element in an `array` that satisfies a `predicate` function.
 ## Type
 
 ```ts
-type find = <E>(predicate: ((e: E) => boolean)) => (a: Array<E>) => E | undefind
+type find = <E>(predicate: ((e: E) => boolean)) => (a: Array<E>) => E
 ```
 
 ## Example

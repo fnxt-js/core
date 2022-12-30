@@ -13,7 +13,7 @@ Finds the `last` element in an `array` that satisfies a `predicate` function.
 ## Type
 
 ```ts
-type findIndexBack = <E>(predicate: ((e: E) => boolean)) => (a: Array<E>) => E | undefind
+type findIndexBack = <E>(predicate: ((e: E) => boolean)) => (a: Array<E>) => number
 ```
 
 ## Example
