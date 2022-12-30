@@ -1,5 +1,5 @@
 ---
-title: ARRAY.concat
+title: concat
 description: concat
 layout: ../../../../layouts/MainLayout.astro
 ---

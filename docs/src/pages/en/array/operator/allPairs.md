@@ -1,5 +1,5 @@
 ---
-title: ARRAY.allPairs
+title: allPairs
 description: allPairs
 layout: ../../../../layouts/MainLayout.astro
 ---

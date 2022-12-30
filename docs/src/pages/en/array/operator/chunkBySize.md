@@ -1,5 +1,5 @@
 ---
-title: ARRAY.chunkBySize
+title: chunkBySize
 description: chunkBySize
 layout: ../../../../layouts/MainLayout.astro
 ---

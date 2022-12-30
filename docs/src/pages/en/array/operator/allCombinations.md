@@ -1,5 +1,5 @@
 ---
-title: ARRAY.allCombinations
+title: allCombinations
 description: allCombinations
 layout: ../../../../layouts/MainLayout.astro
 ---

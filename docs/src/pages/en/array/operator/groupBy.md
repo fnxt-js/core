@@ -1,5 +1,5 @@
 ---
-title: ARRAY.groupBy
+title: groupBy
 description: groupBy
 layout: ../../../../layouts/MainLayout.astro
 ---

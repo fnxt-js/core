@@ -1,5 +1,5 @@
 ---
-title: ARRAY.map
+title: map
 description: map
 layout: ../../../../layouts/MainLayout.astro
 ---

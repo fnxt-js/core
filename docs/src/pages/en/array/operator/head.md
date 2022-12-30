@@ -1,5 +1,5 @@
 ---
-title: ARRAY.head
+title: head
 description: head
 layout: ../../../../layouts/MainLayout.astro
 ---

@@ -1,5 +1,5 @@
 ---
-title: ARRAY.findBack
+title: findBack
 description: findBack
 layout: ../../../../layouts/MainLayout.astro
 ---

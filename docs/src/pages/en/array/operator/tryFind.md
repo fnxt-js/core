@@ -1,5 +1,5 @@
 ---
-title: ARRAY.tryFind
+title: tryFind
 description: tryFind
 layout: ../../../../layouts/MainLayout.astro
 ---

@@ -1,5 +1,5 @@
 ---
-title: ARRAY.isEmpty
+title: isEmpty
 description: isEmpty
 layout: ../../../../layouts/MainLayout.astro
 ---

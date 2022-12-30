@@ -1,5 +1,5 @@
 ---
-title: ARRAY.length
+title: length
 description: length
 layout: ../../../../layouts/MainLayout.astro
 ---

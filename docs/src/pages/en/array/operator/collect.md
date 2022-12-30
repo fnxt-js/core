@@ -1,5 +1,5 @@
 ---
-title: ARRAY.collect
+title: collect
 description: collect
 layout: ../../../../layouts/MainLayout.astro
 ---

@@ -1,5 +1,5 @@
 ---
-title: ARRAY.filter
+title: filter
 description: filter
 layout: ../../../../layouts/MainLayout.astro
 ---

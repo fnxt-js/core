@@ -1,5 +1,5 @@
 ---
-title: ARRAY.splitInto
+title: splitInto
 description: splitInto
 layout: ../../../../layouts/MainLayout.astro
 ---

@@ -1,5 +1,5 @@
 ---
-title: ARRAY.take
+title: take
 description: take
 layout: ../../../../layouts/MainLayout.astro
 ---

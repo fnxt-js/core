@@ -1,5 +1,5 @@
 ---
-title: ARRAY.uniqueBy
+title: uniqueBy
 description: uniqueBy
 layout: ../../../../layouts/MainLayout.astro
 ---

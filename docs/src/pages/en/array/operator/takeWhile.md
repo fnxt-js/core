@@ -1,5 +1,5 @@
 ---
-title: ARRAY.takeWhile
+title: takeWhile
 description: takeWhile
 layout: ../../../../layouts/MainLayout.astro
 ---

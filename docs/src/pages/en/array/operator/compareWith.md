@@ -1,5 +1,5 @@
 ---
-title: ARRAY.compareWith
+title: compareWith
 description: compareWith
 layout: ../../../../layouts/MainLayout.astro
 ---

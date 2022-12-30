@@ -1,5 +1,5 @@
 ---
-title: ARRAY.every
+title: every
 description: every
 layout: ../../../../layouts/MainLayout.astro
 ---

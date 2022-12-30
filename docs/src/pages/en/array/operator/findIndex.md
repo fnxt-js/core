@@ -1,5 +1,5 @@
 ---
-title: ARRAY.findIndex
+title: findIndex
 description: findIndex
 layout: ../../../../layouts/MainLayout.astro
 ---

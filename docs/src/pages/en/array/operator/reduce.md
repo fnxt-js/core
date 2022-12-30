@@ -1,5 +1,5 @@
 ---
-title: ARRAY.reduce
+title: reduce
 description: reduce
 layout: ../../../../layouts/MainLayout.astro
 ---

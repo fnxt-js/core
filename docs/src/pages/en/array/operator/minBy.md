@@ -1,5 +1,5 @@
 ---
-title: ARRAY.minBy
+title: minBy
 description: minBy
 layout: ../../../../layouts/MainLayout.astro
 ---

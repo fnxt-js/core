@@ -1,5 +1,5 @@
 ---
-title: ARRAY.find
+title: find
 description: find
 layout: ../../../../layouts/MainLayout.astro
 ---

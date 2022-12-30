@@ -1,5 +1,5 @@
 ---
-title: ARRAY.partition
+title: partition
 description: partition
 layout: ../../../../layouts/MainLayout.astro
 ---

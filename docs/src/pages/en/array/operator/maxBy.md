@@ -1,5 +1,5 @@
 ---
-title: ARRAY.maxBy
+title: maxBy
 description: maxBy
 layout: ../../../../layouts/MainLayout.astro
 ---

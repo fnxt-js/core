@@ -1,5 +1,5 @@
 ---
-title: ARRAY.choose
+title: choose
 description: choose
 layout: ../../../../layouts/MainLayout.astro
 ---
