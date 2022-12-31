@@ -2,44 +2,36 @@ const fs = require('fs');
 const path = require('path');
 
 
-async function getDir(dir) {
-    return await fs.promises.readdir(dir);
-}
 
-async function readFile(base, dir, file) {
-    const name = file.split('.')[0];
-    return {name, dir, file};
-}
-
-async function buildDirectory(src,lang, dir) {
+async function buildDirectory(src, lang, dir) {
     const pagesDir = `${src}pages/`;
-    const files = await getDir(pagesDir + lang + dir);
-    const contents = await Promise.all(files.map(file => readFile(pagesDir, lang + dir, file)));
+    const files = await fs.promises.readdir(pagesDir + lang + dir);
+    const contents = files.map(file => ({dir: lang + dir, file, name: file.split('.')[0]}));
     return contents.map(({name: text, dir, file}) => ({text, link: `${dir}/${path.parse(file).name}`}));
 }
 
-async function buildConfig(src,lang, dir) {
-    return buildDirectory(src,`${lang}/`, dir);
+async function buildConfig(src, lang, dir) {
+    return buildDirectory(src, `${lang}/`, dir);
 }
 
-async function writeConfig(src,lang) {
+async function writeConfig(src, lang) {
     fs.promises.writeFile(`${src}config-menu.ts`, `/*
 This file is auto-generated.
 */
 export default ${JSON.stringify({
         en:
             {
-                'array operators': await buildConfig(src,lang, 'array/operator'),
-                'array generators': await buildConfig(src,lang, 'array/generator'),
-                'sequence operators': await buildConfig(src,lang, 'seq/operator'),
-                'sequence generators': await buildConfig(src,lang, 'seq/generator'),
+                'array operators': await buildConfig(src, lang, 'array/operator'),
+                'array generators': await buildConfig(src, lang, 'array/generator'),
+                'sequence operators': await buildConfig(src, lang, 'seq/operator'),
+                'sequence generators': await buildConfig(src, lang, 'seq/generator'),
             }
     }, null, '  ')}`);
 }
 
 async function buildMenu() {
     const src = './docs/src/';
-    await writeConfig(src,'en');
+    await writeConfig(src, 'en');
 }
 
 async function buildIntroduction() {
