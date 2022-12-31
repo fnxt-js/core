@@ -11,32 +11,32 @@ describe('array', () => {
 
   describe('operator', () => {
     const operators = [
-      'allCombinations',  'allPairs',           'append',
-      'average',          'averageBy',          'choose',
-      'chunkBySize',      'collect',            'compareWith',
-      'concat',           'contains',           'copy',
-      'countBy',          'distinctBy',         'every',
-      'exists',           'fill',               'filter',
-      'find',             'findBack',           'findIndex',
-      'findIndexBack',    'flatten',            'fold',
-      'foldBack',         'forall',             'groupBy',
-      'head',             'isEmpty',            'iter',
-      'last',             'length',             'map',
-      'maxBy',            'minBy',              'pairwise',
-      'partition',        'push',               'reduce',
-      'reduceBack',       'replicate',          'rev',
-      'scan',             'scanBack',           'skip',
-      'skipWhile',        'sort',               'sortBy',
-      'sortByDescending', 'sortDescending',     'sortInPlace',
-      'sortInPlace',      'sortInPlaceBy',      'sortInPlaceWith',
-      'sortInPlaceWith',  'sortWith',           'sortWith',
-      'splitAt',          'splitInto',          'sum',
-      'sumBy',            'tail',               'take',
-      'takeWhile',        'takeWhileInclusive', 'transpose',
-      'truncate',         'tryFind',            'tryFindBack',
-      'tryFindIndex',     'tryFindIndexBack',   'tryHead',
-      'tryLast',          'uniqueBy',           'where',
-      'windowed',         'zip'
+      'allCombinations', 'allPairs', 'append',
+      'average', 'averageBy', 'choose',
+      'chunkBySize', 'collect', 'compareWith',
+      'concat', 'contains', 'copy',
+      'countBy', 'distinctBy', 'every',
+      'exists', 'fill', 'filter',
+      'find', 'findBack', 'findIndex',
+      'findIndexBack', 'flatten', 'fold',
+      'foldBack', 'forall', 'groupBy',
+      'head', 'isEmpty', 'iter',
+      'last', 'length', 'map',
+      'maxBy', 'minBy', 'pairwise',
+      'partition', 'push', 'reduce',
+      'reduceBack', 'replicate', 'rev',
+      'scan', 'scanBack', 'skip',
+      'skipWhile', 'sort', 'sortBy',
+      'sortByDescending', 'sortDescending', 'sortInPlace',
+      'sortInPlace', 'sortInPlaceBy', 'sortInPlaceWith',
+      'sortInPlaceWith', 'sortWith', 'sortWith',
+      'splitAt', 'splitInto', 'sum',
+      'sumBy', 'tail', 'take',
+      'takeWhile', 'takeWhileInclusive', 'transpose',
+      'truncate', 'tryFind', 'tryFindBack',
+      'tryFindIndex', 'tryFindIndexBack', 'tryHead',
+      'tryLast', 'uniqueBy', 'updateAt',
+      'where', 'windowed', 'zip'
     ]
       .sort();
     operators.map(name => './array/operator/' + name + '.spec')
@@ -44,70 +44,72 @@ describe('array', () => {
   });
 
   describe('generator', () => {
-    describe('generator', () => {
-      describe('empty', () => {
+    describe('empty', () => {
 
-        it('should build empty', async () => {
-          expect(ARRAY.length(ARRAY.empty)).to.eql(0);
-        });
+      it('should build empty', async () => {
+        expect(ARRAY.length(ARRAY.empty)).to.eql(0);
       });
+    });
 
-      describe('of', () => {
+    describe('of', () => {
+      it('should of', async () => {
         const array = ARRAY.of(1, 2, 3);
         expect(array).to.eql([1, 2, 3]);
       });
+    });
 
 
-      describe('charRange', () => {
-        it('should build charRange a-z', async () => {
-          const array = ARRAY.charRange('a', 'z');
-          expect(ARRAY.length(array)).to.eql(26);
-          expect(array).to.eql('abcdefghijklmnopqrstuvwxyz'.split(''));
-        });
-        it('should build charRange A-Z', async () => {
-          const array = ARRAY.charRange('A', 'Z');
-          expect(ARRAY.length(array)).to.eql(26);
-          expect(array).to.eql('abcdefghijklmnopqrstuvwxyz'.toLocaleUpperCase().split(''));
-        });
-        it('should build charRange a-f', async () => {
-          const array = ARRAY.charRange('a', 'f');
-          expect(ARRAY.length(array)).to.eql(6);
-          expect(array).to.eql('abcdef'.split(''));
+    describe('charRange', () => {
+      it('should build charRange a-z', async () => {
+        const array = ARRAY.charRange('a', 'z');
+        expect(ARRAY.length(array)).to.eql(26);
+        expect(array).to.eql('abcdefghijklmnopqrstuvwxyz'.split(''));
+      });
 
-        });
+      it('should build charRange A-Z', async () => {
+        const array = ARRAY.charRange('A', 'Z');
+        expect(ARRAY.length(array)).to.eql(26);
+        expect(array).to.eql('abcdefghijklmnopqrstuvwxyz'.toLocaleUpperCase().split(''));
+      });
 
-        it('should build charRange z-a', async () => {
-          const array = ARRAY.charRange('z', 'a');
-          expect(ARRAY.length(array)).to.eql(26);
-          expect(array).to.eql('abcdefghijklmnopqrstuvwxyz'.split('').reverse());
-        });
-
-        it('should build charRange a-f step 2', async () => {
-          const array = ARRAY.charRange('a', 'f', 2);
-          expect(ARRAY.length(array)).to.eql(3);
-          expect(array).to.eql('ace'.split(''));
-        });
-
-        it('should build charRange f-a step 2', async () => {
-          const array = ARRAY.charRange('f', 'a', 2);
-          expect(ARRAY.length(array)).to.eql(3);
-          expect(array).to.eql('fdb'.split(''));
-        });
-
-
-        it('should throw when charRange arguments are invalid', async () => {
-          expect(() => ARRAY.charRange('a', 'z', 1)).not.to.throw();
-          expect(() => ARRAY.charRange('a', 'z', 0)).to.throws('step must be greater than 0');
-          expect(() => ARRAY.charRange('a', 'z', -1)).to.throws('step must be greater than 0');
-          expect(() => ARRAY.charRange('', 'z', 1)).to.throws('from must be a character (length: 1)');
-          expect(() => ARRAY.charRange('aa', 'z', 1)).to.throws('from must be a character (length: 1)');
-          expect(() => ARRAY.charRange('a', '', 1)).to.throws('to must be a character (length: 1)');
-          expect(() => ARRAY.charRange('a', 'zz', 1)).to.throws('to must be a character (length: 1)');
-        });
+      it('should build charRange a-f', async () => {
+        const array = ARRAY.charRange('a', 'f');
+        expect(ARRAY.length(array)).to.eql(6);
+        expect(array).to.eql('abcdef'.split(''));
 
       });
 
+      it('should build charRange z-a', async () => {
+        const array = ARRAY.charRange('z', 'a');
+        expect(ARRAY.length(array)).to.eql(26);
+        expect(array).to.eql('abcdefghijklmnopqrstuvwxyz'.split('').reverse());
+      });
+
+      it('should build charRange a-f step 2', async () => {
+        const array = ARRAY.charRange('a', 'f', 2);
+        expect(ARRAY.length(array)).to.eql(3);
+        expect(array).to.eql('ace'.split(''));
+      });
+
+      it('should build charRange f-a step 2', async () => {
+        const array = ARRAY.charRange('f', 'a', 2);
+        expect(ARRAY.length(array)).to.eql(3);
+        expect(array).to.eql('fdb'.split(''));
+      });
+
+
+      it('should throw when charRange arguments are invalid', async () => {
+        expect(() => ARRAY.charRange('a', 'z', 1)).not.to.throw();
+        expect(() => ARRAY.charRange('a', 'z', 0)).to.throws('step must be greater than 0');
+        expect(() => ARRAY.charRange('a', 'z', -1)).to.throws('step must be greater than 0');
+        expect(() => ARRAY.charRange('', 'z', 1)).to.throws('from must be a character (length: 1)');
+        expect(() => ARRAY.charRange('aa', 'z', 1)).to.throws('from must be a character (length: 1)');
+        expect(() => ARRAY.charRange('a', '', 1)).to.throws('to must be a character (length: 1)');
+        expect(() => ARRAY.charRange('a', 'zz', 1)).to.throws('to must be a character (length: 1)');
+      });
+
     });
+
 
     describe('range', () => {
       it('should build range 0..4', async () => {

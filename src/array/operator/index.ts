@@ -95,3 +95,5 @@ export * from './tryFindIndexBack';
 export * from './tryFindIndex';
 export * from './tryFindBack';
 export * from './tryFind';
+
+export * from './updateAt';
