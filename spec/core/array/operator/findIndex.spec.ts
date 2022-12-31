@@ -24,6 +24,11 @@ describe('findIndex', () => {
     expect(() => fn(array)).to.throw('Not found');
   });
 
+  it('should throw if empty', () => {
+    const fn = findIndex<string>((x: string) => x.length === 5);
+    expect(() => fn([])).to.throw('Array empty');
+  });
+
   it('should throw if null or undefined', () => {
     const fn = findIndex<number>(x => x === 5);
     checkThrow(fn);
