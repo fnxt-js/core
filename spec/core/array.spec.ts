@@ -36,7 +36,7 @@ describe('array', () => {
       'truncate', 'tryFind', 'tryFindBack',
       'tryFindIndex', 'tryFindIndexBack', 'tryHead',
       'tryLast', 'uniqueBy', 'updateAt',
-      'where', 'windowed', 'zip'
+      'where', 'windowed', 'zip', 'zip3'
     ]
       .sort();
     operators.map(name => './array/operator/' + name + '.spec')
