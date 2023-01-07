@@ -19,7 +19,8 @@ export interface Dictionary<E> {
 }
 
 
-export type Tuple<E, F> = [E, F];
+export type Tuple<E, F> = readonly [E, F];
+export type Tripple<E, F,G> = readonly [E, F,G];
 
 export type Gen<E> = Generator<E, void, unknown>;
 export type Seq<E> = { [Symbol.iterator](): Gen<E> } | Iterable<E>

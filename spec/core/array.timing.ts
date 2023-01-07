@@ -11,6 +11,7 @@ import {Chooser, None, OptionType, Some} from '../../src/option';
 import {performance} from 'perf_hooks';
 import * as process from 'process';
 import wilcoxon = require('@stdlib/stats-wilcoxon');
+import {range} from '../../src/array';
 
 const {expect} = chai;
 chai.use(sinonChai);
@@ -188,19 +189,44 @@ describe('performance test', function () {
     run(ARRAY.countBy(p), countBy(p), data);
   }).timeout(oneMinute);
 
+
+  it('zip', () => {
+    const zip = <T>(a: T[]) => <U>(b: U[]): Tuple<T, U>[] => {
+      if (a.length !== b.length) {
+        throw Error('arrays differ in length');
+      }
+      return ARRAY.range(0,a.length).map((i) => [a[i], b[i]]);
+    };
+    const data = ARRAY.range(0, length);
+
+    run(ARRAY.zip(data), zip(data), data);
+  }).timeout(oneMinute);
+
+  it('zip3', () => {
+    const zip3 = <T>(a: T[]) => <U>(b: U[]) => <S>(c: S[]): [T, U, S][] => {
+      if (a.length !== b.length || c.length !== a.length) {
+        throw Error('arrays differ in length');
+      }
+      return range(0,a.length).map((v, i) => [a[i], b[i], c[i]]);
+    };
+    const data = ARRAY.range(0, length);
+
+    run(ARRAY.zip3(data)(data), zip3(data)(data), data);
+  }).timeout(oneMinute);
+
   it('uniqueBy', () => {
     const p = (x: number) => x % 1000;
 
     const uniqueBy = <T>(projection: PropertyProjection<T>) => (array: T[]): T[] => {
 
-      const set = new Set<string|number>();
-      const result:T[] = [];
+      const set = new Set<string | number>();
+      const result: T[] = [];
 
       for (const item of array) {
         const key = projection(item);
-        if (!set.has(key)){
-          set.add(key)
-          result.push(item)
+        if (!set.has(key)) {
+          set.add(key);
+          result.push(item);
         }
       }
       return result;

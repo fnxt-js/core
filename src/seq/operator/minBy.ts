@@ -4,7 +4,7 @@ import {Seq, Tuple, UnaryFunction} from 'fnxt/fnxt-types';
 import {reduce} from './reduce';
 
 type T<E> = Tuple<E, number>
-const first = <E>(v: [E, unknown]): E => v[0];
+const first = <E>(v: Tuple<E, unknown>): E => v[0];
 
 
 export const minBy = <E>(mapping: UnaryFunction<E, number>): UnaryFunction<Seq<E>, E> =>

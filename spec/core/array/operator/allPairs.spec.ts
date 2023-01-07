@@ -1,5 +1,6 @@
 import {expect} from 'chai';
 import {allPairs} from '../../../../src/array';
+import {Tuple} from 'fnxt/fnxt-types';
 
 describe('allPairs', () => {
   it('should allPairs', () => {
@@ -20,7 +21,7 @@ describe('allPairs', () => {
     const array2 = ['a', 'b', 'c'];
     const fn = allPairs(array1);
 
-    const f: [number, string][] = fn(array2);
+    const f: Tuple<number, string>[] = fn(array2);
 
     expect(f).to.eql([
       [1, 'a'], [1, 'b'], [1, 'c'],
