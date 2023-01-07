@@ -3,6 +3,8 @@ export * from './countBy';
 
 export * from './isEmpty';
 
+export * from './rotate';
+
 export * from './rev';
 export * from './flatten';
 export * from './map';
