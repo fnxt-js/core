@@ -131,6 +131,14 @@ export default {
       {
         "text": "uniqueBy",
         "link": "en/array/operator/uniqueBy"
+      },
+      {
+        "text": "zip",
+        "link": "en/array/operator/zip"
+      },
+      {
+        "text": "zip3",
+        "link": "en/array/operator/zip3"
       }
     ],
     "array generators": [

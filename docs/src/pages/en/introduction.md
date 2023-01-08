@@ -1,5 +1,4 @@
 ---
-title: Home
 description: Docs intro
 layout: ../../layouts/MainLayout.astro
 ---# FNXT: Functional Extensions for JavaScript

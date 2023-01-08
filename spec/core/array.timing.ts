@@ -5,7 +5,6 @@ import * as sinonChai from 'sinon-chai';
 import 'mocha';
 
 import * as ARRAY from '../../src/array';
-import {append, range, splitAt} from '../../src/array';
 import {Chooser, None, OptionType, Some} from '../../src/option';
 
 
@@ -207,7 +206,7 @@ describe('performance test', function () {
       if (a.length !== b.length || c.length !== a.length) {
         throw Error('arrays differ in length');
       }
-      return range(0, a.length).map((v, i) => [a[i], b[i], c[i]]);
+      return ARRAY.range(0, a.length).map((v, i) => [a[i], b[i], c[i]]);
     };
     const data = ARRAY.range(0, length);
 
@@ -216,8 +215,8 @@ describe('performance test', function () {
 
   it('rotate', () => {
     const rotate = (offset: number) => <S>(array: S[]): S[] => {
-      const [front, back] = splitAt(offset %= array.length)(array);
-      return append(back)(front);
+      const [front, back] = ARRAY.splitAt(offset %= array.length)(array);
+      return ARRAY.append(back)(front);
     };
 
     const data = ARRAY.range(0, length);
