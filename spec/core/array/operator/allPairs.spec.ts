@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {allPairs} from '../../../../src/array';
-import {Tuple} from 'fnxt/fnxt-types';
+import {Tuple} from '../../../../src/fnxt-types';
 
 describe('allPairs', () => {
   it('should allPairs', () => {

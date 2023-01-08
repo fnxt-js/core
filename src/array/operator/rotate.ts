@@ -1,6 +1,15 @@
-import {append, splitAt} from 'fnxt/array';
-
 export const rotate = (offset: number) => <S>(array: S[]): S[] => {
-  const [front, back] = splitAt(offset %= array.length)(array);
-  return append(back)(front);
+
+  const index = offset % array.length;
+  const result: S[] = [] ;
+
+  for (let i = index; i < array.length; i++) {
+    result.push(array[i])
+  }
+
+  for (let i = 0; i < index; i++) {
+    result.push(array[i])
+  }
+
+  return result;
 };
