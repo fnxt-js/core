@@ -1,6 +1,6 @@
 import {checkThrow} from '../../../support/checkThrow';
 import {expect} from 'chai';
-import {rotate} from '../../../../src/array';
+import {rotate, rotateBack} from '../../../../src/array';
 
 describe('rotate', () => {
   it('should rotate', () => {
@@ -8,6 +8,11 @@ describe('rotate', () => {
     const fn = rotate(2);
     expect(fn(array)).to.eql([3, 4, 5, 1, 2,]);
 
+  });
+
+  it('should rotate negative', () => {
+    const array = [1, 2, 3, 4, 5];
+    expect(rotate(-2)(array)).to.eql(rotateBack(2)(array));
   });
 
   it('should rotate modulo', () => {

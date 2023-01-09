@@ -1,12 +1,22 @@
 import {checkThrow} from '../../../support/checkThrow';
 import {expect} from 'chai';
-import {rotateBack} from '../../../../src/array';
+import {rotate, rotateBack} from '../../../../src/array';
 
 describe('rotateBack', () => {
   it('should rotateBack', () => {
     const array = [1, 2, 3, 4, 5];
     const fn = rotateBack(2);
     expect(fn(array)).to.eql([4, 5, 1, 2, 3,]);
+  });
+
+  it('should rotateBack negative', () => {
+    const array = [1, 2, 3, 4, 5];
+    expect(rotateBack(-2)(array)).to.eql(rotate(2)(array));
+  });
+
+  it('should rotateBack negative', () => {
+    const array = [1, 2, 3, 4, 5];
+    expect(rotateBack(-8)(array)).to.eql(rotate(8)(array));
   });
 
   it('should rotateBack modulo', () => {

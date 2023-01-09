@@ -1,15 +1,3 @@
-export const rotateBack = (offset: number) => <S>(array: S[]): S[] => {
+import {rotate} from './rotate';
 
-  const index = array.length - offset % array.length;
-  const result: S[] = [] ;
-
-  for (let i = index; i < array.length; i++) {
-    result.push(array[i])
-  }
-
-  for (let i = 0; i < index; i++) {
-    result.push(array[i])
-  }
-
-  return result;
-};
+export const rotateBack = (offset: number) => rotate(-offset)
