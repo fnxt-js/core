@@ -4,6 +4,7 @@ export * from './countBy';
 export * from './isEmpty';
 
 export * from './rotate';
+export * from './rotateBack';
 
 export * from './rev';
 export * from './flatten';
