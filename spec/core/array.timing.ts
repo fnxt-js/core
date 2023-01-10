@@ -169,6 +169,16 @@ describe('performance test', function () {
   }).timeout(oneMinute);
 
 
+  it('append', () => {
+    const append = <E>(a: E[]) => (b: E[]): E[] => [...a, ...b];
+
+    const data0 = ARRAY.range(0, length/2);
+    const data1 = ARRAY.range(0, length/2);
+
+    run(ARRAY.append(data0), append(data0), data1);
+  }).timeout(oneMinute);
+
+
   it('countBy', () => {
     const p = (x: number) => x % 1000;
 
@@ -218,6 +228,30 @@ describe('performance test', function () {
       const [front, back] = ARRAY.splitAt(offset %= array.length)(array);
       return ARRAY.append(back)(front);
     };
+
+    const data = ARRAY.range(0, length);
+    const half = Math.round(length / 2);
+
+    run(ARRAY.rotate(half), rotate(half), data);
+  }).timeout(oneMinute);
+
+  it('rotate 2', () => {
+    const rotate = (offset: number) =>
+
+      <S>(array: S[]): S[] => {
+
+        const index = offset % array.length + (offset < 0 ? array.length : 0);
+        const result: S[] = [];
+        for (let i = index; i < array.length; i++) {
+          result.push(array[i]);
+        }
+
+        for (let i = 0; i < index; i++) {
+          result.push(array[i]);
+        }
+
+        return result;
+      };
 
     const data = ARRAY.range(0, length);
     const half = Math.round(length / 2);

@@ -1,2 +1,2 @@
-export const append = <E>(a: E[]) => (b: E[]): E[] => [...a, ...b];
+export const append = <E>(a: E[]) => (b: E[]): E[] => a.concat(b);
 
