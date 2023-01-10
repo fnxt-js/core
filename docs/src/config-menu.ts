@@ -65,6 +65,10 @@ export default {
         "link": "en/array/operator/head"
       },
       {
+        "text": "init",
+        "link": "en/array/operator/init"
+      },
+      {
         "text": "isEmpty",
         "link": "en/array/operator/isEmpty"
       },
@@ -103,6 +107,10 @@ export default {
       {
         "text": "splitInto",
         "link": "en/array/operator/splitInto"
+      },
+      {
+        "text": "tail",
+        "link": "en/array/operator/tail"
       },
       {
         "text": "take",

@@ -1,31 +1,28 @@
 ---
-title: head
-description: head
+title: init
+description: init
 layout: ../../../../layouts/MainLayout.astro
 ---
-Returns the first value of an array.
-Throws an Error if the array is empty.
+Returns the list after removing the last element.
 
 ## Type
 
 ```ts
-type head = <E>(s: Array<E>) => E
+type init = <E>(s: E[]) => E[]
 ```
 
 ## Example
 
 ```ts
-import * as ARRAY from 'fnxt/array';
+import {init} from 'fnxt/array';
 
-const array = [2, 3, 4];
-const head = ARRAY.head;
-head(array) // -> 2
+init([1, 2, 3, 4]) // -> [1, 2, 3]
 ```
 
 ## See Also
 
+- [head](/core/en/array/operator/head)
 - [tail](/core/en/array/operator/tail)
-- [init](/core/en/array/operator/init)
 - [last](/core/en/array/operator/last)
 
 ```
