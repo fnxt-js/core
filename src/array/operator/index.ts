@@ -43,6 +43,7 @@ export * from './iter';
 
 export * from './head';
 export * from './tail';
+export * from './init';
 export * from './last';
 export * from './skip';
 export * from './take';
