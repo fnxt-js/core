@@ -1,10 +1,5 @@
-import {Option, OptionType} from '../option';
+import {isNone, Option} from '../option';
 
-export const defaultValue = <T>(value: T) => (o: Option<T>): T => {
-  switch (o.type) {
-    case OptionType.None:
-      return value;
-    case OptionType.Some:
-      return o.value;
-  }
-};
+export const defaultValue = <T>(value: T) => (o: Option<T>): T =>
+  isNone(o) ? value : o.value;
+

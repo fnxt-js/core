@@ -1,13 +1,5 @@
-import {None, Option, OptionType} from '../option';
+import {isSome, None, Option} from '../option';
 import {Predicate} from 'fnxt/fnxt-types';
 
-export const filter = <T>(predicate: Predicate<T>) => (
-  o: Option<T>
-): Option<T> => {
-  switch (o.type) {
-    case OptionType.None:
-      return o;
-    case OptionType.Some:
-      return predicate(o.value) ? o : None;
-  }
-};
+export const filter = <T>(predicate: Predicate<T>) => (o: Option<T>): Option<T> =>
+  isSome(o) ? predicate(o.value) ? o : None : o;

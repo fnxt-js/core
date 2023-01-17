@@ -1,4 +1,4 @@
-import {Chooser, OptionType} from 'fnxt/option';
+import {Chooser, isSome} from 'fnxt/option';
 
 
 export const choose = <E, F>(fn: Chooser<E, F>) =>
@@ -6,7 +6,7 @@ export const choose = <E, F>(fn: Chooser<E, F>) =>
     const list = [];
     for (const item of array) {
       const option = fn(item);
-      if (option.type === OptionType.Some) {
+      if (isSome(option)) {
         list.push(option.value);
       }
     }

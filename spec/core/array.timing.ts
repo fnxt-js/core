@@ -5,7 +5,7 @@ import * as sinonChai from 'sinon-chai';
 import 'mocha';
 
 import * as ARRAY from '../../src/array';
-import {Chooser, None, OptionType, Some} from '../../src/option';
+import {Chooser, isSome, None, Some} from '../../src/option';
 
 
 import {performance} from 'perf_hooks';
@@ -288,7 +288,7 @@ describe('performance test', function () {
     const choose = <E, F>(fn: Chooser<E, F>) => {
       const reduction = <E, F>(fn: Chooser<E, F>) => (p: F[], e: E): F[] => {
         const v = fn(e);
-        if (v.type === OptionType.Some) {
+        if (isSome(v)) {
           p.push(v.value);
         }
         return p;
