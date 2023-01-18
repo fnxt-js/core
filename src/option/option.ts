@@ -28,5 +28,5 @@ export const Some = <E>(value: E): SomeType<E> => ({
   value,
 });
 
-export const isSome = <E>(option: Option<E>): option is SomeType<E> & boolean => option.type === OptType.Some;
-export const isNone = <E>(option: Option<E>): option is NoneType & boolean => option.type === OptType.None;
+export const isSome = <E>(option: Option<E>): option is SomeType<E>  => option.type === OptType.Some;
+export const isNone = <E>(option: Option<E>): option is NoneType  => option.type === OptType.None;
