@@ -4,12 +4,17 @@ import * as SEQ from '../../src/seq';
 import {Seq, Thunk} from '../../src/fnxt-types';
 import * as Opt from '../../src/option';
 import {consoleWarnSpy} from './console.spy';
+import {filter} from '../../src/array';
+import {pipe} from '../../src/pipe';
 
 const {expect} = chai;
 chai.use(sinonChai);
 
+const isEven = (v: number) => v % 2 == 0;
+
 
 const lessThan = (v: number) => (x: number): boolean => x < v;
+const add = (v: number, x: number): number => x + v;
 export const id = <E>(e: E): E => e;
 
 /*
@@ -20,6 +25,7 @@ const runTwice = <E>(e: Thunk<E>) => {
   e();
   e();
 };
+
 
 describe('sequence', () => {
   describe('generator', () => {
@@ -51,14 +57,14 @@ describe('sequence', () => {
         expect(SEQ.toArray(seq)).to.eql([]);
       });
       it('should build range 4..0, but warn', async () => {
-        const stub = consoleWarnSpy()
+        const stub = consoleWarnSpy();
         const seq = SEQ.range(4, 0, -2);
 
         expect(stub).to.have.been.calledWith(
           'fnxt/seq/generator/range with negative steps are deprecated! just use a positive step value'
         );
-        stub.restore()
-        stub.resetHistory()
+        stub.restore();
+        stub.resetHistory();
 
 
         expect(SEQ.toArray(seq)).to.length(2);
@@ -422,6 +428,28 @@ describe('sequence', () => {
       });
     });
 
+    describe('fibonacci', () => {
+
+      it('should fibonacci', async () => {
+        const seq = SEQ.fibonacci();
+        const takeWhile = SEQ.takeWhile(lessThan(40));
+        runTwice(() => expect([...takeWhile(seq)]).to.eql([0, 1, 1, 2, 3, 5, 8, 13, 21, 34]));
+      });
+
+      it('should solve project euler problem 2', async () => {
+        // https://projecteuler.net/problem=2
+        const seq = SEQ.fibonacci();
+
+        const sumOfEvenNumbersWhileLessThan4M = pipe(
+          SEQ.takeWhile(lessThan(4000000)),
+          SEQ.filter(isEven),
+          SEQ.reduce(add)
+        );
+
+        runTwice(() => expect(sumOfEvenNumbersWhileLessThan4M(seq)).to.eql(4613732));
+      });
+    });
+
     describe('head', () => {
 
       it('should head', () => {
@@ -488,14 +516,14 @@ describe('sequence', () => {
 
       it('should count down', () => {
 
-        const stub = consoleWarnSpy()
+        const stub = consoleWarnSpy();
         const seq = SEQ.range(4, 1, -1);
 
         expect(stub).to.have.been.calledWith(
           'fnxt/seq/generator/range with negative steps are deprecated! just use a positive step value'
         );
-        stub.restore()
-        stub.resetHistory()
+        stub.restore();
+        stub.resetHistory();
         runTwice(() => expect([...seq]).to.eql([4, 3, 2]));
       });
 

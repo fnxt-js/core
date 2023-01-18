@@ -1,4 +1,4 @@
-import {Chooser, OptionType} from 'fnxt/option';
+import {Chooser, isSome} from 'fnxt/option';
 import {Seq} from 'fnxt/fnxt-types';
 import {toSequence} from '../build';
 
@@ -8,7 +8,7 @@ export const choose: chooseT = <E, F>(chooser: Chooser<E, F>) => (seq: Seq<E>): 
   toSequence(function* () {
     for (const e of seq) {
       const option = chooser(e);
-      if (option.type === OptionType.Some) {
+      if (isSome(option)) {
         yield option.value;
       }
     }
