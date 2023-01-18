@@ -1,4 +1,4 @@
-enum OptType {
+enum _OptionType {
   Some, None,
 }
 
@@ -6,27 +6,27 @@ enum OptType {
  * @deprecated
  * to check for type use `isNone` or `isSome`
  */
-export const OptionType = OptType;
+export const OptionType = _OptionType;
 
 export interface SomeType<E> {
-  readonly type: OptType.Some;
+  readonly type: _OptionType.Some;
   readonly value: E;
 }
 
 export interface NoneType {
-  readonly  type: OptType.None;
+  readonly  type: _OptionType.None;
 }
 
 export type Option<E> = NoneType | SomeType<E>;
 
-export const None: NoneType = {type: OptType.None};
+export const None: NoneType = {type: _OptionType.None};
 
 export type Chooser<E, F> = (e: E) => Option<F>;
 
 export const Some = <E>(value: E): SomeType<E> => ({
-  type: OptType.Some,
+  type: _OptionType.Some,
   value,
 });
 
-export const isSome = <E>(option: Option<E>): option is SomeType<E>  => option.type === OptType.Some;
-export const isNone = <E>(option: Option<E>): option is NoneType  => option.type === OptType.None;
+export const isSome = <E>(option: Option<E>): option is SomeType<E>  => option.type === _OptionType.Some;
+export const isNone = <E>(option: Option<E>): option is NoneType  => option.type === _OptionType.None;

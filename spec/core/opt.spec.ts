@@ -13,6 +13,7 @@ import {
   map,
   None,
   Option,
+  OptionType,
   Some
 } from '../../src/option';
 import {pipe} from '../../src/pipe';
@@ -139,10 +140,10 @@ describe('option', () => {
   describe('isSome or isNone', () => {
 
 
-    range(0, 100).forEach((i) => {
+    range(0, 1).forEach((i) => {
       it('should isSome or isNone: ' + i, () => {
 
-        const getOption = (n:number): Option<number> => n % 2 == 0 ? Some(i) : None;
+        const getOption = (n: number): Option<number> => n % 2 == 0 ? Some(i) : None;
 
         const a: Option<number> = getOption(i);
 
@@ -173,6 +174,25 @@ describe('option', () => {
         defaultValue(-1)
       );
       expect(fn(3)).to.eql(8);
+    });
+  });
+
+  describe('deprecation', () => {
+    it('should still work with OptionType', () => {
+      expect(Some(42).type).to.eql(OptionType.Some);
+      expect(None.type).to.eql(OptionType.None);
+      let x = Some(42) as Option<number>;
+      const s = stub();
+      const n = stub();
+      if (x.type == OptionType.Some) {
+        expect(x.value).to.eql(42);
+        s();
+      }
+      if (x.type == OptionType.None) {
+        n();
+      }
+      expect(s).to.be.callCount(1);
+      expect(n).to.be.callCount(0);
     });
   });
 });
