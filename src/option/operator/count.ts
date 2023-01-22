@@ -1,5 +1,4 @@
 import {isSome, Option} from '../option';
 
-export const count = <T>(o: Option<T>): number =>
-  isSome(o) ? 1 : 0;
+export const count = <T>(option: Option<T>): number => isSome(option) ? 1 : 0;
 

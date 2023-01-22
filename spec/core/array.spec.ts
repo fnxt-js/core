@@ -1,12 +1,13 @@
 import * as chai from 'chai';
 import * as sinonChai from 'sinon-chai';
+const {expect} = chai;
+chai.use(sinonChai);
+
 import 'mocha';
 
 import * as ARRAY from '../../src/array';
 import {consoleWarnSpy} from './console.spy';
 
-const {expect} = chai;
-chai.use(sinonChai);
 describe('array', () => {
 
   describe('operator', () => {
@@ -20,11 +21,12 @@ describe('array', () => {
       'find', 'findBack', 'findIndex',
       'findIndexBack', 'flatten', 'fold',
       'foldBack', 'forall', 'groupBy',
-      'head', 'isEmpty', 'iter',
-      'last', 'length', 'map',
-      'maxBy', 'minBy', 'pairwise',
-      'partition', 'push', 'reduce',
-      'reduceBack', 'replicate', 'rev',
+      'head', 'init', 'isEmpty',
+      'iter', 'last', 'length',
+      'map', 'maxBy', 'minBy',
+      'pairwise', 'partition', 'push',
+      'reduce', 'reduceBack', 'replicate',
+      'rev', 'rotate', 'rotateBack',
       'scan', 'scanBack', 'skip',
       'skipWhile', 'sort', 'sortBy',
       'sortByDescending', 'sortDescending', 'sortInPlace',
@@ -36,7 +38,8 @@ describe('array', () => {
       'truncate', 'tryFind', 'tryFindBack',
       'tryFindIndex', 'tryFindIndexBack', 'tryHead',
       'tryLast', 'uniqueBy', 'updateAt',
-      'where', 'windowed', 'zip', 'zip3'
+      'where', 'windowed', 'zip',
+      'zip3'
     ]
       .sort();
     operators.map(name => './array/operator/' + name + '.spec')

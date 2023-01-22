@@ -1,3 +1,3 @@
 import {isSome, None, Option} from '../option';
 
-export const flatten = <T>(o: Option<Option<T>>): Option<T> => isSome(o) ? o.value : None;
+export const flatten = <T>(option: Option<Option<T>>): Option<T> => isSome(option) ? option.value : None;

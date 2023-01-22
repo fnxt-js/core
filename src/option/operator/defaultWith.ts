@@ -1,4 +1,4 @@
 import {isSome, Option} from '../option';
 
-export const defaultWith = <T>(defThunk: () => T) => (o: Option<T>): T =>
-  isSome(o) ? o.value : defThunk();
+export const defaultWith = <T>(defThunk: () => T) => (option: Option<T>): T =>
+  isSome(option) ? option.value : defThunk();

@@ -3,7 +3,15 @@ This file is auto-generated.
 */
 export default {
   "en": {
-    "array operators": [
+    "array": [
+      {
+        "text": "charRange",
+        "link": "en/array/generator/charRange"
+      },
+      {
+        "text": "range",
+        "link": "en/array/generator/range"
+      },
       {
         "text": "allCombinations",
         "link": "en/array/operator/allCombinations"
@@ -149,17 +157,23 @@ export default {
         "link": "en/array/operator/zip3"
       }
     ],
-    "array generators": [
+    "sequence": [
       {
-        "text": "charRange",
-        "link": "en/array/generator/charRange"
+        "text": "empty",
+        "link": "en/seq/generator/empty"
+      },
+      {
+        "text": "infinite",
+        "link": "en/seq/generator/infinite"
+      },
+      {
+        "text": "of",
+        "link": "en/seq/generator/of"
       },
       {
         "text": "range",
-        "link": "en/array/generator/range"
-      }
-    ],
-    "sequence operators": [
+        "link": "en/seq/generator/range"
+      },
       {
         "text": "choose",
         "link": "en/seq/operator/choose"
@@ -225,22 +239,74 @@ export default {
         "link": "en/seq/operator/takeWhile"
       }
     ],
-    "sequence generators": [
+    "option": [
       {
-        "text": "empty",
-        "link": "en/seq/generator/empty"
+        "text": "bind",
+        "link": "en/option/bind"
       },
       {
-        "text": "infinite",
-        "link": "en/seq/generator/infinite"
+        "text": "count",
+        "link": "en/option/count"
+      },
+      {
+        "text": "defaultValue",
+        "link": "en/option/defaultValue"
+      },
+      {
+        "text": "defaultWith",
+        "link": "en/option/defaultWith"
+      },
+      {
+        "text": "exists",
+        "link": "en/option/exists"
+      },
+      {
+        "text": "filter",
+        "link": "en/option/filter"
+      },
+      {
+        "text": "flatten",
+        "link": "en/option/flatten"
+      },
+      {
+        "text": "fold",
+        "link": "en/option/fold"
+      },
+      {
+        "text": "foldBack",
+        "link": "en/option/foldBack"
+      },
+      {
+        "text": "forall",
+        "link": "en/option/forall"
+      },
+      {
+        "text": "iter",
+        "link": "en/option/iter"
+      },
+      {
+        "text": "map",
+        "link": "en/option/map"
       },
       {
         "text": "of",
-        "link": "en/seq/generator/of"
+        "link": "en/option/of"
       },
       {
-        "text": "range",
-        "link": "en/seq/generator/range"
+        "text": "orElse",
+        "link": "en/option/orElse"
+      },
+      {
+        "text": "orElseWith",
+        "link": "en/option/orElseWith"
+      },
+      {
+        "text": "toArray",
+        "link": "en/option/toArray"
+      },
+      {
+        "text": "toSeq",
+        "link": "en/option/toSeq"
       }
     ]
   }

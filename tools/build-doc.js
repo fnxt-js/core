@@ -10,8 +10,9 @@ async function buildDirectory(src, lang, dir) {
     return contents.map(({name: text, dir, file}) => ({text, link: `${dir}/${path.parse(file).name}`}));
 }
 
-async function buildConfig(src, lang, dir) {
-    return buildDirectory(src, `${lang}/`, dir);
+async function buildConfig(src, lang, dirs) {
+    const m = dirs.map(dir => buildDirectory(src, `${lang}/`, dir))
+    return (await Promise.all(m)).flat();
 }
 
 async function writeConfig(src, lang) {
@@ -21,10 +22,9 @@ This file is auto-generated.
 export default ${JSON.stringify({
         en:
             {
-                'array operators': await buildConfig(src, lang, 'array/operator'),
-                'array generators': await buildConfig(src, lang, 'array/generator'),
-                'sequence operators': await buildConfig(src, lang, 'seq/operator'),
-                'sequence generators': await buildConfig(src, lang, 'seq/generator'),
+                'array': await buildConfig(src, lang, ['array/generator','array/operator',]),
+                'sequence': await buildConfig(src, lang, ['seq/generator','seq/operator',]),
+                'option': await buildConfig(src, lang, ['option']),
             }
     }, null, '  ')}`);
 }

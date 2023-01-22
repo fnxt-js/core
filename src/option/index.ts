@@ -1,2 +1,2 @@
 export * from './option';
-export * from './operator/index';
+export * from './operator';
