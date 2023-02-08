@@ -77,6 +77,10 @@ export default {
         "link": "en/array/operator/init"
       },
       {
+        "text": "interleave",
+        "link": "en/array/operator/interleave"
+      },
+      {
         "text": "isEmpty",
         "link": "en/array/operator/isEmpty"
       },

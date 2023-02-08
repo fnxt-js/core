@@ -35,6 +35,7 @@ export * from './chunkBySize';
 export * from './windowed';
 export * from './allPairs';
 export * from './allCombinations';
+export * from './interleave';
 export * from './zip';
 export * from './zip3';
 export * from './pairwise';

@@ -28,3 +28,4 @@ allPairs([1, 2, 3])(['a', 'b', 'c']); // ->
 ## See Also
 
 - [allCombinations](/core/en/array/operator/allCombinations)
+- [zip](/core/en/array/operator/zip)

@@ -30,3 +30,8 @@ const result = zip([1, 2, 3])(['a', 'b', 'c']);
 console.log(result);
 // Output: [[1, 'a'], [2, 'b'], [3, 'c']]
 ```
+
+## See Also
+- [allCombinations](/core/en/array/operator/allCombinations)
+- [allPairs](/core/en/array/operator/allPairs)
+- [zip3](/core/en/array/operator/zip3)

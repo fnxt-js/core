@@ -172,8 +172,8 @@ describe('performance test', function () {
   it('append', () => {
     const append = <E>(a: E[]) => (b: E[]): E[] => [...a, ...b];
 
-    const data0 = ARRAY.range(0, length/2);
-    const data1 = ARRAY.range(0, length/2);
+    const data0 = ARRAY.range(0, length / 2);
+    const data1 = ARRAY.range(0, length / 2);
 
     run(ARRAY.append(data0), append(data0), data1);
   }).timeout(oneMinute);
@@ -211,6 +211,19 @@ describe('performance test', function () {
     run(ARRAY.zip(data), zip(data), data);
   }).timeout(oneMinute);
 
+  describe('interleave', () => {
+    it('interleave', () => {
+      const interleave = <E>(arr1: E[]) => (arr2: E[]) => {
+        return ARRAY.flatten(ARRAY.zip(arr1)(arr2) as [E, E][] as E[][]);
+      };
+
+      const data0 = ARRAY.range(1000, length + 1000).slice(10000);
+      const data = ARRAY.range(0, length).slice(10000);
+
+      run(ARRAY.interleave(data0), interleave(data0), data);
+    }).timeout(oneMinute);
+
+  });
   it('zip3', () => {
     const zip3 = <T>(a: T[]) => <U>(b: U[]) => <S>(c: S[]): [T, U, S][] => {
       if (a.length !== b.length || c.length !== a.length) {
