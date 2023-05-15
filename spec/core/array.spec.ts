@@ -62,6 +62,13 @@ describe('array', () => {
     });
 
 
+    describe('singleton', () => {
+      it('should create', async () => {
+        expect(ARRAY.singleton(42)).to.eql([42]);
+      });
+    });
+
+
     describe('charRange', () => {
       it('should build charRange a-z', async () => {
         const array = ARRAY.charRange('a', 'z');
