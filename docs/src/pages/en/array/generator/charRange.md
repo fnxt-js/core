@@ -3,13 +3,13 @@ title: Array.charRange
 description: Array.charRange
 layout: ../../../../layouts/MainLayout.astro
 ---
-Builds an array with values in range between `from`(inclusive) and `to` (exclusive).
+Builds an array with values in range between `from`(inclusive) and `to` (inclusive).
 `step` is optional.
 
 ## Type
 
 ```ts
-type charRange = (from: string, to: string, step: number = 1) => number[]
+type charRange = (from: string, to: string, step: number = 1) => string[]
 ```
 
 ## Example

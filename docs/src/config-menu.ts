@@ -13,6 +13,10 @@ export default {
         "link": "en/array/generator/range"
       },
       {
+        "text": "singleton",
+        "link": "en/array/generator/singleton"
+      },
+      {
         "text": "allCombinations",
         "link": "en/array/operator/allCombinations"
       },
