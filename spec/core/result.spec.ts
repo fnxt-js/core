@@ -1,6 +1,17 @@
 import {expect} from 'chai';
 import 'mocha';
-import {bind, bindAsync, Failure, fold, map, mapAsync, mapFailure, ResultType, Success} from '../../src/result';
+import {
+  bind,
+  bindAsync,
+  Failure,
+  fold, isFailure,
+  isSuccess,
+  map,
+  mapAsync,
+  mapFailure, Result,
+  ResultType,
+  Success
+} from '../../src/result';
 
 describe('Result', () => {
   describe('Success', () => {
@@ -85,8 +96,8 @@ describe('Result', () => {
     it('fold success', () => {
       const results = [Success(42), Success(44)];
       const fn = fold(
-        (a: number, b: number) => a + b, 0,
-        (a: number, b: number) => a + b, 0,
+          (a: number, b: number) => a + b, 0,
+          (a: number, b: number) => a + b, 0,
       );
       expect(fn(results)).to.eql(Success(86));
     });
@@ -94,8 +105,8 @@ describe('Result', () => {
     it('fold success list', () => {
       const results = [Success(1), Success(2), Success(3)];
       const fn = fold(
-        (a: number[], b: number) => [...a, b], [],
-        (a: number[], b: number) => [...a, b], [],
+          (a: number[], b: number) => [...a, b], [],
+          (a: number[], b: number) => [...a, b], [],
       );
       expect(fn(results)).to.eql(Success([1, 2, 3]));
     });
@@ -103,12 +114,48 @@ describe('Result', () => {
     it('mapFailure failure', () => {
       const results = [Success(1), Success(2), Failure(0), Failure(42)];
       const fn = fold(
-        (a: number[], b: number) => [...a, b], [],
-        (a: number[], b: number) => [...a, b], [],
+          (a: number[], b: number) => [...a, b], [],
+          (a: number[], b: number) => [...a, b], [],
       );
       expect(fn(results)).to.eql(Failure([0, 42]));
     });
   });
 
+  describe('isSuccess', () => {
+    it('should return true on success', () => {
+      const result: Result<number, void> = Success(42);
+      expect(isSuccess(result)).to.eql(true);
+    });
+    it('should return false on failure', () => {
+      const result: Result<void, number> = Failure(0);
+      expect(isSuccess(result)).to.eql(false);
+    });
+    it('should have success value accessible', function () {
+      const result: Result<number, void> = Success(42);
+      if (isSuccess(result)) {
+        expect(result.value).to.eql(42);
+      } else {
+        throw new Error('Should not be failure');
+      }
+    });
+  });
 
+  describe('isFailure', () => {
+    it('should return true on success', () => {
+      const result: Result<number, void> = Success(42);
+      expect(isFailure(result)).to.eql(false);
+    });
+    it('should return false on failure', () => {
+      const result: Result<void, number> = Failure(0);
+      expect(isFailure(result)).to.eql(true);
+    });
+    it('should have success value accessible', function () {
+      const result: Result<void, number> = Failure(0);
+      if (isFailure(result)) {
+        expect(result.value).to.eql(0);
+      } else {
+        throw new Error('Should not be failure');
+      }
+    });
+  });
 });
