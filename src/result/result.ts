@@ -3,24 +3,26 @@ export enum ResultType {
   Failure = 'Failure',
 }
 
-interface SuccessType<E> {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+interface SuccessType<S, F> {
   readonly type: ResultType.Success;
-  readonly value: E;
+  readonly value: S;
 }
 
-interface FailureType<E> {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+interface FailureType<S, F> {
   readonly type: ResultType.Failure;
-  readonly value: E;
+  readonly value: F;
 }
 
-export type Result<S, F> = SuccessType<S> | FailureType<F>;
+export type Result<S, F> = SuccessType<S, F> | FailureType<S, F>;
 
-export const Success = <E>(value: E): SuccessType<E> => ({
+export const Success = <S, F>(value: S): SuccessType<S, F> => ({
   type: ResultType.Success,
   value,
 });
 
-export const Failure = <E>(value: E): FailureType<E> => ({
+export const Failure = <S, F>(value: F): FailureType<S, F> => ({
   type: ResultType.Failure,
   value,
 });
