@@ -55,6 +55,7 @@ export * from './takeWhileInclusive';
 
 export * from './where';
 export * from './exists';
+export * from './some';
 export * from './forall';
 export * from './every';
 export * from './contains';
