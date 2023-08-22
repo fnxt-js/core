@@ -88,36 +88,50 @@
   },
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
+      "require": "./dist/cjs/index.js",
       "node": "./dist/cjs/index.js",
       "es2015": "./dist/esm/index.js",
       "default": "./dist/esm5/index.js"
     },
     "./array": {
+      "types": "./dist/types/array/index.d.ts",
+      "require": "./dist/cjs/array/index.js",
       "node": "./dist/cjs/array/index.js",
       "es2015": "./dist/esm/array/index.js",
       "default": "./dist/esm5/array/index.js"
     },
     "./option": {
+      "types": "./dist/types/option/index.d.ts",
+      "require": "./dist/cjs/option/index.js",
       "node": "./dist/cjs/option/index.js",
       "es2015": "./dist/esm/option/index.js",
       "default": "./dist/esm5/option/index.js"
     },
     "./pipe": {
+      "types": "./dist/types/pipe/index.d.ts",
+      "require": "./dist/cjs/pipe/index.js",
       "node": "./dist/cjs/pipe/index.js",
       "es2015": "./dist/esm/pipe/index.js",
       "default": "./dist/esm5/pipe/index.js"
     },
     "./fnxt-types": {
+      "types": "./dist/types/fnxt-types/index.d.ts",
+      "require": "./dist/cjs/fnxt-types/index.js",
       "node": "./dist/cjs/fnxt-types/index.js",
       "es2015": "./dist/esm/fnxt-types/index.js",
       "default": "./dist/esm5/fnxt-types/index.js"
     },
     "./result": {
+      "types": "./dist/types/result/index.d.ts",
+      "require": "./dist/cjs/result/index.js",
       "node": "./dist/cjs/result/index.js",
       "es2015": "./dist/esm/result/index.js",
       "default": "./dist/esm5/result/index.js"
     },
     "./seq": {
+      "types": "./dist/types/seq/index.d.ts",
+      "require": "./dist/cjs/seq/index.js",
       "node": "./dist/cjs/seq/index.js",
       "es2015": "./dist/esm/seq/index.js",
       "default": "./dist/esm5/seq/index.js"

@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {checkThrow} from '../../../support/checkThrow';
-import {allCombinations, interleave, range} from '../../../../src/array';
+import {interleave} from '../../../../src/array';
 
 describe('interleave', () => {
 
@@ -23,12 +23,5 @@ describe('interleave', () => {
   it('should throw if null or undefined', () => {
     const fn = interleave([1]);
     checkThrow(fn);
-  });
-
-
-
-  it('should throw if null or undefined', () => {
-
-    console.log(allCombinations(range(1,14),range(1,5)));
   });
 });
