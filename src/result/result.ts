@@ -24,5 +24,6 @@ export const Failure = <E>(value: E): FailureType<E> => ({
   type: ResultType.Failure,
   value,
 });
+
 export const isSuccess = <S, F>(result: Result<S, F>): result is SuccessType<S> => result.type === ResultType.Success
 export const isFailure = <S, F>(result: Result<S, F>): result is FailureType<F> => result.type === ResultType.Failure
