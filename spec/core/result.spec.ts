@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import 'mocha';
-import {bind, bindAsync, Failure, fold, map, mapAsync, mapFailure, ResultType, Success} from '../../src/result';
+import {bind, bindAsync, Failure, fold, map, mapAsync, mapFailure, Result, ResultType, Success} from '../../src/result';
 
 describe('Result', () => {
   describe('Success', () => {
