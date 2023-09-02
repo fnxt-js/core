@@ -119,6 +119,36 @@ describe('performance test', function () {
     run(fnxt, alternative, data);
   }).timeout(oneMinute);
 
+  describe('updateAt', () => {
+    it('updateAt (1)', () => {
+      const updateAt = <T>(index: number) => <T>(value: T) => (array: T[]): T[] =>
+        array.map((v, i) => i === index ? value : v);
+
+      const data = ARRAY.range(0, length);
+
+      const index = Math.round(length / 2);
+      const fnxt = ARRAY.updateAt(index)(-1);
+      const alternative = updateAt(index)(-1);
+
+      run(fnxt, alternative, data);
+
+    }).timeout(oneMinute);
+
+    it('updateAt (2)', () => {
+      const updateAt = <T>(index: number) => <T>(value: T) => (array: T[]): T[] =>
+        array.slice(0, index).concat([value], array.slice(index + 1));
+
+      const data = ARRAY.range(0, length);
+
+      const index = Math.round(length / 2);
+      const fnxt = ARRAY.updateAt(index)(-1);
+      const alternative = updateAt(index)(-1);
+
+      run(fnxt, alternative, data);
+
+    }).timeout(oneMinute);
+  });
+
   it('skipWhile', () => {
     const skipWhile = <T>(predicate: Predicate<T>) => (array: T[]): T[] => {
       const result = [];
