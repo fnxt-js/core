@@ -4,6 +4,6 @@ export const updateAt = (index: number) => <T>(value: T) => (array: T[]) => {
   }
 
   const copy = Array.from(array);
-  copy.splice(index, 1, value);
+  copy[index] = value;
   return copy;
 };
