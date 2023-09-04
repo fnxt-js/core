@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {sortWith, uniqueBy} from '../../../../src/array';
+import {uniqueBy} from '../../../../src/array';
 import {checkThrow} from '../../../support/checkThrow';
 
 describe('uniqueBy', () => {
@@ -26,12 +26,12 @@ describe('uniqueBy', () => {
   });
 
   it('should return empty', () => {
-    const fn = sortWith<string>((a, b) => a.length - b.length);
+    const fn = uniqueBy<string>((a) => a[0]);
     expect(fn([])).to.eql([]);
   });
 
   it('should throw if null or undefined', () => {
-    const fn = sortWith<string>((a, b) => a.length - b.length);
+    const fn = uniqueBy<string>((a) => a[0]);
     checkThrow(fn);
   });
 

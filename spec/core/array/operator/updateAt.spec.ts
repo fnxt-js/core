@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {sortWith, updateAt} from '../../../../src/array';
+import {updateAt} from '../../../../src/array';
 import {checkThrow} from '../../../support/checkThrow';
 
 describe('updateAt', () => {
@@ -42,7 +42,7 @@ describe('updateAt', () => {
 
 
   it('should throw if null or undefined', () => {
-    const fn = sortWith<string>((a, b) => a.length - b.length);
+    const fn = updateAt(2)(42);
     checkThrow(fn);
   });
 

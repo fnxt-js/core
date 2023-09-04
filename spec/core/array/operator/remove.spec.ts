@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {sortWith, remove} from '../../../../src/array';
+import {remove} from '../../../../src/array';
 import {checkThrow} from '../../../support/checkThrow';
 
 describe('remove', () => {
@@ -29,7 +29,7 @@ describe('remove', () => {
 
 
   it('should throw if null or undefined', () => {
-    const fn = sortWith<string>((a, b) => a.length - b.length);
+    const fn = remove(2);
     checkThrow(fn);
   });
 

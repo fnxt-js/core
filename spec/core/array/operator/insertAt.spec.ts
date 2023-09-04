@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {sortWith, insertAt} from '../../../../src/array';
+import {insertAt} from '../../../../src/array';
 import {checkThrow} from '../../../support/checkThrow';
 
 describe('insertAt', () => {
@@ -49,7 +49,7 @@ describe('insertAt', () => {
 
 
   it('should throw if null or undefined', () => {
-    const fn = sortWith<string>((a, b) => a.length - b.length);
+    const fn = insertAt(2)(42);
     checkThrow(fn);
   });
 
