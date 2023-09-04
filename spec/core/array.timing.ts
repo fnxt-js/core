@@ -119,6 +119,21 @@ describe('performance test', function () {
     run(fnxt, alternative, data);
   }).timeout(oneMinute);
 
+  describe('remove', () => {
+    it('remove (1)', () => {
+      const remove = <T>(index: number) => <T>(array: T[]): T[] =>
+        array.filter((v, i) => i !== index);
+
+      const data = ARRAY.range(0, length);
+
+      const index = Math.round(length / 2);
+      const fnxt = ARRAY.remove(index);
+      const alternative = remove(index);
+
+      run(fnxt, alternative, data);
+
+    }).timeout(oneMinute);
+  })
   describe('updateAt', () => {
     it('updateAt (1)', () => {
       const updateAt = <T>(index: number) => <T>(value: T) => (array: T[]): T[] =>

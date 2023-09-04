@@ -104,3 +104,5 @@ export * from './tryFindBack';
 export * from './tryFind';
 
 export * from './updateAt';
+export * from './insertAt';
+export * from './remove';

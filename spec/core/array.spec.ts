@@ -1,12 +1,12 @@
 import * as chai from 'chai';
 import * as sinonChai from 'sinon-chai';
-const {expect} = chai;
-chai.use(sinonChai);
-
 import 'mocha';
 
 import * as ARRAY from '../../src/array';
 import {consoleWarnSpy} from './console.spy';
+
+const {expect} = chai;
+chai.use(sinonChai);
 
 describe('array', () => {
 
@@ -21,7 +21,7 @@ describe('array', () => {
       'find', 'findBack', 'findIndex',
       'findIndexBack', 'flatten', 'fold',
       'foldBack', 'forall', 'groupBy',
-      'head', 'init', 'isEmpty',
+      'head', 'init', 'insertAt', 'isEmpty',
       'iter', 'last', 'length',
       'map', 'maxBy', 'minBy',
       'pairwise', 'partition', 'push',
@@ -33,7 +33,7 @@ describe('array', () => {
       'sortInPlace', 'sortInPlaceBy', 'sortInPlaceWith',
       'sortInPlaceWith', 'sortWith', 'sortWith',
       'splitAt', 'splitInto', 'sum',
-      'sumBy', 'tail', 'take',
+      'sumBy', 'remove', 'tail', 'take',
       'takeWhile', 'takeWhileInclusive', 'transpose',
       'truncate', 'tryFind', 'tryFindBack',
       'tryFindIndex', 'tryFindIndexBack', 'tryHead',
