@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 import 'mocha';
-import {chain, pipe} from '../../src/pipe';
-import {bind as bindResult, map as mapResult, Result, Success} from 'fnxt/result';
+import {chain, pipe} from '../../pipe';
+import {bind as bindResult, map as mapResult, Success} from '../../result';
 
 describe('pipe', () => {
   it('should pipe', () => {

@@ -6,6 +6,6 @@ interface Chain<E> {
 export const chain = <E>(value: E): Chain<E> => {
   return {
     pipe: <F>(map: (e: E) => F) => chain(map(value)),
-    value: value
+    value
   };
 }

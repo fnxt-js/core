@@ -4,7 +4,7 @@ export const insertAt = (index: number) => <T>(value: T) => (array: T[]) => {
   }
 
   const copy = Array.from(array);
-  if (index == array.length) {
+  if (index === array.length) {
     copy.push(value);
   } else {
     copy.splice(index, 0, value);
