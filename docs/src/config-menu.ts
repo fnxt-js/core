@@ -145,6 +145,10 @@ export default {
         "link": "en/array/operator/takeWhile"
       },
       {
+        "text": "truncate",
+        "link": "en/array/operator/truncate"
+      },
+      {
         "text": "tryFind",
         "link": "en/array/operator/tryFind"
       },
