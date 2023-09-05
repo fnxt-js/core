@@ -27,6 +27,18 @@ describe('remove', () => {
     expect(array).to.eql([1,2,3]);
   });
 
+  it('should remove out of bounds', () => {
+    const array = [1,2,3];
+    const fn = remove(3);
+    expect(() => fn(fn(array))).to.throw(`index: (3) out of range`);
+  });
+
+  it('should remove negative index', () => {
+    const array = [1,2,3];
+    const fn = remove(-1);
+    expect(() => fn(fn(array))).to.throw(`index: (-1) out of range`);
+  });
+
 
   it('should throw if null or undefined', () => {
     const fn = remove(2);
