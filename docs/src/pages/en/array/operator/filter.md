@@ -20,3 +20,7 @@ const array = [0, 1, 2];
 const isEven = ARRAY.filter((x: number) => x % 2 == 0);
 isEven(array) // -> [0, 2]
 ```
+
+## See Also
+- [skipWhile](/core/en/array/operator/skipWhile)
+- [takeWhile](/core/en/array/operator/takeWhile)

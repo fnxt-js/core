@@ -7,9 +7,9 @@
     "astro:dev": "astro dev",
     "start": "astro dev",
     "check": "astro check && tsc",
-    "build:asro": "astro build",
+    "build:astro": "astro build",
     "copy:cov": "node include-cov.js",
-    "build": "npm run build:asro && npm run copy:cov",
+    "build": "npm run build:astro && npm run copy:cov",
     "preview": "astro preview",
     "astro": "astro"
   },

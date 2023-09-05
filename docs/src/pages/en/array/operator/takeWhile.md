@@ -16,8 +16,18 @@ type takeWhile = <E>(predicate: Predicate<E>) => (array: Array<E>) => Array<E>
 ## Example
 
 ```ts
-import * as ARRAY from 'fnxt/array';
+import {takeWhile} from 'fnxt/array';
 
-const array = ARRAY.range(0, 10, 1);
-ARRAY.takeWhile(lessThan(5))(array) // -> [0, 1, 2, 3, 4];
+const array = [0, 1, 2, 3, 4, 5];
+const result = takeWhile(lessThan(3))(array);
+
+console.log(result);
+// Output: [0, 1, 2]
 ```
+
+## See Also
+- [skip](/core/en/array/operator/skip)
+- [skipWhile](/core/en/array/operator/skipWhile)
+- [take](/core/en/array/operator/take)
+- [truncate](/core/en/array/operator/truncate)
+- [filter](/core/en/array/operator/filter)

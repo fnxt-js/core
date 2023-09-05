@@ -117,6 +117,14 @@ export default {
         "link": "en/array/operator/reduce"
       },
       {
+        "text": "skip",
+        "link": "en/array/operator/skip"
+      },
+      {
+        "text": "skipWhile",
+        "link": "en/array/operator/skipWhile"
+      },
+      {
         "text": "some",
         "link": "en/array/operator/some"
       },
