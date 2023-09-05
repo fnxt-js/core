@@ -15,6 +15,10 @@ describe('skip', () => {
     const fn = skip(2);
     expect(fn([1])).to.eql([]);
   });
+  it('should skip more than length', () => {
+    const fn = skip(-2);
+    expect(fn([1, 2, 3, 4])).to.eql([1, 2, 3, 4]);
+  });
 
   it('should skip empty', () => {
     const fn = skip(2);
