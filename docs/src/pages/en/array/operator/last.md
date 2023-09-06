@@ -23,9 +23,9 @@ last(array) // -> 4
 ```
 
 ## See Also
-- [head](/core/en/array/operator/head)
-- [tail](/core/en/array/operator/tail)
-- [init](/core/en/array/operator/init)
+- [head](./head)
+- [tail](./tail)
+- [init](./init)
 
 ```
 |  head  |              tail              |

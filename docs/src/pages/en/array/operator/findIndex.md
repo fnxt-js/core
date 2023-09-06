@@ -32,10 +32,10 @@ findEven(array) // -> 1
 
 ## See Also
 
-- [find](/core/en/array/operator/find)
-- [findBack](/core/en/array/operator/findBack)
-- [findIndexBack](/core/en/array/operator/findIndexBack)
-- [tryFind](/core/en/array/operator/tryFind)
-- [tryFindBack](/core/en/array/operator/tryFindBack)
-- [tryFindIndex](/core/en/array/operator/tryFindIndex)
-- [tryFindIndexBack](/core/en/array/operator/tryFindIndexBack)
+- [find](./find)
+- [findBack](./findBack)
+- [findIndexBack](./findIndexBack)
+- [tryFind](./tryFind)
+- [tryFindBack](./tryFindBack)
+- [tryFindIndex](./tryFindIndex)
+- [tryFindIndexBack](./tryFindIndexBack)

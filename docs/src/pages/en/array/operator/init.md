@@ -21,9 +21,9 @@ init([1, 2, 3, 4]) // -> [1, 2, 3]
 
 ## See Also
 
-- [head](/core/en/array/operator/head)
-- [tail](/core/en/array/operator/tail)
-- [last](/core/en/array/operator/last)
+- [head](./head)
+- [tail](./tail)
+- [last](./last)
 
 ```
 |  head  |              tail              |

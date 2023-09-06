@@ -20,9 +20,9 @@ tail([1, 2, 3, 4]) // -> [2, 3, 4]
 ```
 
 ## See Also
-- [head](/core/en/array/operator/head)
-- [init](/core/en/array/operator/init)
-- [last](/core/en/array/operator/last)
+- [head](./head)
+- [init](./init)
+- [last](./last)
 
 ```
 |  head  |              tail              |

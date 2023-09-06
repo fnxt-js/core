@@ -34,6 +34,6 @@ allCombinations([1, 2], ['a', 'b', 'c'], [4, 5]); // ->
 
 ## See Also
 
-- [allPairs](/core/en/array/operator/allPairs)
-- [interleave](/core/en/array/operator/interleave)
-- [zip](/core/en/array/operator/zip)
+- [allPairs](./allPairs)
+- [interleave](./interleave)
+- [zip](./zip)

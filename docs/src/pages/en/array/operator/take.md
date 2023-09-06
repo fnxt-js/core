@@ -25,8 +25,8 @@ console.log(result);
 ```
 
 ## See Also
-- [skip](/core/en/array/operator/skip)
-- [skipWhile](/core/en/array/operator/skipWhile)
-- [takeWhile](/core/en/array/operator/takeWhile)
-- [truncate](/core/en/array/operator/truncate)
-- [filter](/core/en/array/operator/filter)
+- [skip](./skip)
+- [skipWhile](./skipWhile)
+- [takeWhile](./takeWhile)
+- [truncate](./truncate)
+- [filter](./filter)

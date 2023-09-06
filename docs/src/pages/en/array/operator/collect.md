@@ -25,4 +25,4 @@ collect(gen)  // -> [1, 2, 2, 3, 3, 4];
 
 ## See Also
 
-- [map](/core/en/array/operator/map)
+- [map](./map)

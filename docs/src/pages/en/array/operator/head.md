@@ -23,9 +23,9 @@ head(array) // -> 2
 
 ## See Also
 
-- [tail](/core/en/array/operator/tail)
-- [init](/core/en/array/operator/init)
-- [last](/core/en/array/operator/last)
+- [tail](./tail)
+- [init](./init)
+- [last](./last)
 
 ```
 |  head  |              tail              |

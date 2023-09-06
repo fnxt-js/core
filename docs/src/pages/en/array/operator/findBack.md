@@ -31,10 +31,10 @@ const lastEven = findBack(isEven)(array);
 ```
 
 ## See Also
-- [find](/core/en/array/operator/find)
-- [findIndex](/core/en/array/operator/findIndex)
-- [findIndexBack](/core/en/array/operator/findIndexBack)
-- [tryFind](/core/en/array/operator/tryFind)
-- [tryFindBack](/core/en/array/operator/tryFindBack)
-- [tryFindIndex](/core/en/array/operator/tryFindIndex)
-- [tryFindIndexBack](/core/en/array/operator/tryFindIndexBack)
+- [find](./find)
+- [findIndex](./findIndex)
+- [findIndexBack](./findIndexBack)
+- [tryFind](./tryFind)
+- [tryFindBack](./tryFindBack)
+- [tryFindIndex](./tryFindIndex)
+- [tryFindIndexBack](./tryFindIndexBack)

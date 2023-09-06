@@ -22,6 +22,6 @@ isEven(array) // -> [0, 2]
 ```
 
 ## See Also
-- [skipWhile](/core/en/array/operator/skipWhile)
-- [takeWhile](/core/en/array/operator/takeWhile)
-- [partition](/core/en/array/operator/partition)
+- [skipWhile](./skipWhile)
+- [takeWhile](./takeWhile)
+- [partition](./partition)
