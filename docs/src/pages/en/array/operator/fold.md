@@ -14,7 +14,7 @@ Throws an `Error` if list is empty.
 ## Type
 
 ```ts
-type fold = <E, F>(folder: (e: F, f: E) => F) => (initial: F) => (array: Array<E>) => F
+type fold = <E, F>(folder: (e: F, f: E) => F) => (initial: F) => (array: E[]) => F
 ```
 
 ## Example
