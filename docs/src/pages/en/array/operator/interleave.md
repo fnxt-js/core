@@ -25,6 +25,8 @@ type interleave = <E>(arr1: E[]) => (arr2: E[]) => Array<E>
 An array of tuples `E[]`
 
 ```ts
+import {interleave} from 'fnxt/array';
+
 const result = interleave(['1', '2', '3'])(['a', 'b', 'c']);
 console.log(result);
 // Output: ['1', 'a', '2', 'b', '3', 'c']

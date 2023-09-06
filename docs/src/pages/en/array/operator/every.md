@@ -18,9 +18,11 @@ type every = <E>(predicate: ((e: E) => boolean)) => (s: Array<E>) => boolean
 ## Example
 
 ```ts
-import * as ARRAY from 'fnxt/array';
+import {every} from 'fnxt/array';
 
 const array = [0, 1, 2];
-const every = ARRAY.every((x: number) => x % 2 == 0);
-every(array) // -> false
+const everyEven = every((x: number) => x % 2 == 0);
+const everyLessThan3 = every((x: number) => x < 3);
+everyEven(array) // -> false
+everyLessThan3(array) // -> true
 ```

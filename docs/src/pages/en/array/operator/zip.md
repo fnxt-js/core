@@ -26,6 +26,8 @@ type zip = <E>(arr1: E[]) => <F>(arr2: F[]) => Array<Tuple<E, F>>
 An array of tuples `Tuple<E, F>[]`
 
 ```ts
+import {zip} from 'fnxt/array';
+
 const result = zip([1, 2, 3])(['a', 'b', 'c']);
 console.log(result);
 // Output: [[1, 'a'], [2, 'b'], [3, 'c']]
@@ -34,4 +36,5 @@ console.log(result);
 ## See Also
 - [allCombinations](/core/en/array/operator/allCombinations)
 - [allPairs](/core/en/array/operator/allPairs)
+- [interleave](/core/en/array/operator/interleave)
 - [zip3](/core/en/array/operator/zip3)

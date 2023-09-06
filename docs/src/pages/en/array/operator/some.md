@@ -17,9 +17,9 @@ type some = <E>(predicate: ((e: E) => boolean)) => (s: Array<E>) => boolean
 ## Example
 
 ```ts
-import * as ARRAY from 'fnxt/array';
+import {some} from 'fnxt/array';
 
 const array = [0, 1, 2];
-const some = ARRAY.some((x: number) => x % 2 == 0);
+const some = some((x: number) => x % 2 == 0);
 some(array) // -> false
 ```

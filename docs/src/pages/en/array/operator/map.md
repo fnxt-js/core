@@ -14,9 +14,12 @@ type map = <E, F>(e: UnaryFunction<E, F>) => (a: Array<E>) => Array<R>
 ## Example
 
 ```ts
-import * as ARRAY from 'fnxt/array';
+import {map} from 'fnxt/array';
 
 const array = [0, 1, 2];
-const plusOne = ARRAY.map((x: number) => x + 1);
+const plusOne = map((x: number) => x + 1);
 plusOne(array) // -> [2, 3, 4]
 ```
+
+## See Also
+- [collect](/core/en/array/operator/collect)

@@ -25,33 +25,43 @@ elements that do not satisfy the predicate.
 type partition = <T>(predicate: ((item: T) => boolean)) => (array: T[]) => [T[], T[]]
 ```
 
-## Example
+## Examples
+
 
 ```ts
 import {partition} from 'fnxt/array';
+
+const partitionSmall = partition(x => x < 4);
+const result = partitionSmall([1, 2, 3, 4, 5, 6, 7])
+
+console.log(result);
+// Output: [[1, 2, 3], [4, 5, 6, 7]]
 ```
 
 ```ts
-const smallValues = partition(x => x < 4);
-smallValues([1, 2, 3, 4, 5, 6, 7])// -> [[1, 2, 3], [4, 5, 6, 7]]
+import {partition} from 'fnxt/array';
+
+const isLongWord = (x: string) => x.length >= 5;
+const partitionLongShort = partition(isLongWord);
+const result = partitionLongShort(['hello', 'world', 'foo', 'bar']);
+
+console.log(result);
+// Output: [['hello', 'world'], ['foo', 'bar']]
 ```
 
 ```ts
-const isLongWord = (x: string) => x.length > 5;
-const splitLongShortWords = partition<string>(isLongWord);
-const result = splitLongShortWords(['hello', 'world', 'foo', 'bar']);
-// result is [ ['hello', 'world'], ['foo', 'bar'] ]
-```
-
-```ts
+import {partition} from 'fnxt/array';
 
 const isEven = (x: number) => x % 2 === 0;
-const splitEvenOdd = partition<number>(isEven);
-const result = splitEvenOdd([1, 2, 3, 4, 5]);
-// result is [ [2, 4], [1, 3, 5] ]
+const partitionEvenOdd = partition(isEven);
+const result = partitionEvenOdd([1, 2, 3, 4, 5]);
+
+console.log(result);
+// Output: [[2, 4], [1, 3, 5]]
 ```
 
 ## See Also
 
 - [chunkBySize](/core/en/array/operator/chunkBySize)
+- [filter](/core/en/array/operator/filter)
 - [splitInto](/core/en/array/operator/splitInto)

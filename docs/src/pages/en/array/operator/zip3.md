@@ -28,6 +28,8 @@ type zip3 = <E>(arr1: E[]) => <F>(arr2: F[]) => <G>(arr3: G[]) => Array<Triple<E
 An array of triples `Triple<E, F, G>[]`
 
 ```ts
+import {zip3} from 'fnxt/array';
+
 const result = zip3([1, 2, 3])(['a', 'b', 'c'])([true, false, true]);
 console.log(result);
 // Output: [[1, 'a', true], [2, 'b', false], [3, 'c', true]]

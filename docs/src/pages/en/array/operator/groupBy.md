@@ -16,7 +16,7 @@ type KeyProjection<E> = (element: E) => string | number;
 ## Example
 
 ```ts
-import * as ARRAY from 'fnxt/array';
+import {groupBy} from 'fnxt/array';
 
 const fn = groupBy<number>(x => x % 3);
 fn([1, 2, 3, 4]) // -> [[3], [1, 4], [2]];

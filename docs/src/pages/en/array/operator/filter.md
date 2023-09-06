@@ -14,13 +14,14 @@ type filter = <E>(fn: ((e: E) => boolean)) => (a: Array<E>) => Array<E>
 ## Example
 
 ```ts
-import * as ARRAY from 'fnxt/array';
+import {filter} from 'fnxt/array';
 
 const array = [0, 1, 2];
-const isEven = ARRAY.filter((x: number) => x % 2 == 0);
+const isEven = filter((x: number) => x % 2 == 0);
 isEven(array) // -> [0, 2]
 ```
 
 ## See Also
 - [skipWhile](/core/en/array/operator/skipWhile)
 - [takeWhile](/core/en/array/operator/takeWhile)
+- [partition](/core/en/array/operator/partition)

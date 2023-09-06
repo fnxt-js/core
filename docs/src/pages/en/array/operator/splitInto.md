@@ -18,10 +18,10 @@ type splitInto = <E>(count: number) => (array: E[]) => E[][]
 ## Example
 
 ```ts
-import * as ARRAY from 'fnxt/array';
+import {splitInto} from 'fnxt/array';
 
 const array = [1, 2, 3, 4, 5, 6, 7];
-const splitInto = ARRAY.splitInto(3);
+const splitInto = splitInto(3);
 splitInto(array)// -> [[1, 2, 3], [4, 5], [6, 7]]
 ```
 

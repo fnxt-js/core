@@ -69,6 +69,10 @@ export default {
         "link": "en/array/operator/findIndexBack"
       },
       {
+        "text": "fold",
+        "link": "en/array/operator/fold"
+      },
+      {
         "text": "groupBy",
         "link": "en/array/operator/groupBy"
       },

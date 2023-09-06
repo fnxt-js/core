@@ -15,10 +15,10 @@ type minBy = <E>(e: UnaryFunction<E, number>) => (array: Array<E>) => E
 ## Example
 
 ```ts
-import * as ARRAY from 'fnxt/array';
+import {minBy} from 'fnxt/array';
 
 const array = ['aa', 'bbb', 'c', 'dd'];
-const minBy = ARRAY.minBy((x: string) => x.length);
+const minBy = minBy((x: string) => x.length);
 minBy(array) // -> 'c'
 ```
  

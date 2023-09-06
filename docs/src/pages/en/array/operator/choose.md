@@ -17,10 +17,10 @@ type choose = <E, F>(e: Chooser<E, F>) => (array: Array<E>) => Array<F>
 ## Example
 
 ```ts
-import * as ARRAY from 'fnxt/array';
+import {choose} from 'fnxt/array';
 
 const array = [0, 1, 2, 3, 4];
-const chooser = ARRAY.choose(
+const chooser = choose(
   (x: number) => x % 2 === 0
     ? Opt.Some(x * 2)
     : Opt.None
