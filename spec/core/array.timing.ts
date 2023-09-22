@@ -1,12 +1,10 @@
-import {KeyProjection, Mutation, Predicate, PropertyProjection, Tuple} from '../../src/fnxt-types';
-
 import * as chai from 'chai';
 import * as sinonChai from 'sinon-chai';
 import 'mocha';
 
 import * as ARRAY from '../../src/array';
+import {KeyProjection, Mutation, Predicate, PropertyProjection, Tuple, UnaryFunction} from '../../src/fnxt-types';
 import {Chooser, isSome, None, Some} from '../../src/option';
-
 
 import {performance} from 'perf_hooks';
 import * as process from 'process';
@@ -20,7 +18,7 @@ chai.use(sinonChai);
 function shuffle<E>(arr: E[]) {
   const a = arr.slice();
   for (let i = a.length; i; i--) {
-    let j = Math.floor(Math.random() * i);
+    const j = Math.floor(Math.random() * i);
     [a[i - 1], a[j]] = [a[j], a[i - 1]];
   }
   return a;
@@ -48,8 +46,8 @@ const oneSecond = 1000;
 const oneMinute = 60 * oneSecond;
 
 const print = (!process.env.PRINT_DEBUG)
-  ? () => null
-  : (data: any) => console.log(data);
+    ? () => null
+    : (data: unknown) => console.log(data);
 
 
 function printTimings(a: number[], b: number[]) {
@@ -83,8 +81,8 @@ describe('performance test', function () {
 
   it('partition', () => {
     const partition = <T>(predicate: Predicate<T>) =>
-      (array: T[]): Tuple<T[], T[]> =>
-        [array.filter(predicate), array.filter(e => !predicate(e))];
+        (array: T[]): Tuple<T[], T[]> =>
+            [array.filter(predicate), array.filter(e => !predicate(e))];
 
     const data = shuffle(ARRAY.range(0, length));
     const predicate: Predicate<number> = (e) => length / 2 <= e;
@@ -121,8 +119,8 @@ describe('performance test', function () {
 
   describe('remove', () => {
     it('remove (1)', () => {
-      const remove = <T>(index: number) => <T>(array: T[]): T[] =>
-        array.filter((v, i) => i !== index);
+      const remove = (index: number) => <T>(array: T[]): T[] =>
+          array.filter((v, i) => i !== index);
 
       const data = ARRAY.range(0, length);
 
@@ -133,11 +131,60 @@ describe('performance test', function () {
       run(fnxt, alternative, data);
 
     }).timeout(oneMinute);
-  })
+  });
+  describe('collect', () => {
+
+    it('collect (1)', () => {
+
+      const collect = <E, F>(fn: UnaryFunction<E, Iterable<F>>) => (array: E[]): F[] =>
+          array.reduce((p, c) => {
+            const values = fn(c);
+            p.push(...values);
+            return p;
+          }, [] as F[]);
+
+
+      const data = ARRAY.range(0, length / 10);
+
+      const mapping = (e: number) => ARRAY.range(0, e % 10 + 10);
+
+      const fnxt = ARRAY.collect(mapping);
+      const alternative = collect(mapping);
+
+      run(fnxt, alternative, data);
+
+    }).timeout(oneMinute);
+
+    it('collect (2)', () => {
+
+      const collect = <E, F>(fn: UnaryFunction<E, Iterable<F>>) => (array: E[]): F[] => {
+        const res = [];
+        for (let i = 0; i < array.length; i++) {
+          const elements = fn(array[i]);
+          for (const element of elements) {
+            res.push(element);
+          }
+        }
+        return res;
+      };
+
+
+      const data = ARRAY.range(0, length / 10);
+
+      const mapping = (e: number) => ARRAY.range(0, e % 10 + 10);
+
+      const fnxt = ARRAY.collect(mapping);
+      const alternative = collect(mapping);
+
+      run(fnxt, alternative, data);
+
+    }).timeout(oneMinute);
+  });
+
   describe('updateAt', () => {
     it('updateAt (1)', () => {
-      const updateAt = <T>(index: number) => <T>(value: T) => (array: T[]): T[] =>
-        array.map((v, i) => i === index ? value : v);
+      const updateAt = (index: number) => <T>(value: T) => (array: T[]): T[] =>
+          array.map((v, i) => i === index ? value : v);
 
       const data = ARRAY.range(0, length);
 
@@ -150,8 +197,8 @@ describe('performance test', function () {
     }).timeout(oneMinute);
 
     it('updateAt (2)', () => {
-      const updateAt = <T>(index: number) => <T>(value: T) => (array: T[]): T[] =>
-        array.slice(0, index).concat([value], array.slice(index + 1));
+      const updateAt = (index: number) => <T>(value: T) => (array: T[]): T[] =>
+          array.slice(0, index).concat([value], array.slice(index + 1));
 
       const data = ARRAY.range(0, length);
 
@@ -227,10 +274,9 @@ describe('performance test', function () {
   it('countBy', () => {
     const p = (x: number) => x % 1000;
 
-    type MapType<E> = Map<number | string, number>
 
     const countBy = <E>(projection: KeyProjection<E>) => (array: E[]): [string | number, number][] => {
-      const map: MapType<E> = new Map();
+      const map = new Map<number | string, number>();
       for (const e of array) {
         const key = projection(e);
         map.set(key, 1 + (map.get(key) || 0));
@@ -296,20 +342,20 @@ describe('performance test', function () {
   it('rotate 2', () => {
     const rotate = (offset: number) =>
 
-      <S>(array: S[]): S[] => {
+        <S>(array: S[]): S[] => {
 
-        const index = offset % array.length + (offset < 0 ? array.length : 0);
-        const result: S[] = [];
-        for (let i = index; i < array.length; i++) {
-          result.push(array[i]);
-        }
+          const index = offset % array.length + (offset < 0 ? array.length : 0);
+          const result: S[] = [];
+          for (let i = index; i < array.length; i++) {
+            result.push(array[i]);
+          }
 
-        for (let i = 0; i < index; i++) {
-          result.push(array[i]);
-        }
+          for (let i = 0; i < index; i++) {
+            result.push(array[i]);
+          }
 
-        return result;
-      };
+          return result;
+        };
 
     const data = ARRAY.range(0, length);
     const half = Math.round(length / 2);
