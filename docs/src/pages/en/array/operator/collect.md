@@ -26,3 +26,5 @@ collect(gen)  // -> [1, 2, 2, 3, 3, 4];
 ## See Also
 
 - [map](./map)
+- [cancat](./concat)
+- [flatten](./flatten)

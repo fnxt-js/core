@@ -1,7 +1,7 @@
-export const flatten = <E>(a: E[][]): E[] => {
-  if (a === null || a === undefined) {
+export const flatten = <E>(array: E[][]): E[] => {
+  if (!Array.isArray(array) || !array.every(Array.isArray)) {
     throw Error();
   }
-  return Array.prototype.concat.apply([], a);
+  return Array.prototype.concat.apply([], array);
 };
 

@@ -3,7 +3,7 @@ This file is auto-generated.
 */
 export default {
   "en": {
-    "array": [
+    "array.gen": [
       {
         "text": "charRange",
         "link": "en/array/generator/charRange"
@@ -15,7 +15,9 @@ export default {
       {
         "text": "singleton",
         "link": "en/array/generator/singleton"
-      },
+      }
+    ],
+    "array.op": [
       {
         "text": "allCombinations",
         "link": "en/array/operator/allCombinations"
@@ -67,6 +69,10 @@ export default {
       {
         "text": "findIndexBack",
         "link": "en/array/operator/findIndexBack"
+      },
+      {
+        "text": "flatten",
+        "link": "en/array/operator/flatten"
       },
       {
         "text": "fold",
@@ -181,7 +187,7 @@ export default {
         "link": "en/array/operator/zip3"
       }
     ],
-    "sequence": [
+    "seq.gen": [
       {
         "text": "empty",
         "link": "en/seq/generator/empty"
@@ -197,7 +203,9 @@ export default {
       {
         "text": "range",
         "link": "en/seq/generator/range"
-      },
+      }
+    ],
+    "seq.op": [
       {
         "text": "choose",
         "link": "en/seq/operator/choose"

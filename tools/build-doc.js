@@ -22,8 +22,10 @@ This file is auto-generated.
 export default ${JSON.stringify({
         en:
             {
-                'array': await buildConfig(src, lang, ['array/generator','array/operator',]),
-                'sequence': await buildConfig(src, lang, ['seq/generator','seq/operator',]),
+                'array.gen': await buildConfig(src, lang, ['array/generator']),
+                'array.op': await buildConfig(src, lang, ['array/operator',]),
+                'seq.gen': await buildConfig(src, lang, ['seq/generator',]),
+                'seq.op': await buildConfig(src, lang, ['seq/operator',]),
                 'option': await buildConfig(src, lang, ['option']),
             }
     }, null, '  ')}`);
