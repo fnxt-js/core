@@ -119,6 +119,10 @@ export default {
         "link": "en/array/operator/minBy"
       },
       {
+        "text": "pairwise",
+        "link": "en/array/operator/pairwise"
+      },
+      {
         "text": "partition",
         "link": "en/array/operator/partition"
       },
@@ -181,6 +185,10 @@ export default {
       {
         "text": "uniqueBy",
         "link": "en/array/operator/uniqueBy"
+      },
+      {
+        "text": "windowed",
+        "link": "en/array/operator/windowed"
       },
       {
         "text": "zip",

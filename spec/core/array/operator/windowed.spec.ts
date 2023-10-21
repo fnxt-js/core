@@ -18,6 +18,11 @@ describe('windowed', () => {
     expect(fn([1])).to.eql([]);
   });
 
+  it('should throw if windowSize is less than 1', () => {
+    expect(() => windowed(0)).to.throw(`windowSize must not be less than 1. (0 given)`);
+    expect(() => windowed(-1)).to.throw(`windowSize must not be less than 1. (-1 given)`);
+  });
+
 
   it('should return empty', () => {
     const fn = windowed(2);
