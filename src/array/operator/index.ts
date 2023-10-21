@@ -53,6 +53,8 @@ export * from './skipWhile';
 export * from './takeWhile';
 export * from './takeWhileInclusive';
 
+export * from './stride';
+
 export * from './where';
 export * from './exists';
 export * from './some';

@@ -32,7 +32,7 @@ describe('array', () => {
       'sortByDescending', 'sortDescending', 'sortInPlace',
       'sortInPlace', 'sortInPlaceBy', 'sortInPlaceWith',
       'sortInPlaceWith', 'sortWith', 'sortWith',
-      'splitAt', 'splitInto', 'sum',
+      'splitAt', 'splitInto', 'stride', 'sum',
       'sumBy', 'remove', 'tail', 'take',
       'takeWhile', 'takeWhileInclusive', 'transpose',
       'truncate', 'tryFind', 'tryFindBack',

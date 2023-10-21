@@ -210,6 +210,21 @@ describe('performance test', function () {
 
     }).timeout(oneMinute);
   });
+  describe('stride', () => {
+    it('stride', () => {
+      const stride = <T>(step: number) => <T>(array: T[]): T[] =>
+        array.filter((_, i) => i % step == 0);
+
+      const data = ARRAY.range(0, length);
+
+      const step = 13;
+      const fnxt = ARRAY.stride(step);
+      const alternative = stride(step);
+
+      run(fnxt, alternative, data);
+
+    }).timeout(oneMinute);
+  });
 
   it('skipWhile', () => {
     const skipWhile = <T>(predicate: Predicate<T>) => (array: T[]): T[] => {
@@ -415,5 +430,6 @@ describe('performance test', function () {
   }).timeout(oneMinute);
 
 
-});
+})
+;
 

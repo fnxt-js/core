@@ -143,6 +143,10 @@ export default {
         "link": "en/array/operator/splitInto"
       },
       {
+        "text": "stride",
+        "link": "en/array/operator/stride"
+      },
+      {
         "text": "tail",
         "link": "en/array/operator/tail"
       },
