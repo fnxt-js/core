@@ -1,7 +1,8 @@
 import {expect} from 'chai';
 
 import {checkThrow} from '../../../support/checkThrow';
-import {chunkBySize, strideWindowed, range, windowed} from '../../../../src/array';
+import {chunkBySize, range, stride, strideWindowed, windowed} from '../../../../src/array';
+import {pipe} from '../../../../src/pipe';
 
 describe('strideWindowed', () => {
 
@@ -20,20 +21,38 @@ describe('strideWindowed', () => {
     expect(fn([1, 2])).to.eql([]);
     expect(fn([1])).to.eql([]);
   });
-  describe('iterate', () => {
-    for (let i = 1; i < 50; i += Math.ceil(Math.random() * 5)) {
+  describe('equals', () => {
+    describe('strideWindowed(1)', () => {
+      for (let i = 1; i < 50; i += Math.ceil(Math.random() * 5)) {
 
-      it(`should strideWindowed 1:${i} equals windowed ${i}`, () => {
-        const array = range(0, 100);
-        const fn = strideWindowed(1)(i);
-        expect(fn(array)).to.eql(windowed(i)(array));
-      });
-      it(`should strideWindowed ${i}:${i} equals chunkBySize ${i} if array length is multiple of ${i}`, () => {
-        const array = range(0, Math.floor(100 / i) * i);
-        const fn = strideWindowed(i)(i);
-        expect(fn(array)).to.eql(chunkBySize(i)(array));
-      });
-    }
+        it(`should strideWindowed 1:${i} equals windowed ${i}`, () => {
+          const array = range(0, 100);
+          const fn = strideWindowed(1)(i);
+          expect(fn(array)).to.eql(windowed(i)(array));
+        });
+      }
+    });
+
+    describe('chunkBySize', () => {
+      for (let i = 1; i < 50; i += Math.ceil(Math.random() * 5)) {
+        it(`should strideWindowed ${i}:${i} equals chunkBySize ${i} if array length is multiple of ${i}`, () => {
+          const array = range(0, Math.floor(100 / i) * i);
+          const fn = strideWindowed(i)(i);
+          expect(fn(array)).to.eql(chunkBySize(i)(array));
+        });
+      }
+    });
+
+    describe('pipe(windowed, stride)', () => {
+      for (let i = 1; i < 50; i += Math.ceil(Math.random() * 5)) {
+        const j = Math.ceil(Math.random() * 5) + 1;
+        it(`should strideWindowed ${j}:${i} equals pipe(windowed(${i}), stride(${j}))`, () => {
+          const array = range(0, 100);
+          const fn = strideWindowed(j)(i);
+          expect(fn(array)).to.eql(pipe(windowed(i), stride(j))(array));
+        });
+      }
+    });
   });
 
   it('should return empty if window greater than length', () => {
