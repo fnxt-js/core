@@ -99,10 +99,6 @@ export default {
         "link": "en/array/operator/isEmpty"
       },
       {
-        "text": "kernel",
-        "link": "en/array/operator/kernel"
-      },
-      {
         "text": "last",
         "link": "en/array/operator/last"
       },
@@ -153,6 +149,10 @@ export default {
       {
         "text": "stride",
         "link": "en/array/operator/stride"
+      },
+      {
+        "text": "strideWindowed",
+        "link": "en/array/operator/strideWindowed"
       },
       {
         "text": "tail",

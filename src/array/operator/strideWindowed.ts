@@ -1,4 +1,4 @@
-export const kernel = (stride: number) => {
+export const strideWindowed = (stride: number) => {
 
   if (stride < 1) {
     throw Error(`stride must not be less than 1. (${stride} given)`);

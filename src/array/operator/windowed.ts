@@ -1,4 +1,4 @@
-import {kernel} from './kernel';
+import {strideWindowed} from './strideWindowed';
 
-export const windowed = kernel(1)
+export const windowed = strideWindowed(1)
 

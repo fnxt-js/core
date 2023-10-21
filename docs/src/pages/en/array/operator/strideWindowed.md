@@ -1,14 +1,14 @@
 ---
-title: kernel
-description: kernel
+title: strideWindowed
+description: strideWindowed
 layout: ../../../../layouts/MainLayout.astro
 ---
-Splits an array into subarrays (kernels) of a specified `windowSize`, 
+Splits an array into subarrays (windows) of a specified `windowSize`, 
 moving the window by `stride` elements at a time.
 ## Type
 
 ```ts
-type kernel = (stride: number) => (windowSize: number) => <T>(array: T[]) => T[][]
+type strideWindowed = (stride: number) => (windowSize: number) => <T>(array: T[]) => T[][]
 ```
 
 ## Parameters
@@ -29,7 +29,7 @@ const inputArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const stride = 2;
 const windowSize = 3;
 
-const resultWindows = kernel(stride)(windowSize)(inputArray);
+const resultWindows = strideWindowed(stride)(windowSize)(inputArray);
 // -> [[1, 2, 3], [3, 4, 5], [5, 6, 7], [7, 8, 9]]
 ```
 
