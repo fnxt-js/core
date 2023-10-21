@@ -99,6 +99,10 @@ export default {
         "link": "en/array/operator/isEmpty"
       },
       {
+        "text": "kernel",
+        "link": "en/array/operator/kernel"
+      },
+      {
         "text": "last",
         "link": "en/array/operator/last"
       },
