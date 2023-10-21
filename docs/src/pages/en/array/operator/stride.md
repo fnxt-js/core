@@ -33,5 +33,6 @@ stride(array) // -> [1, 4, 7]
 
 ## See Also
 
+- [strideWindowed](./strideWindowed)
 - [skip](./skip)
 - [take](./take)
