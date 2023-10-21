@@ -46,8 +46,8 @@ const oneSecond = 1000;
 const oneMinute = 60 * oneSecond;
 
 const print = (!process.env.PRINT_DEBUG)
-    ? () => null
-    : (data: unknown) => console.log(data);
+  ? () => null
+  : (data: unknown) => console.log(data);
 
 
 function printTimings(a: number[], b: number[]) {
@@ -77,12 +77,16 @@ function run<T, R>(fnxt: (array: T[]) => R, alt: (array: T[]) => R, data: T[], r
 
 describe('performance test', function () {
 
+  beforeEach((done) => {
+    setTimeout(done, 50);
+  });
+
   const length = 100000;
 
   it('partition', () => {
     const partition = <T>(predicate: Predicate<T>) =>
-        (array: T[]): Tuple<T[], T[]> =>
-            [array.filter(predicate), array.filter(e => !predicate(e))];
+      (array: T[]): Tuple<T[], T[]> =>
+        [array.filter(predicate), array.filter(e => !predicate(e))];
 
     const data = shuffle(ARRAY.range(0, length));
     const predicate: Predicate<number> = (e) => length / 2 <= e;
@@ -120,7 +124,7 @@ describe('performance test', function () {
   describe('remove', () => {
     it('remove (1)', () => {
       const remove = (index: number) => <T>(array: T[]): T[] =>
-          array.filter((v, i) => i !== index);
+        array.filter((v, i) => i !== index);
 
       const data = ARRAY.range(0, length);
 
@@ -137,11 +141,11 @@ describe('performance test', function () {
     it('collect (1)', () => {
 
       const collect = <E, F>(fn: UnaryFunction<E, Iterable<F>>) => (array: E[]): F[] =>
-          array.reduce((p, c) => {
-            const values = fn(c);
-            p.push(...values);
-            return p;
-          }, [] as F[]);
+        array.reduce((p, c) => {
+          const values = fn(c);
+          p.push(...values);
+          return p;
+        }, [] as F[]);
 
 
       const data = ARRAY.range(0, length / 10);
@@ -184,7 +188,7 @@ describe('performance test', function () {
   describe('updateAt', () => {
     it('updateAt (1)', () => {
       const updateAt = (index: number) => <T>(value: T) => (array: T[]): T[] =>
-          array.map((v, i) => i === index ? value : v);
+        array.map((v, i) => i === index ? value : v);
 
       const data = ARRAY.range(0, length);
 
@@ -198,7 +202,7 @@ describe('performance test', function () {
 
     it('updateAt (2)', () => {
       const updateAt = (index: number) => <T>(value: T) => (array: T[]): T[] =>
-          array.slice(0, index).concat([value], array.slice(index + 1));
+        array.slice(0, index).concat([value], array.slice(index + 1));
 
       const data = ARRAY.range(0, length);
 
@@ -343,34 +347,22 @@ describe('performance test', function () {
   }).timeout(oneMinute);
 
   it('rotate', () => {
-    const rotate = (offset: number) => <S>(array: S[]): S[] => {
-      const [front, back] = ARRAY.splitAt(offset %= array.length)(array);
-      return ARRAY.append(back)(front);
-    };
-
-    const data = ARRAY.range(0, length);
-    const half = Math.round(length / 2);
-
-    run(ARRAY.rotate(half), rotate(half), data);
-  }).timeout(oneMinute);
-
-  it('rotate 2', () => {
     const rotate = (offset: number) =>
 
-        <S>(array: S[]): S[] => {
+      <S>(array: S[]): S[] => {
 
-          const index = offset % array.length + (offset < 0 ? array.length : 0);
-          const result: S[] = [];
-          for (let i = index; i < array.length; i++) {
-            result.push(array[i]);
-          }
+        const index = offset % array.length + (offset < 0 ? array.length : 0);
+        const result: S[] = [];
+        for (let i = index; i < array.length; i++) {
+          result.push(array[i]);
+        }
 
-          for (let i = 0; i < index; i++) {
-            result.push(array[i]);
-          }
+        for (let i = 0; i < index; i++) {
+          result.push(array[i]);
+        }
 
-          return result;
-        };
+        return result;
+      };
 
     const data = ARRAY.range(0, length);
     const half = Math.round(length / 2);

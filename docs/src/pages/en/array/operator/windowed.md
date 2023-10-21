@@ -54,4 +54,6 @@ the result will be an empty array.
 
 ## See Also
 
+- [kernel](./kernel)
+- [stride](./stride)
 - [pairwise](./pairwise)
