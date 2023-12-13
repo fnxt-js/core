@@ -24,7 +24,7 @@ describe('array', () => {
       'init', 'insertAt', 'interleave', 'isEmpty',
       'iter', 'last', 'length',
       'map', 'maxBy', 'minBy',
-      'pairwise', 'partition', 'push',
+      'pairwise','pairwiseWith', 'partition', 'push',
       'reduce', 'reduceBack', 'replicate',
       'rev', 'rotate', 'rotateBack',
       'scan', 'scanBack', 'skip',
@@ -39,7 +39,7 @@ describe('array', () => {
       'tryFindIndex', 'tryFindIndexBack', 'tryHead',
       'tryLast', 'uniqueBy', 'updateAt',
       'where', 'windowed', 'zip',
-      'zip3'
+      'zip3', 'zipWith'
     ]
       .sort();
     operators.map(name => './array/operator/' + name + '.spec')
