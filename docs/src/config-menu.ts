@@ -123,6 +123,10 @@ export default {
         "link": "en/array/operator/pairwise"
       },
       {
+        "text": "pairwiseWith",
+        "link": "en/array/operator/pairwiseWith"
+      },
+      {
         "text": "partition",
         "link": "en/array/operator/partition"
       },
@@ -201,6 +205,10 @@ export default {
       {
         "text": "zip3",
         "link": "en/array/operator/zip3"
+      },
+      {
+        "text": "zipWith",
+        "link": "en/array/operator/zipWith"
       }
     ],
     "seq.gen": [
