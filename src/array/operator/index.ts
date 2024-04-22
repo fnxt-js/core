@@ -3,6 +3,7 @@ export * from './allPairs';
 export * from './append';
 export * from './average';
 export * from './averageBy';
+export * from './cartesian';
 export * from './choose';
 export * from './chunkBySize';
 export * from './collect';

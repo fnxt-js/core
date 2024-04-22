@@ -5,16 +5,25 @@ import {checkThrow} from '../../../support/checkThrow';
 describe('allCombinations', () => {
 
 
-  it('should allCombinations', () => {
+  it('should allCombinations []', () => {
 
     const fn = allCombinations;
-    expect(fn([1, 2], ['a', 'b'], [4, 5])).to.eql([
+    expect(fn()).to.eql([]);
+  });
+  it('should allCombinations [2,2,2]', () => {
+
+    const fn = allCombinations;
+    expect(fn(
+      [1, 2],
+      ['a', 'b'],
+      [4, 5]
+    )).to.eql([
       [1, 'a', 4], [1, 'a', 5], [1, 'b', 4], [1, 'b', 5],
       [2, 'a', 4], [2, 'a', 5], [2, 'b', 4], [2, 'b', 5],
     ]);
   });
 
-  it('should allCombinations', () => {
+  it('should allCombinations [4,4,2]', () => {
 
     const fn = allCombinations;
     const expansion = fn(['ace', 'king', 'queen', 'jack'], ['hearts', 'spades', 'diamonds', 'clubs'], ['blue cover', 'red cover']);

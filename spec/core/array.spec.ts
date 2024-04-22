@@ -13,7 +13,7 @@ describe('array', () => {
   describe('operator', () => {
     const operators = [
       'allCombinations', 'allPairs', 'append',
-      'average', 'averageBy', 'choose',
+      'average', 'averageBy', 'cartesian','choose',
       'chunkBySize', 'collect', 'compareWith',
       'concat', 'contains', 'copy',
       'countBy', 'distinctBy', 'every',
