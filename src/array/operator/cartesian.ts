@@ -18,7 +18,7 @@ export function cartesian(...arrays: unknown[][]): unknown[][] {
   let res: any[] = allCombinations(...arrays);
 
   for (let i = arrays.length - 1; i > 0; i--) {
-    let size = arrays[i].length;
+    const size = arrays[i].length;
     res = chunkBySize(size)(res);
   }
   return res;

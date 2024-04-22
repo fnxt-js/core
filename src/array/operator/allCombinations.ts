@@ -13,7 +13,9 @@ export function allCombinations<A, B, C, D, E, F, G>(a: A[], b: B[], c: C[], d: 
 export function allCombinations<A, B, C, D, E, F, G, H>(a: A[], b: B[], c: C[], d: D[], e: E[], f: F[], g: G[], h: H[]): [A, B, C, D, E, F, G, H][];
 
 export function allCombinations(...arrays: unknown[][]): unknown[][] {
-  if (arrays.length === 0) return [];
+  if (arrays.length === 0) {
+    return [];
+  }
   const fn = ([head, ...tail]: unknown[][]): unknown[][] =>
     tail.length
       ? pipe(fn, allPairs(head), map(([h, t]) => [h, ...t]))(tail)
