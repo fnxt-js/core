@@ -60,7 +60,7 @@ the result will be an empty array.
 
 ## See Also
 
-- [windowed](./windowed)
-- [stride](./stride)
-- [pairwise](./pairwise)
-- [chunkBySize](./chunkBySize)
+- [windowed](../windowed)
+- [stride](../stride)
+- [pairwise](../pairwise)
+- [chunkBySize](../chunkBySize)

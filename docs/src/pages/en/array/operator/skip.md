@@ -37,8 +37,8 @@ console.log(result);
 ```
 
 ## See Also
-- [skipWhile](./skipWhile)
-- [take](./take)
-- [takeWhile](./takeWhile)
-- [truncate](./truncate)
-- [filter](./filter)
+- [skipWhile](../skipWhile)
+- [take](../take)
+- [takeWhile](../takeWhile)
+- [truncate](../truncate)
+- [filter](../filter)

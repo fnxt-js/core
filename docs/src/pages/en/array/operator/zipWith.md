@@ -35,7 +35,7 @@ const resultArray = zipWith(combineElements)(array1)(array2);
 ```
 
 ## See Also
-- [map](./map)
-- [reduce](./reduce)
-- [zip](./zip)
-- [pairwiseWith](./pairwiseWith)
+- [map](../map)
+- [reduce](../reduce)
+- [zip](../zip)
+- [pairwiseWith](../pairwiseWith)

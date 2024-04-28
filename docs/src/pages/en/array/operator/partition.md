@@ -62,6 +62,6 @@ console.log(result);
 
 ## See Also
 
-- [chunkBySize](./chunkBySize)
-- [filter](./filter)
-- [splitInto](./splitInto)
+- [chunkBySize](../chunkBySize)
+- [filter](../filter)
+- [splitInto](../splitInto)

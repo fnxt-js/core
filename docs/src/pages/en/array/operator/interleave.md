@@ -34,7 +34,7 @@ console.log(result);
 
 
 ## See Also
-- [allCombinations](./allCombinations)
-- [allPairs](./allPairs)
-- [interleave](./interleave)
-- [zip](./zip)
+- [allCombinations](../allCombinations)
+- [allPairs](../allPairs)
+- [interleave](../interleave)
+- [zip](../zip)

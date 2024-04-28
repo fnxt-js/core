@@ -30,4 +30,4 @@ fold(array) // -> 15
 
 
 ## See Also
-- [reduce](./reduce)
+- [reduce](../reduce)

@@ -38,6 +38,6 @@ const resultWindows = pairwise (windowSize)(inputArray);
 
 ## See Also
 
-- [windowed](./windowed)
-- [allPairs](./allPairs)
-- [zip](./zip)
+- [windowed](../windowed)
+- [allPairs](../allPairs)
+- [zip](../zip)

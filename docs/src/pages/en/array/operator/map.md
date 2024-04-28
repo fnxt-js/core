@@ -22,4 +22,4 @@ plusOne(array) // -> [2, 3, 4]
 ```
 
 ## See Also
-- [collect](./collect)
+- [collect](../collect)

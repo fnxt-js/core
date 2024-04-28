@@ -46,5 +46,5 @@ console.log(multiDimensionalArray);
 
 ## See Also
 
-- [allCombinations](./allCombinations)
-- [cartesian](./cartesian)
+- [allCombinations](../allCombinations)
+- [cartesian](../cartesian)

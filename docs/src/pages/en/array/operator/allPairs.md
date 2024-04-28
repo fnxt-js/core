@@ -27,5 +27,5 @@ allPairs([1, 2, 3])(['a', 'b', 'c']); // ->
 
 ## See Also
 
-- [allCombinations](./allCombinations)
-- [zip](./zip)
+- [allCombinations](../allCombinations)
+- [zip](../zip)

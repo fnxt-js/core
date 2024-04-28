@@ -32,10 +32,10 @@ findEven(array) // -> 2
 
 ## See Also
 
-- [findBack](./findBack)
-- [findIndex](./findIndex)
-- [findIndexBack](./findIndexBack)
-- [tryFind](./tryFind)
-- [tryFindBack](./tryFindBack)
-- [tryFindIndex](./tryFindIndex)
-- [tryFindIndexBack](./tryFindIndexBack)
+- [findBack](../findBack)
+- [findIndex](../findIndex)
+- [findIndexBack](../findIndexBack)
+- [tryFind](../tryFind)
+- [tryFindBack](../tryFindBack)
+- [tryFindIndex](../tryFindIndex)
+- [tryFindIndexBack](../tryFindIndexBack)

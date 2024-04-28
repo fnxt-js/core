@@ -24,5 +24,5 @@ concat(array1)(array2) // -> [0, 1, 2, 3, 10, 11, 12, 13];
 
 ## See Also
 
-- [collect](./collect)
-- [flatten](./flatten)
+- [collect](../collect)
+- [flatten](../flatten)

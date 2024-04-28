@@ -21,9 +21,9 @@ init([1, 2, 3, 4]) // -> [1, 2, 3]
 
 ## See Also
 
-- [head](./head)
-- [tail](./tail)
-- [last](./last)
+- [head](../head)
+- [tail](../tail)
+- [last](../last)
 
 ```
 |  head  |              tail              |

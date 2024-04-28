@@ -43,7 +43,7 @@ const resultArray = pairwiseWith(sumReducer)(inputArray);
 
 ## See Also
 
-- [map](./map)
-- [reduce](./reduce)
-- [pairwise](./pairwise)
-- [zipWith](./zipWith)
+- [map](../map)
+- [reduce](../reduce)
+- [pairwise](../pairwise)
+- [zipWith](../zipWith)

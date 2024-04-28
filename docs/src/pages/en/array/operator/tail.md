@@ -20,9 +20,9 @@ tail([1, 2, 3, 4]) // -> [2, 3, 4]
 ```
 
 ## See Also
-- [head](./head)
-- [init](./init)
-- [last](./last)
+- [head](../head)
+- [init](../init)
+- [last](../last)
 
 ```
 |  head  |              tail              |

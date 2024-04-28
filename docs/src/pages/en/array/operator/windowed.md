@@ -54,6 +54,6 @@ the result will be an empty array.
 
 ## See Also
 
-- [strideWindowed](./strideWindowed)
-- [stride](./stride)
-- [pairwise](./pairwise)
+- [strideWindowed](../strideWindowed)
+- [stride](../stride)
+- [pairwise](../pairwise)

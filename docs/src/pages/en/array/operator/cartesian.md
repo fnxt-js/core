@@ -49,5 +49,5 @@ console.log(result);
 
 ## See Also
 
-- [allCombinations](./allCombinations)
-- [reshape](./reshape)
+- [allCombinations](../allCombinations)
+- [reshape](../reshape)

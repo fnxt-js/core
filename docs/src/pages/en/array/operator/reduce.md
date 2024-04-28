@@ -29,4 +29,4 @@ reduce(array) // -> 10
 
 
 ## See Also
-- [fold](./fold)
+- [fold](../fold)

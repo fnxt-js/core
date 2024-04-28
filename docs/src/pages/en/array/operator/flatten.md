@@ -38,5 +38,5 @@ console.log(flattenedArray); // Output: [1, 2, 3, 4, 5, 6]
 ```
 
 ## See Also
-- [concat](./concat)
-- [collect](./collect)
+- [concat](../concat)
+- [collect](../collect)

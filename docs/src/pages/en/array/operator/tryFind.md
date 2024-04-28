@@ -28,10 +28,10 @@ findEven(array) // -> Some(2)
 
 ## See Also
 
-- [find](./find)
-- [findBack](./findBack)
-- [findIndex](./findIndex)
-- [findIndexBack](./findIndexBack)
-- [tryFindBack](./tryFindBack)
-- [tryFindIndex](./tryFindIndex)
-- [tryFindIndexBack](./tryFindIndexBack)
+- [find](../find)
+- [findBack](../findBack)
+- [findIndex](../findIndex)
+- [findIndexBack](../findIndexBack)
+- [tryFindBack](../tryFindBack)
+- [tryFindIndex](../tryFindIndex)
+- [tryFindIndexBack](../tryFindIndexBack)
