@@ -36,6 +36,22 @@ describe('cartesian', () => {
     ]);
   });
 
+  it('should cartesian [1, 2], ["a", "b", "c"], [true, false]', () => {
+console.log(JSON.stringify(cartesian([1, 2], ['a', 'b', 'c'], [true, false])));
+    expect(cartesian([1, 2], ['a', 'b', 'c'], [true, false])).to.eql([
+      [
+        [[1,"a",true],[1,"a",false]],
+        [[1,"b",true],[1,"b",false]],
+        [[1,"c",true],[1,"c",false]]
+      ],
+      [
+        [[2,"a",true],[2,"a",false]],
+        [[2,"b",true],[2,"b",false]],
+        [[2,"c",true],[2,"c",false]]
+      ]
+    ]);
+  });
+
   it('should cartesian [3,4,2]', () => {
 
     const fn = cartesian;

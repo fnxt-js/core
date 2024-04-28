@@ -1,5 +1,5 @@
-import {chunkBySize} from './chunkBySize';
 import {allCombinations} from './allCombinations';
+import {reshape} from './reshape';
 
 export function cartesian(): [];
 export function cartesian<A>(a: A[]): [A][];
@@ -15,13 +15,9 @@ export function cartesian<A, B, C, D, E, F, G, H>(a: A[], b: B[], c: C[], d: D[]
 export function cartesian(...arrays: unknown[][]): unknown[][] {
 
   // @ts-ignore
-  let res: any[] = allCombinations(...arrays);
+  const res: any[] = allCombinations(...arrays);
 
-  for (let i = arrays.length - 1; i > 0; i--) {
-    const size = arrays[i].length;
-    res = chunkBySize(size)(res);
-  }
-  return res;
-
+  const dimensions = arrays.map(a => a.length)
+  return reshape(dimensions)(res) as any[]
 }
 

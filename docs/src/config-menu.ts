@@ -27,6 +27,10 @@ export default {
         "link": "en/array/operator/allPairs"
       },
       {
+        "text": "cartesian",
+        "link": "en/array/operator/cartesian"
+      },
+      {
         "text": "choose",
         "link": "en/array/operator/choose"
       },
@@ -133,6 +137,10 @@ export default {
       {
         "text": "reduce",
         "link": "en/array/operator/reduce"
+      },
+      {
+        "text": "reshape",
+        "link": "en/array/operator/reshape"
       },
       {
         "text": "skip",

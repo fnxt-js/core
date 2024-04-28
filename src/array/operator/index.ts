@@ -45,6 +45,7 @@ export * from './reduce';
 export * from './reduceBack';
 export * from './remove';
 export * from './replicate';
+export * from './reshape';
 export * from './rev';
 export * from './rotate';
 export * from './rotateBack';
