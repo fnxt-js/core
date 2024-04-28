@@ -16,10 +16,11 @@ An array of arrays representing the Cartesian product of the input arrays.
 ## Type
 
 ```ts
-type cartesian = (dimensions: [number,]) => <A>(a: A[]) => [A][];
-type cartesian = (dimensions: [number, number,]) => <A>(a: A[]) => [A][][];
+type  cartesian = () => [];
+type  cartesian<A> = (a: A[]) => [A][];
+type  cartesian<A, B> = (a: A[], b: B[]) => [A, B][][];
 //...
-type cartesian = (dimensions: [number, number, number, number, number, number, number, number]) =>  <A>(a: A[]) => [A][][][][][][][][];
+type  cartesian<A, B, C, D, E, F, G, H> = (a: A[], b: B[], c: C[], d: D[], e: E[], f: F[], g: G[], h: H[]) => [A, B, C, D, E, F, G, H][][][][][][][];
 ```
 
 
