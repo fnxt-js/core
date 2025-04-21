@@ -13,12 +13,9 @@ import {
   map,
   None,
   of,
-  Option,
-  OptionType,
   Some,
 } from '../../src/option';
 import {pipe} from '../../src/pipe';
-import {stub} from 'sinon';
 
 
 describe('option', () => {
@@ -78,22 +75,4 @@ describe('option', () => {
     });
   });
 
-  describe('deprecation', () => {
-    it('should still work with OptionType', () => {
-      expect(Some(42).type).to.eql(OptionType.Some);
-      expect(None.type).to.eql(OptionType.None);
-      let x = Some(42) as Option<number>;
-      const s = stub();
-      const n = stub();
-      if (x.type == OptionType.Some) {
-        expect(x.value).to.eql(42);
-        s();
-      }
-      if (x.type == OptionType.None) {
-        n();
-      }
-      expect(s).to.be.callCount(1);
-      expect(n).to.be.callCount(0);
-    });
-  });
 });
